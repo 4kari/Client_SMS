@@ -6,23 +6,19 @@ class Administrator extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		if ($this->session->userdata('level_id') != 1) {
+		if ($this->session->userdata('level') != 1) {
             redirect('Auth');
 		} 
-		$this->load->model('user_model', 'userM');
-		$this->load->model('dosen_model', 'dosenM');
-		$this->load->model('mahasiswa_model', 'mahasiswaM');
-		cek_login();
+		// $this->load->model('user_model', 'userM');
+		// $this->load->model('dosen_model', 'dosenM');
+		// $this->load->model('mahasiswa_model', 'mahasiswaM');
 	}
 	public function index(){
-		$data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-		$data['profil'] = $data['user'];
-		$data['profil']['nama'] = 'administrator';
-		$data['profil']['gambar'] = 'default.jpg';
-		$data['level'] = $this->db->get('user_level')->result_array();
-		$data['judul'] = 'Dashboard';
-
-		$data['users'] = $this->userM->getUserByLv('3','4');
+		$data=[
+			'nama' => $this->session->userdata('username'),
+			'judul' => "user"
+		];
+		
 		$this->load->view('template/header', $data);
 		$this->load->view('template/sidebar');
 		$this->load->view('template/topbar');

@@ -187,24 +187,18 @@
                         <form action="<?= base_url('Auth/login/');?>" method="POST" id="contactForm" data-sb-form-api-token="API_TOKEN" >
                             <!-- Name input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="username" type="text" placeholder="Enter your username..." data-sb-validations="required" />
+                                <input class="form-control" id="username" type="text" name="username" placeholder="Enter your username..." data-sb-validations="required" />
                                 <label for="username">Username</label>
                                 <div class="invalid-feedback" data-sb-feedback="username:required">An username is required.</div>
                             </div>
                             <!-- Phone number input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="password" type="password" placeholder="password" data-sb-validations="required" />
+                                <input class="form-control" id="password" type="password" name="password" placeholder="password" data-sb-validations="required" />
                                 <label for="password">password</label>
                                 <div class="invalid-feedback" data-sb-feedback="password:required">A password is required.</div>
                             </div>
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                </div>
-                            </div>
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                             <!-- Submit Button-->
-                            <div class="d-grid"><button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Login</button></div>
+                            <div class="d-grid"><button class="btn btn-primary btn-xl" type="submit">Login</button></div>
                         </form>
                     </div>
                 </div>

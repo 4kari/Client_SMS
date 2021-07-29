@@ -1,11 +1,3 @@
-<?php
-$level_id = $this->session->userdata('level_id');
-$queryLevel = "SELECT level
-                FROM user_level
-                WHERE user_level.id = $level_id
-                ";
-$hasL = $this->db->query($queryLevel)->result_array();
-?>
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
 
@@ -28,14 +20,12 @@ $hasL = $this->db->query($queryLevel)->result_array();
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $profil['nama']; ?></span>
+            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $nama; ?></span>
             <img class="img-profile rounded-circle" src="<?= base_url('assets/img/profile/') . 'default.jpg' ?>">
           </a>
           <!-- Dropdown - User Information -->
           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-            <?php foreach ($hasL as $hL) : ?>
-              <a class="dropdown-item" href="<?= base_url($hL['level']); ?>">
-              <?php endforeach; ?>
+              <a class="dropdown-item" href="Auth/Logout">
               <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
               Beranda
               </a>
