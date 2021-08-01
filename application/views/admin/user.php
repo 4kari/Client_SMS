@@ -1,12 +1,9 @@
-
-    
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800"><?=$judul;?></h1>
           <p class="mb-4">halaman ini digunakan untuk memudahkan pengelolaan data user</p>
-
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -19,23 +16,26 @@
                     <tr>
                       <th>Id</th>
                       <th>Username</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
                       <th>Id</th>
                       <th>Username</th>
+                      <th>Action</th>
                     </tr>
                   </tfoot>
                   <tbody>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                    </tr>
-                    <tr>
-                      <td>Garrett Winters</td>
-                      <td>Accountant</td>
-                    </tr>
+                    <?php foreach ($data as $users) : ?>
+                      <tr>
+                        <td><?= $users['username']; ?></td>
+                        <td><?= $users['level']; ?></td>
+                        <td><a href="<?= base_url(); ?>admin/hapus/<?= $users['username']; ?>" data-nama="<?=$users['username'];?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i> hapus</a>
+                            <a href="<?= base_url(); ?>admin/ubah/<?= $users['username']; ?>" data-toggle="modal" data-target="#userEdit<?=$users['username'];?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>ubah</a>
+                        </td>
+                      </tr>
+                    <?php endforeach;?>
                   </tbody>
                 </table>
               </div>

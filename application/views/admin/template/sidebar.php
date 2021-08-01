@@ -24,21 +24,21 @@
 
       <!-- Nav Item - Charts -->
       <li class="nav-item <?php if($judul=='Data User'){echo 'active';}?>">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="<?= base_url('admin'); ?>">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Kelola data user</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class='nav-item <?php if($judul=="Data Dosen"){echo "active";}?>'>
-        <a class="nav-link" href="tables.html">
+      <a class="nav-link" href="<?= base_url('admin/dosen'); ?>">
           <i class="fas fa-fw fa-table"></i>
           <span>Kelola data dosen</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item <?php if($judul=='Data Mahasiswa'){echo 'active';}?>">
-        <a class="nav-link" href="tables.html">
+      <a class="nav-link" href="<?= base_url('admin/mahasiswa'); ?>">
           <i class="fas fa-fw fa-table"></i>
           <span>Kelola data mahasiswa</span></a>
       </li>

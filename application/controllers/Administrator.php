@@ -7,7 +7,7 @@ class Administrator extends CI_Controller
 	{
 		parent::__construct();
 		if ($this->session->userdata('level') != 1) {
-            redirect('Auth');
+            // redirect('Auth');
 		} 
 		// $this->load->model('user_model', 'userM');
 		// $this->load->model('dosen_model', 'dosenM');

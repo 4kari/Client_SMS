@@ -23,37 +23,20 @@ class user_model extends CI_Model
             $this->session->set_flashdata('pesan', 'Username tidak ditemukan!');
         }
     }
-    public function getUsers($limit, $start, $keyword = null, $user)
+    public function getUsers()
     {
-        //administrator
-        if ($user == 1) {
-            if ($keyword !== null) {
-                $query =
-                    "
-			SELECT u.id,  u.username, u.level_id, l.level as level FROM user u, user_level l WHERE u.level_id = l.id and (u.username LIKE '%$keyword%' OR l.level LIKE '%$keyword%')
-		";
-            } else {
-                $query =
-                    "
-			SELECT u.id,  u.username, u.level_id, l.level as level FROM user u, user_level l WHERE u.level_id = l.id
-		";
+        $user = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/User/'),true);
+        $level = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Level/'),true);
+        $data=$user['data'];
+        for ($i=0;$i<count($data);$i++){
+            for ($j=0;$j<count($level['data']);$j++){
+                if ($data[$i]['level']==$level['data'][$j]['id']){
+                    $data[$i]['level']=$level['data'][$j]['level'];
+                }
             }
+            
         }
-        //admin prodi
-        if (($user == 2)) {
-            if ($keyword !== null) {
-                $query =
-                    "
-			SELECT u.id,  u.username, u.level_id, l.level as level FROM user u, user_level l WHERE u.level_id = l.id AND u.level_id != '1' AND u.level_id != '2' and (u.username LIKE '%$keyword%' OR l.level LIKE '%$keyword%')
-		";
-            } else {
-                $query =
-                    "
-			SELECT u.id,  u.username, u.level_id, l.level as level FROM user u, user_level l WHERE u.level_id != '1' AND u.level_id != '2' AND u.level_id = l.id limit
-		";
-            }
-        }
-        return $this->db->query($query, $limit, $start, $keyword)->result_array();
+        return $data;
     }
     public function getUserByLv($lvl1='null',$lvl2='null',$lvl3='null',$lvl4='null' ){
         $query ="SELECT u.id,  u.username, u.level_id, l.level as level FROM user u, user_level l WHERE u.level_id = l.id and

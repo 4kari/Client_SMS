@@ -10,7 +10,7 @@ class Admin extends CI_Controller
 		if ($this->session->userdata('level') != 1) {
             // redirect('Auth');
 		}
-		// $this->load->model('user_model', 'userM');
+		$this->load->model('user_model', 'userM');
 		// $this->load->model('dosen_model', 'dosenM');
 	}
 
@@ -19,9 +19,7 @@ class Admin extends CI_Controller
 		$data['judul'] = 'Data User';
 		// $data['user'] = $this->session->userdata('username');
 		$data['user'] = $this->session->userdata('username');
-
-		//mendapatkan data users
-		// get semua user
+		$data['data'] = $this->userM->getUsers();
 
 		$this->load->view('admin/template/header',$data);
 		$this->load->view('admin/template/sidebar');
@@ -33,7 +31,7 @@ class Admin extends CI_Controller
 		$data['judul'] = 'Data Dosen';
 		// $data['user'] = $this->session->userdata('username');
 		$data['user'] = $this->session->userdata('username');
-
+		$data['data'] = $this->userM->getDosen();
 		//mendapatkan data users
 		// get semua user
 
@@ -73,19 +71,19 @@ class Admin extends CI_Controller
 	}
 	function daftarDosen()
 	{
-		$this->session->unset_userdata('keyword');
-		$data['judul'] = 'Daftar Dosen';
-		$data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
-		$userid = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-		$data['profil'] = $this->db->get_where('admin', ['username' => $userid['id']])->row_array();
-		$data['prodi'] = $this->db->get('prodi')->result_array();
-		$data['username'] = $this->db->get_where('user', ['level_id' => '3'])->result_array();
+		// $this->session->unset_userdata('keyword');
+		// $data['judul'] = 'Daftar Dosen';
+		// $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
+		// $userid = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		// $data['profil'] = $this->db->get_where('admin', ['username' => $userid['id']])->row_array();
+		// $data['prodi'] = $this->db->get('prodi')->result_array();
+		// $data['username'] = $this->db->get_where('user', ['level_id' => '3'])->result_array();
 		
 
-		$data['dosen'] = $this->dosenM->DosenProdi($data['profil']['prodi']);
+		// $data['dosen'] = $this->dosenM->DosenProdi($data['profil']['prodi']);
 
-		$this->form_validation->set_rules('nip', 'nipdosen', 'required');
-		$this->form_validation->set_rules('nama', 'namadosen', 'required');
+		// $this->form_validation->set_rules('nip', 'nipdosen', 'required');
+		// $this->form_validation->set_rules('nama', 'namadosen', 'required');
 
 		if ($this->form_validation->run() == false) {
 			$this->load->view('template/header', $data);
