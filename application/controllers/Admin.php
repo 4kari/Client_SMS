@@ -7,31 +7,57 @@ class Admin extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		cek_login();
-		$this->load->model('user_model', 'userM');
-		$this->load->model('dosen_model', 'dosenM');
+		if ($this->session->userdata('level') != 1) {
+            // redirect('Auth');
+		}
+		// $this->load->model('user_model', 'userM');
+		// $this->load->model('dosen_model', 'dosenM');
 	}
 
 	public function index()
 	{
-		$this->session->unset_userdata('keyword');
-		$data['judul'] = 'Dashboard';
-		$data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-		$data['level'] = $this->db->get('user_level')->result_array();
-		$data['profil'] = $this->db->get_where('admin', ['username' => $data['user']['id']])->row_array();
+		$data['judul'] = 'Data User';
+		// $data['user'] = $this->session->userdata('username');
+		$data['user'] = $this->session->userdata('username');
 
-		//mendapatkan kode prodi
-		$userid = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-		$prodi = $this->db->get_where('admin', ['username' => $userid['id']])->row_array()['prodi'];
+		//mendapatkan data users
+		// get semua user
 
-		$data['dosen'] = $this->userM->getUserByProdi('3',$prodi);
-		$data['mhs'] = $this->userM->getUserByProdi('4',$prodi);
-		$this->load->view('template/header', $data);
-		$this->load->view('template/sidebar');
-		$this->load->view('template/topbar');
-		$this->load->view('admin/index');
-		$this->load->view('template/footer');
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/template/sidebar');
+		$this->load->view('admin/template/topbar');
+		$this->load->view('admin/user');
+		$this->load->view('admin/template/footer');
 	}
+	public function dosen(){
+		$data['judul'] = 'Data Dosen';
+		// $data['user'] = $this->session->userdata('username');
+		$data['user'] = $this->session->userdata('username');
+
+		//mendapatkan data users
+		// get semua user
+
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/template/sidebar');
+		$this->load->view('admin/template/topbar');
+		$this->load->view('admin/dosen');
+		$this->load->view('admin/template/footer');
+	}
+	public function mahasiswa(){
+		$data['judul'] = 'Data Mahasiswa';
+		// $data['user'] = $this->session->userdata('username');
+		$data['user'] = $this->session->userdata('username');
+
+		//mendapatkan data users
+		// get semua user
+
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/template/sidebar');
+		$this->load->view('admin/template/topbar');
+		$this->load->view('admin/mahasiswa');
+		$this->load->view('admin/template/footer');
+	}
+	
 	public function updateU($id)
 	{
 		var_dump($this->input->post('level'));
