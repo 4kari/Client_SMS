@@ -45,6 +45,7 @@ class Admin extends CI_Controller
 		$data['judul'] = 'Data Mahasiswa';
 		// $data['user'] = $this->session->userdata('username');
 		$data['user'] = $this->session->userdata('username');
+		$data['data'] = $this->userM->getMahasiswa();
 
 		//mendapatkan data users
 		// get semua user

@@ -14,15 +14,15 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Id</th>
-                      <th>Username</th>
+                      <th>username</th>
+                      <th>level</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>Id</th>
                       <th>Username</th>
+                      <th>level</th>
                       <th>Action</th>
                     </tr>
                   </tfoot>
@@ -31,8 +31,8 @@
                       <tr>
                         <td><?= $users['username']; ?></td>
                         <td><?= $users['level']; ?></td>
-                        <td><a href="<?= base_url(); ?>admin/hapus/<?= $users['username']; ?>" data-nama="<?=$users['username'];?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i> hapus</a>
-                            <a href="<?= base_url(); ?>admin/ubah/<?= $users['username']; ?>" data-toggle="modal" data-target="#userEdit<?=$users['username'];?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>ubah</a>
+                        <td><a href="<?= base_url(); ?>admin/hapusUser/<?= $users['username']; ?>" data-nama="<?=$users['username'];?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i> hapus</a>
+                            <a href="<?= base_url(); ?>admin/ubahUser/<?= $users['username']; ?>" data-toggle="modal" data-target="#userEdit<?=$users['username'];?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>ubah</a>
                         </td>
                       </tr>
                     <?php endforeach;?>

@@ -38,6 +38,16 @@ class user_model extends CI_Model
         }
         return $data;
     }
+    public function getDosen()
+    {
+        $dosen = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Dosen/'),true);
+        return $dosen['data'];
+    }
+    public function getMahasiswa()
+    {
+        $mhs = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Mahasiswa/'),true);
+        return $mhs['data'];
+    }
     public function getUserByLv($lvl1='null',$lvl2='null',$lvl3='null',$lvl4='null' ){
         $query ="SELECT u.id,  u.username, u.level_id, l.level as level FROM user u, user_level l WHERE u.level_id = l.id and
         (u.level_id=$lvl1 OR u.level_id=$lvl2 OR u.level_id=$lvl3 OR u.level_id=$lvl4)";
