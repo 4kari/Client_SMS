@@ -17,8 +17,8 @@ class Auth extends CI_Controller
         //     redirect('admin');
         // } elseif ($this->session->userdata('level') == 3) {
         //     redirect('dosen');
-        // } elseif ($this->session->userdata('level') == 4) {
-        //     redirect('mahasiswa');
+        } elseif ($this->session->userdata('level') == 4) {
+            redirect('mahasiswa');
         }
         else{
             redirect('publik');

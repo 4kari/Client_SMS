@@ -13,7 +13,6 @@ class user_model extends CI_Model
                         'username' => $data['data']['username'],
                         'level' => $data['data']['level']
                     ];
-                var_dump($user);
                 $this->session->set_flashdata('pesan', 'Login sukses!');
                 $this->session->set_userdata($user);
             }else{

@@ -8,7 +8,7 @@ class Admin extends CI_Controller
 	{
 		parent::__construct();
 		if ($this->session->userdata('level') != 1) {
-            // redirect('Auth');
+            redirect('Auth');
 		}
 		$this->load->model('user_model', 'userM');
 		// $this->load->model('dosen_model', 'dosenM');
@@ -20,6 +20,7 @@ class Admin extends CI_Controller
 		// $data['user'] = $this->session->userdata('username');
 		$data['user'] = $this->session->userdata('username');
 		$data['data'] = $this->userM->getUsers();
+		$data['aktor']="Admin";
 
 		$this->load->view('template/header',$data);
 		$this->load->view('admin/template/sidebar');
@@ -32,6 +33,7 @@ class Admin extends CI_Controller
 		// $data['user'] = $this->session->userdata('username');
 		$data['user'] = $this->session->userdata('username');
 		$data['data'] = $this->userM->getDosen();
+		$data['aktor']="Admin";
 		//mendapatkan data users
 		// get semua user
 
@@ -46,6 +48,7 @@ class Admin extends CI_Controller
 		// $data['user'] = $this->session->userdata('username');
 		$data['user'] = $this->session->userdata('username');
 		$data['data'] = $this->userM->getMahasiswa();
+		$data['aktor']="Admin";
 
 		//mendapatkan data users
 		// get semua user
@@ -57,6 +60,16 @@ class Admin extends CI_Controller
 		$this->load->view('template/footer');
 	}
 	
+/*
+
+
+-----------------------------------------MASIH BELUM TERPAKAI---------------------------------------------
+
+*/
+
+
+
+
 	public function updateU($id)
 	{
 		var_dump($this->input->post('level'));

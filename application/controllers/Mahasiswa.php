@@ -3,24 +3,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Mahasiswa extends CI_Controller
 {
-
 	public function __construct()
 	{
 		parent::__construct();
-		if ($this->session->userdata('level') != 1) {
-            // redirect('Auth');
+		if ($this->session->userdata('level') != 4) {
+            redirect('Auth');
 		}
-		$this->load->model('user_model', 'userM');
-		// $this->load->model('dosen_model', 'dosenM');
+		$this->load->model('mahasiswa_model', 'userM');
+		
 	}
 
 	public function index()
 	{
 		$data['judul'] = 'Pengajuan Topik';
-		// $data['user'] = $this->session->userdata('username');
-		$data['user'] = "Mahasiswa";
-
-		// $data['data'] = $this->userM->getUsers();
+		$data['data'] = $this->userM->data_diri($this->session->userdata('username'));
+		$this->session->set_userdata(['nama' => $data['data']['nama']]);
+		$data['user'] = $this->session->userdata['nama'];
+		$data['aktor']="Mahasiswa";
 
 		$this->load->view('template/header',$data);
 		$this->load->view('mahasiswa/template/sidebar');
@@ -30,17 +29,16 @@ class Mahasiswa extends CI_Controller
 	}
 	public function dosen(){
 		$data['judul'] = 'Data Dosen';
-		// $data['user'] = $this->session->userdata('username');
 		$data['user'] = $this->session->userdata('username');
 		$data['data'] = $this->userM->getDosen();
 		//mendapatkan data users
 		// get semua user
 
-		$this->load->view('admin/template/header',$data);
+		$this->load->view('template/header',$data);
 		$this->load->view('admin/template/sidebar');
-		$this->load->view('admin/template/topbar');
+		$this->load->view('template/topbar');
 		$this->load->view('admin/dosen');
-		$this->load->view('admin/template/footer');
+		$this->load->view('template/footer');
 	}
 	public function mahasiswa(){
 		$data['judul'] = 'Data Mahasiswa';
@@ -51,11 +49,11 @@ class Mahasiswa extends CI_Controller
 		//mendapatkan data users
 		// get semua user
 
-		$this->load->view('admin/template/header',$data);
+		$this->load->view('template/header',$data);
 		$this->load->view('admin/template/sidebar');
-		$this->load->view('admin/template/topbar');
+		$this->load->view('template/topbar');
 		$this->load->view('admin/mahasiswa');
-		$this->load->view('admin/template/footer');
+		$this->load->view('template/footer');
 	}
 	
 	public function updateU($id)
