@@ -1,43 +1,46 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Mahasiswa extends CI_Controller
+class Koordinator extends CI_Controller
 {
+
 	public function __construct()
 	{
 		parent::__construct();
-		if ($this->session->userdata('level') != 4) {
+		if ($this->session->userdata('level') != 2) {
             redirect('Auth');
 		}
-		$this->load->model('mahasiswa_model', 'userM');
-		
+		$this->load->model('koordinator_model', 'userM');
+		// $this->load->model('dosen_model', 'dosenM');
 	}
 
 	public function index()
 	{
-		$data['judul'] = 'Beranda';
-		$data['data'] = $this->userM->data_diri($this->session->userdata('username'));
-		$this->session->set_userdata(['nama' => $data['data']['nama']]);
-		$data['user'] = $this->session->userdata['nama'];
-		$data['aktor']="Mahasiswa";
+		$data['judul'] = 'Data User';
+		// $data['user'] = $this->session->userdata('username');
+		$data['user'] = $this->session->userdata('username');
+		// $data['data'] = $this->userM->getUsers();
+		$data['aktor']="Koordinator";
 
 		$this->load->view('template/header',$data);
-		$this->load->view('mahasiswa/template/sidebar');
+		$this->load->view('koordinator/template/sidebar');
 		$this->load->view('template/topbar');
-		$this->load->view('mahasiswa/index');
+		$this->load->view('koordinator/user');
 		$this->load->view('template/footer');
 	}
 	public function dosen(){
 		$data['judul'] = 'Data Dosen';
+		// $data['user'] = $this->session->userdata('username');
 		$data['user'] = $this->session->userdata('username');
 		$data['data'] = $this->userM->getDosen();
+		$data['aktor']="Koordinator";
 		//mendapatkan data users
 		// get semua user
 
 		$this->load->view('template/header',$data);
-		$this->load->view('admin/template/sidebar');
+		$this->load->view('Koordinator/template/sidebar');
 		$this->load->view('template/topbar');
-		$this->load->view('admin/dosen');
+		$this->load->view('Koordinator/dosen');
 		$this->load->view('template/footer');
 	}
 	public function mahasiswa(){
@@ -45,17 +48,28 @@ class Mahasiswa extends CI_Controller
 		// $data['user'] = $this->session->userdata('username');
 		$data['user'] = $this->session->userdata('username');
 		$data['data'] = $this->userM->getMahasiswa();
+		$data['aktor']="Koordinator";
 
 		//mendapatkan data users
 		// get semua user
 
 		$this->load->view('template/header',$data);
-		$this->load->view('admin/template/sidebar');
+		$this->load->view('Koordinator/template/sidebar');
 		$this->load->view('template/topbar');
-		$this->load->view('admin/mahasiswa');
+		$this->load->view('Koordinator/mahasiswa');
 		$this->load->view('template/footer');
 	}
 	
+/*
+
+
+-----------------------------------------MASIH BELUM TERPAKAI---------------------------------------------
+
+*/
+
+
+
+
 	public function updateU($id)
 	{
 		var_dump($this->input->post('level'));
@@ -67,7 +81,7 @@ class Mahasiswa extends CI_Controller
 		$this->db->where('id', $id);
 		$this->db->update('user', $data);
 		$this->session->set_flashdata('pesan', 'Edit Data User berhasil');
-		redirect('admin/index');
+		redirect('Koordinator/index');
 	}
 	function daftarDosen()
 	{
