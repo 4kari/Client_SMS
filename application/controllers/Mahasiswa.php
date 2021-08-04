@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin extends CI_Controller
+class Mahasiswa extends CI_Controller
 {
 
 	public function __construct()
@@ -16,15 +16,16 @@ class Admin extends CI_Controller
 
 	public function index()
 	{
-		$data['judul'] = 'Data User';
+		$data['judul'] = 'Pengajuan Topik';
 		// $data['user'] = $this->session->userdata('username');
-		$data['user'] = $this->session->userdata('username');
-		$data['data'] = $this->userM->getUsers();
+		$data['user'] = "Mahasiswa";
+
+		// $data['data'] = $this->userM->getUsers();
 
 		$this->load->view('template/header',$data);
-		$this->load->view('admin/template/sidebar');
+		$this->load->view('mahasiswa/template/sidebar');
 		$this->load->view('template/topbar');
-		$this->load->view('admin/user');
+		$this->load->view('mahasiswa/index');
 		$this->load->view('template/footer');
 	}
 	public function dosen(){
@@ -35,11 +36,11 @@ class Admin extends CI_Controller
 		//mendapatkan data users
 		// get semua user
 
-		$this->load->view('template/header',$data);
+		$this->load->view('admin/template/header',$data);
 		$this->load->view('admin/template/sidebar');
-		$this->load->view('template/topbar');
+		$this->load->view('admin/template/topbar');
 		$this->load->view('admin/dosen');
-		$this->load->view('template/footer');
+		$this->load->view('admin/template/footer');
 	}
 	public function mahasiswa(){
 		$data['judul'] = 'Data Mahasiswa';
@@ -50,11 +51,11 @@ class Admin extends CI_Controller
 		//mendapatkan data users
 		// get semua user
 
-		$this->load->view('template/header',$data);
+		$this->load->view('admin/template/header',$data);
 		$this->load->view('admin/template/sidebar');
-		$this->load->view('template/topbar');
+		$this->load->view('admin/template/topbar');
 		$this->load->view('admin/mahasiswa');
-		$this->load->view('template/footer');
+		$this->load->view('admin/template/footer');
 	}
 	
 	public function updateU($id)
