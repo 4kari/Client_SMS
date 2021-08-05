@@ -7,7 +7,7 @@ class Mahasiswa extends CI_Controller
 	{
 		parent::__construct();
 		if ($this->session->userdata('level') != 4) {
-            redirect('Auth');
+            // redirect('Auth');
 		}
 		$this->load->model('mahasiswa_model', 'userM');
 		
@@ -16,10 +16,14 @@ class Mahasiswa extends CI_Controller
 	public function index()
 	{
 		$data['judul'] = 'Beranda';
-		$data['data'] = $this->userM->data_diri($this->session->userdata('username'));
-		$this->session->set_userdata(['nama' => $data['data']['nama']]);
-		$data['user'] = $this->session->userdata['nama'];
 		$data['aktor']="Mahasiswa";
+		//PC
+		// $data['data'] = $this->userM->data_diri($this->session->userdata('username'));
+		// $this->session->set_userdata(['nama' => $data['data']['nama']]);
+		// $data['user'] = $this->session->userdata['nama'];
+		
+		//laptop
+		$data['user'] = "mhs";
 
 		$this->load->view('template/header',$data);
 		$this->load->view('mahasiswa/template/sidebar');
@@ -27,17 +31,17 @@ class Mahasiswa extends CI_Controller
 		$this->load->view('mahasiswa/index');
 		$this->load->view('template/footer');
 	}
-	public function dosen(){
-		$data['judul'] = 'Data Dosen';
-		$data['user'] = $this->session->userdata('username');
-		$data['data'] = $this->userM->getDosen();
+	public function topik(){
+		$data['judul'] = 'Ajukan Topik';
+		$data['aktor']="Mahasiswa";
+		$data['user'] = "mhs";
+		// $data['user'] = $this->session->userdata('nama');
 		//mendapatkan data users
-		// get semua user
-
+		// get semua user		
 		$this->load->view('template/header',$data);
-		$this->load->view('admin/template/sidebar');
+		$this->load->view('mahasiswa/template/sidebar');
 		$this->load->view('template/topbar');
-		$this->load->view('admin/dosen');
+		$this->load->view('mahasiswa/topik');
 		$this->load->view('template/footer');
 	}
 	public function mahasiswa(){
