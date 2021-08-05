@@ -25,7 +25,7 @@
       </li>
 
       <!-- Nav Item - Tables -->
-      <li class='nav-item <?php if($judul=="Data Dosen"){echo "active";}?>'>
+      <li class='nav-item <?php if($judul=="Data Skripsi"){echo "active";}?>'>
       <a class="nav-link" href="<?= base_url('mahasiswa/skripsi'); ?>">
           <i class="fas fa-fw fa-eye"></i>
           <span>Lihat Skripsi</span></a>

@@ -31,32 +31,30 @@ class Mahasiswa extends CI_Controller
 		$this->load->view('mahasiswa/index');
 		$this->load->view('template/footer');
 	}
+
 	public function topik(){
 		$data['judul'] = 'Ajukan Topik';
 		$data['aktor']="Mahasiswa";
 		$data['user'] = "mhs";
 		// $data['user'] = $this->session->userdata('nama');
-		//mendapatkan data users
-		// get semua user		
+
 		$this->load->view('template/header',$data);
 		$this->load->view('mahasiswa/template/sidebar');
 		$this->load->view('template/topbar');
 		$this->load->view('mahasiswa/topik');
 		$this->load->view('template/footer');
 	}
-	public function mahasiswa(){
-		$data['judul'] = 'Data Mahasiswa';
-		// $data['user'] = $this->session->userdata('username');
-		$data['user'] = $this->session->userdata('username');
-		$data['data'] = $this->userM->getMahasiswa();
 
-		//mendapatkan data users
-		// get semua user
+	public function skripsi(){
+		$data['judul'] = 'Data Skripsi';
+		$data['aktor']="Mahasiswa";
+		$data['user'] = "mhs";
+		// $data['user'] = $this->session->userdata('username');
 
 		$this->load->view('template/header',$data);
-		$this->load->view('admin/template/sidebar');
+		$this->load->view('mahasiswa/template/sidebar');
 		$this->load->view('template/topbar');
-		$this->load->view('admin/mahasiswa');
+		$this->load->view('mahasiswa/skripsi');
 		$this->load->view('template/footer');
 	}
 	
