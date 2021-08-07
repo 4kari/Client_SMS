@@ -30,7 +30,6 @@ class Koordinator extends CI_Controller
 	}
 	public function dosen(){
 		$data['judul'] = 'Data Dosen';
-		// $data['user'] = $this->session->userdata('username');
 		$data['user'] = $this->session->userdata('username');
 		$data['data'] = $this->userM->getDosen();
 		$data['aktor']="Koordinator";
@@ -45,7 +44,6 @@ class Koordinator extends CI_Controller
 	}
 	public function mahasiswa(){
 		$data['judul'] = 'Data Mahasiswa';
-		// $data['user'] = $this->session->userdata('username');
 		$data['user'] = $this->session->userdata('username');
 		$data['data'] = $this->userM->getMahasiswa();
 		$data['aktor']="Koordinator";

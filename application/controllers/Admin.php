@@ -11,13 +11,11 @@ class Admin extends CI_Controller
             redirect('Auth');
 		}
 		$this->load->model('user_model', 'userM');
-		// $this->load->model('dosen_model', 'dosenM');
 	}
 
 	public function index()
 	{
 		$data['judul'] = 'Data User';
-		// $data['user'] = $this->session->userdata('username');
 		$data['user'] = $this->session->userdata('username');
 		$data['data'] = $this->userM->getUsers();
 		$data['aktor']="Admin";
@@ -30,12 +28,9 @@ class Admin extends CI_Controller
 	}
 	public function dosen(){
 		$data['judul'] = 'Data Dosen';
-		// $data['user'] = $this->session->userdata('username');
 		$data['user'] = $this->session->userdata('username');
 		$data['data'] = $this->userM->getDosen();
 		$data['aktor']="Admin";
-		//mendapatkan data users
-		// get semua user
 
 		$this->load->view('template/header',$data);
 		$this->load->view('admin/template/sidebar');
@@ -45,13 +40,9 @@ class Admin extends CI_Controller
 	}
 	public function mahasiswa(){
 		$data['judul'] = 'Data Mahasiswa';
-		// $data['user'] = $this->session->userdata('username');
 		$data['user'] = $this->session->userdata('username');
 		$data['data'] = $this->userM->getMahasiswa();
 		$data['aktor']="Admin";
-
-		//mendapatkan data users
-		// get semua user
 
 		$this->load->view('template/header',$data);
 		$this->load->view('admin/template/sidebar');
@@ -60,6 +51,11 @@ class Admin extends CI_Controller
 		$this->load->view('template/footer');
 	}
 	
+	function tambahDosen()
+	{
+		$this->userM->addDosen();
+		redirect('admin/daftarDosen');
+	}
 /*
 
 
@@ -83,56 +79,7 @@ class Admin extends CI_Controller
 		$this->session->set_flashdata('pesan', 'Edit Data User berhasil');
 		redirect('admin/index');
 	}
-	function daftarDosen()
-	{
-		// $this->session->unset_userdata('keyword');
-		// $data['judul'] = 'Daftar Dosen';
-		// $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
-		// $userid = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-		// $data['profil'] = $this->db->get_where('admin', ['username' => $userid['id']])->row_array();
-		// $data['prodi'] = $this->db->get('prodi')->result_array();
-		// $data['username'] = $this->db->get_where('user', ['level_id' => '3'])->result_array();
-		
-
-		// $data['dosen'] = $this->dosenM->DosenProdi($data['profil']['prodi']);
-
-		// $this->form_validation->set_rules('nip', 'nipdosen', 'required');
-		// $this->form_validation->set_rules('nama', 'namadosen', 'required');
-
-		if ($this->form_validation->run() == false) {
-			$this->load->view('template/header', $data);
-			$this->load->view('template/sidebar', $data);
-			$this->load->view('template/topbar', $data);
-			$this->load->view('admin/daftarDosen', $data);
-			$this->load->view('template/footer');
-		} else {
-			if ($this->db->get_where('user', ['username' => $this->input->post('nip')])->row_array() == null) {
-				$usr = [
-					'username' => $this->input->post('nip'),
-					'password' => password_hash($this->input->post('nip'), PASSWORD_DEFAULT),
-					'level_id' => 3
-				];
-				$this->db->insert('user', $usr);
-			}
-			if ($this->db->get_where('dosen', ['nip' => $this->input->post('nip')])->row_array() == null) {
-				$data = [
-					'nip' => $this->input->post('nip'),
-					'nama' => $this->input->post('nama'),
-					'gambar' => "default.jpg",
-					'username' => $this->db->get_where('user', ['username' => $this->input->post('nip')])->row_array()['id'],
-					'prodi' =>  $this->db->get_where('admin', ['username' => $userid['id']])->row_array()['prodi'],
-					'email' => $this->input->post('email'),
-					'tgl_buat' => time()
-				];
-				$this->db->insert('dosen', $data);
-				$this->session->set_flashdata('pesan', '1 User Dosen berhasil ditambahkan');
-			} else {
-				// gagal karena nip sudah digunakan
-				$this->session->set_flashdata('pesan', 'Menambahkan Dosen gagal');
-			}
-			redirect('admin/daftarDosen');
-		}
-	}
+	
 
 	public function updateDosen($id)
 	{
