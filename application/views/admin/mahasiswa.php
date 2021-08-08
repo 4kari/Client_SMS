@@ -68,7 +68,7 @@
 					<div class="form-group">
 						<input type="text" class="form-control" name="nim" id="nim" placeholder="NIM Mahasiswa" required>
 						<div class="invalid-feedback">
-							Masukan NIP Dosen
+							Masukan NIM Mahasiswa
 						</div>
 					</div>
 					<div class="form-group">

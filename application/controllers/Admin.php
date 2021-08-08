@@ -29,8 +29,9 @@ class Admin extends CI_Controller
 	public function dosen(){
 		$data['judul'] = 'Data Dosen';
 		$data['user'] = $this->session->userdata('username');
-		$data['data'] = $this->userM->getDosen();
 		$data['aktor']="Admin";
+		$data['data'] = $this->userM->getDosen();
+		$data['prodi'] = $this->userM->getProdi();
 
 		$this->load->view('template/header',$data);
 		$this->load->view('admin/template/sidebar');

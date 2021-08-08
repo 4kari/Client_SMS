@@ -37,6 +37,12 @@ class user_model extends CI_Model
         }
         return $data;
     }
+    //prodi
+    public function getProdi()
+    {
+        $prodi = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Prodi/'),true);
+        return $prodi['data'];
+    }
 
     //dosen
     public function getDosen()
@@ -58,10 +64,26 @@ class user_model extends CI_Model
             }
             if($cek==false){
                 echo "user tidak ditemukan";
-                // json_decode($this->curl->simple_post('http://10.5.12.26/user/api/user/'),true);
+                $data=[
+                    'username'=>$nip,
+                    'password'=>$nip,
+                    'level'=>"3"
+                ];
+                json_decode($this->curl->simple_post('http://10.5.12.26/user/api/user/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
             }
-            echo "dosen ditambahkan";
-            // json_decode($this->curl->simple_post('http://10.5.12.26/user/api/Dosen/'),true);
+            $dosen = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Dosen/',array('nip'=>$nip),array(CURLOPT_BUFFERSIZE => 10)),true);
+            if ($dosen==NULL){
+                $data=[
+                    'nip'=>$nip,
+                    'nama'=>$nama,
+                    'username'=>$nip,
+                    'tanggal_buat'=> date("Y-m-d",time())
+                ];
+                json_decode($this->curl->simple_post('http://10.5.12.26/user/api/Dosen/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+                echo "dosen ditambahkan";
+            }else{
+                echo "data sudah ada";
+            }
         }else{
             echo "data kosong";
         }
