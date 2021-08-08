@@ -65,7 +65,6 @@ class user_model extends CI_Model
         }else{
             echo "data kosong";
         }
-        die;
     }
 
     //mahasiswa
@@ -74,7 +73,45 @@ class user_model extends CI_Model
         $mhs = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Mahasiswa/'),true);
         return $mhs['data'];
     }
-    
+    public function addMahasiswa()
+    {
+        $nim=$this->input->post('nim');
+        $nama=$this->input->post('nama');
+        if($nim!="" && $nama!=""){
+            $user = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/User/'),true);
+            $cek=false;
+            for ($i=0;$i<count($user);$i++){
+                if($user['data'][$i]['username']==$nim){
+                    $cek=true;
+                }
+            }
+            if($cek==false){
+                echo "user tidak ditemukan";
+                $data=[
+                    'username'=>$nim,
+                    'password'=>$nim,
+                    'level'=>"4"
+                ];
+                json_decode($this->curl->simple_post('http://10.5.12.26/user/api/user/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+            }
+            $mhs = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Mahasiswa/',array('nim'=>$nim),array(CURLOPT_BUFFERSIZE => 10)),true);
+            if ($mhs==NULL){
+                $data=[
+                    'nim'=>$nim,
+                    'nama'=>$nama,
+                    'username'=>$nim,
+                    'prodi'=> substr($nim, 4, 3),
+                    'tanggal_buat'=> date("Y-m-d",time())
+                ];
+                json_decode($this->curl->simple_post('http://10.5.12.26/user/api/Mahasiswa/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+                echo "mahasiswa ditambahkan";
+            }else{
+                echo "data sudah ada";
+            }
+        }else{
+            echo "data kosong";
+        }
+    }
 
     public function getUserByLv($lvl1='null',$lvl2='null',$lvl3='null',$lvl4='null' ){
         $query ="SELECT u.id,  u.username, u.level_id, l.level as level FROM user u, user_level l WHERE u.level_id = l.id and

@@ -7,8 +7,12 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Kelola <?=$judul;?></h6>
-              <a href="" data-toggle="modal" data-target="#TambahMhs" class="btn btn-success btn-sm mr-4 float-right"><i class="fa fa-fw fa-plus"></i>tambah</a></h6>
+              <h6 class="m-0 font-weight-bold text-primary">Kelola <?=$judul;?>
+                <span class="float-right text-white mr-4">
+                  <a href="" data-toggle="modal" data-target="#TambahMhs" class="btn btn-success btn-sm"><i class="fa fa-fw fa-plus"></i>tambah</a>
+                  <a href="" data-toggle="modal" data-target="#ImportMhs" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-plus"></i>import</a>
+                </span>
+              </h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -32,8 +36,7 @@
                       <tr>
                         <td><?= $mhs['nim']; ?></td>
                         <td><?= $mhs['nama']; ?></td>
-                        <td><a href="<?= base_url(); ?>admin/hapus/<?= $mhs['nim']; ?>" data-nama="<?=$mhs['nim'];?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i> hapus</a>
-                            <a href="<?= base_url(); ?>admin/ubah/<?= $mhs['nim']; ?>" data-toggle="modal" data-target="#userEdit<?=$mhs['username'];?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>ubah</a>
+                        <td><a href="<?= base_url(); ?>admin/hapusMhs/<?= $mhs['nim']; ?>" data-nama="<?=$mhs['nim'];?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i> hapus</a>
                         </td>
                       </tr>
                     <?php endforeach;?>
@@ -50,11 +53,11 @@
       <!-- End of Main Content -->
 
 <!-- modal tambah -->
-<div class="modal fade" id="TambahMhs" tabindex="-1" role="dialog" aria-labelledby="dosenBaruLabel" aria-hidden="true">
+<div class="modal fade" id="TambahMhs" tabindex="-1" role="dialog" aria-labelledby="MahasiswaLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="dosenBaruLabel">Tambah Dosen</h5>
+				<h5 class="modal-title" id="MahasiswaLabel">Tambah Mahasiswa</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -71,13 +74,7 @@
 					<div class="form-group">
 						<input type="text" class="form-control validate" name="nama" id="nama" placeholder="Nama Dosen" required>
 						<div class="invalid-feedback">
-							Masukan Nama Dosen
-						</div>
-					</div>
-					<div class="form-group">
-						<input type="email" class="form-control validate" name="email" id="email" placeholder="Email Dosen">
-						<div class="invalid-feedback">
-							Masukan Nama Dosen
+							Masukan Nama Mahasiswa
 						</div>
 					</div>
 				</div>
@@ -85,10 +82,34 @@
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<button type="submit" class="btn btn-primary">Tambah</button>
 				</div>
-
-
 			</form>
+		</div>
+	</div>
+</div>
 
+
+<!-- modal import -->
+<div class="modal fade" id="ImportMhs" tabindex="-1" role="dialog" aria-labelledby="MahasiswaLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="MahasiswaLabel">Tambah Mahasiswa</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<form action="<?= base_url('Admin/importMahasiswa'); ?>" method="POST" class="needs-validation" novalidate>
+				<div class="modal-body">
+					<div class="form-group">
+						<input type="file" class="form-control" name="file" id="file" required>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Tambahkan</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>

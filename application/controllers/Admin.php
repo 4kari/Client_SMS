@@ -54,7 +54,12 @@ class Admin extends CI_Controller
 	function tambahDosen()
 	{
 		$this->userM->addDosen();
-		redirect('admin/daftarDosen');
+		redirect('Admin/dosen');
+	}
+	function tambahMahasiswa()
+	{
+		$this->userM->addMahasiswa();
+		redirect('Admin/mahasiswa');
 	}
 /*
 

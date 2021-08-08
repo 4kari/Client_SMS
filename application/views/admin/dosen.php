@@ -8,8 +8,11 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Kelola <?=$judul;?>
-              <a href="" data-toggle="modal" data-target="#TambahDosen" class="btn btn-success btn-sm mr-4 float-right"><i class="fa fa-fw fa-plus"></i>tambah</a></h6>
-              
+                <span class="float-right text-white mr-4">
+                  <a data-toggle="modal" data-target="#TambahDosen" class="btn btn-success btn-sm"><i class="fa fa-fw fa-plus"></i>tambah</a>
+                  <a data-toggle="modal" data-target="#ImportDosen" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-plus"></i>import</a>
+                </span>
+              </h6>
             </div>
             
             <div class="card-body">
@@ -35,7 +38,6 @@
                         <td><?= $dosen['nip']; ?></td>
                         <td><?= $dosen['nama']; ?></td>
                         <td><a href="<?= base_url(); ?>admin/hapusDosen/<?= $dosen['nip']; ?>" data-nama="<?=$dosen['nip'];?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i> hapus</a>
-                            <a href="<?= base_url(); ?>admin/ubahDosen/<?= $dosen['nip']; ?>" data-toggle="modal" data-target="#userEdit<?=$dosen['username'];?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>ubah</a>
                         </td>
                       </tr>
                     <?php endforeach;?>
