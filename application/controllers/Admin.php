@@ -18,6 +18,7 @@ class Admin extends CI_Controller
 		$data['judul'] = 'Data User';
 		$data['user'] = $this->session->userdata('username');
 		$data['data'] = $this->userM->getUsers();
+		$data['level'] = $this->userM->getLevel();
 		$data['aktor']="Admin";
 
 		$this->load->view('template/header',$data);

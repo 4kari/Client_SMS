@@ -25,17 +25,21 @@ class user_model extends CI_Model
     public function getUsers()
     {
         $user = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/User/'),true);
-        $level = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Level/'),true);
+        $level=$this->getLevel();
         $data=$user['data'];
         for ($i=0;$i<count($data);$i++){
-            for ($j=0;$j<count($level['data']);$j++){
-                if ($data[$i]['level']==$level['data'][$j]['id']){
-                    $data[$i]['level']=$level['data'][$j]['level'];
+            for ($j=0;$j<count($level);$j++){
+                if ($data[$i]['level']==$level[$j]['id']){
+                    $data[$i]['level']=$level[$j]['level'];
                 }
             }
             
         }
         return $data;
+    }
+    public function getLevel(){
+        $level = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Level/'),true);
+        return $level['data'];
     }
     //prodi
     public function getProdi()

@@ -32,7 +32,7 @@
                         <td><?= $users['username']; ?></td>
                         <td><?= $users['level']; ?></td>
                         <td><a href="<?= base_url(); ?>admin/hapusUser/<?= $users['username']; ?>" data-nama="<?=$users['username'];?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i> hapus</a>
-                            <a href="<?= base_url(); ?>admin/ubahUser/<?= $users['username']; ?>" data-toggle="modal" data-target="#userEdit<?=$users['username'];?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>ubah</a>
+                            <a href="" data-toggle="modal" data-target="#ubahUser<?=$users['username'];?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>ubah</a>
                         </td>
                       </tr>
                     <?php endforeach;?>
@@ -47,3 +47,48 @@
 
       </div>
       <!-- End of Main Content -->
+<?php foreach ($data as $users) : ?>
+<!-- modal ubah user -->
+<div class="modal fade" id="ubahUser<?=$users['username'];?>" tabindex="-1" role="dialog" aria-labelledby="ubahUserLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="ubahUserLabel">Ubah User</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<form action="<?= base_url('Admin/tambahdosen'); ?>" method="POST" class="needs-validation" novalidate>
+				<div class="modal-body">
+					<div class="form-group">
+						<input type="text" class="form-control" name="nip" id="nip" placeholder="NIP Dosen" required>
+						<div class="invalid-feedback">
+              <?=$users['username'];?>
+						</div>
+					</div>
+					<div class="form-group">
+            <select name="level" id="level" class="form-control">
+              <?php foreach ($level as $l) {
+                  if ($l['level']==$users['level']){
+                    echo "<option value='$l[id]' selected>$l[level]</option>";
+                  }else{
+                    echo "<option value='$l[id]'>$l[level]</option>";
+                  }
+                }
+              ?>
+            </select>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Tambah</button>
+				</div>
+
+
+			</form>
+
+		</div>
+	</div>
+</div>
+<?php endforeach;?>
