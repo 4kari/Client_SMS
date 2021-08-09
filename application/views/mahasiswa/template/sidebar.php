@@ -19,14 +19,14 @@
 
       <!-- Nav Item - Charts -->
       <li class="nav-item <?php if($judul=='Ajukan Topik'){echo 'active';}?>">
-        <a class="nav-link" href="<?= base_url('mahasiswa/topik'); ?>">
+        <a class="nav-link" href="<?= base_url('Mahasiswa/topik'); ?>">
           <i class="fas fa-fw fa-edit"></i>
           <span>Ajukan Topik</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class='nav-item <?php if($judul=="Data Skripsi"){echo "active";}?>'>
-      <a class="nav-link" href="<?= base_url('mahasiswa/skripsi'); ?>">
+      <a class="nav-link" href="<?= base_url('Mahasiswa/skripsi'); ?>">
           <i class="fas fa-fw fa-eye"></i>
           <span>Lihat Skripsi</span></a>
       </li>
@@ -37,22 +37,22 @@
       </div>
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item <?php if($judul=='Data Mahasiswa'){echo 'active';}?>">
-      <a class="nav-link" href="<?= base_url('mahasiswa/bimbingan'); ?>">
+      <li class="nav-item <?php if($judul=='Bimbingan Skripsi'){echo 'active';}?>">
+      <a class="nav-link" href="<?= base_url('Mahasiswa/bimbingan'); ?>">
           <i class="fas fa-fw fa-comments"></i>
           <span>Bimbingan</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item <?php if($judul=='Data Mahasiswa'){echo 'active';}?>">
-      <a class="nav-link" href="<?= base_url('mahasiswa/sempro'); ?>">
+      <a class="nav-link" href="<?= base_url('Mahasiswa/sempro'); ?>">
           <i class="fas fa-fw fa-comments"></i>
           <span>Seminar Proposal</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item <?php if($judul=='Data Mahasiswa'){echo 'active';}?>">
-      <a class="nav-link" href="<?= base_url('mahasiswa/sidang'); ?>">
+      <a class="nav-link" href="<?= base_url('Mahasiswa/sidang'); ?>">
           <i class="fas fa-fw fa-comments"></i>
           <span>Sidang Skripsi</span></a>
       </li>
@@ -64,13 +64,13 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item <?php if($judul=='Mendaftar Sempro'){echo 'active';}?>">
-        <a class="nav-link" href="<?= base_url('mahasiswa/daftar_sempro'); ?>">
+        <a class="nav-link" href="<?= base_url('Mahasiswa/daftar_sempro'); ?>">
           <i class="fas fa-fw fa-edit"></i>
           <span>Seminar Proposal</span></a>
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item <?php if($judul=='Mendaftar Sidang'){echo 'active';}?>">
-        <a class="nav-link" href="<?= base_url('mahasiswa/daftar sidang'); ?>">
+        <a class="nav-link" href="<?= base_url('Mahasiswa/daftar sidang'); ?>">
           <i class="fas fa-fw fa-edit"></i>
           <span>Sidang Skripsi</span></a>
       </li>

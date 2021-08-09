@@ -57,7 +57,21 @@ class Mahasiswa extends CI_Controller
 		$this->load->view('mahasiswa/skripsi');
 		$this->load->view('template/footer');
 	}
-	
+
+	public function bimbingan(){
+		$data['judul'] = 'Bimbingan Dosen';
+		$data['aktor']="Mahasiswa";
+		$data['user'] = "mhs";
+		// $data['user'] = $this->session->userdata('username');
+
+		$this->load->view('template/header',$data);
+		$this->load->view('mahasiswa/template/gila');
+		$this->load->view('mahasiswa/template/sidebar');
+		$this->load->view('template/topbar');
+		$this->load->view('mahasiswa/bimbingan');
+		$this->load->view('template/footer');
+	}
+
 	public function updateU($id)
 	{
 		var_dump($this->input->post('level'));

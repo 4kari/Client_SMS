@@ -15,7 +15,7 @@ $data=[
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800"><?=$judul;?></h1>
-          <p class="mb-4">halaman ini digunakan untuk mengajukan topik yang akan dibahas pada skripsi</p>
+          <p class="mb-4">halaman ini digunakan untuk melihat detail skripsi mahasiswa</p>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
