@@ -18,12 +18,12 @@ class Mahasiswa extends CI_Controller
 		$data['judul'] = 'Beranda';
 		$data['aktor']="Mahasiswa";
 		//PC
-		$data['data'] = $this->userM->data_diri($this->session->userdata('username'));
-		$this->session->set_userdata(['nama' => $data['data']['nama']]);
-		$data['user'] = $this->session->userdata['nama'];
+		// $data['data'] = $this->userM->data_diri($this->session->userdata('username'));
+		// $this->session->set_userdata(['nama' => $data['data']['nama']]);
+		// $data['user'] = $this->session->userdata['nama'];
 		
 		//laptop
-		// $data['user'] = "mhs";
+		$data['user'] = "mhs";
 
 		$this->load->view('template/header',$data);
 		$this->load->view('mahasiswa/template/sidebar');
