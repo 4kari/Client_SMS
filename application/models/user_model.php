@@ -4,7 +4,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class user_model extends CI_Model
 {
     public function login($username, $password){
-        $data = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/User/',array('username'=>$username), array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $data = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/User/',array('username'=>$username), array(CURLOPT_BUFFERSIZE => 10)),true);
+        $data = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/User/',array('username'=>$username), array(CURLOPT_BUFFERSIZE => 10)),true);
         //hash password
         if ($data!=null){
             if ($data['data']['password']==$password){
@@ -24,7 +25,8 @@ class user_model extends CI_Model
     }
     public function getUsers()
     {
-        $user = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/User/'),true);
+        // $user = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/User/'),true);
+        $user = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/User/'),true);
         $level=$this->getLevel();
         $data=$user['data'];
         for ($i=0;$i<count($data);$i++){
@@ -38,20 +40,23 @@ class user_model extends CI_Model
         return $data;
     }
     public function getLevel(){
-        $level = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Level/'),true);
+        // $level = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Level/'),true);
+        $level = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/Level/'),true);
         return $level['data'];
     }
     //prodi
     public function getProdi()
     {
-        $prodi = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Prodi/'),true);
+        // $prodi = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Prodi/'),true);
+        $prodi = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/Prodi/'),true);
         return $prodi['data'];
     }
 
     //dosen
     public function getDosen()
     {
-        $dosen = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Dosen/'),true);
+        // $dosen = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Dosen/'),true);
+        $dosen = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/Dosen/'),true);
         return $dosen['data'];
     }
     public function addDosen()
@@ -59,7 +64,8 @@ class user_model extends CI_Model
         $nip=$this->input->post('nip');
         $nama=$this->input->post('nama');
         if($nip!="" && $nama!=""){
-            $user = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/User/'),true);
+            // $user = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/User/'),true);
+            $user = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/User/'),true);
             $cek=false;
             for ($i=0;$i<count($user);$i++){
                 if($user['data'][$i]['username']==$nip){
@@ -73,9 +79,11 @@ class user_model extends CI_Model
                     'password'=>$nip,
                     'level'=>"3"
                 ];
-                json_decode($this->curl->simple_post('http://10.5.12.26/user/api/user/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+                // json_decode($this->curl->simple_post('http://10.5.12.26/user/api/user/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+                json_decode($this->curl->simple_post('http://localhost/microservice/user/api/user/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
             }
-            $dosen = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Dosen/',array('nip'=>$nip),array(CURLOPT_BUFFERSIZE => 10)),true);
+            // $dosen = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Dosen/',array('nip'=>$nip),array(CURLOPT_BUFFERSIZE => 10)),true);
+            $dosen = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/Dosen/',array('nip'=>$nip),array(CURLOPT_BUFFERSIZE => 10)),true);
             if ($dosen==NULL){
                 $data=[
                     'nip'=>$nip,
@@ -83,7 +91,8 @@ class user_model extends CI_Model
                     'username'=>$nip,
                     'tanggal_buat'=> date("Y-m-d",time())
                 ];
-                json_decode($this->curl->simple_post('http://10.5.12.26/user/api/Dosen/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+                // json_decode($this->curl->simple_post('http://10.5.12.26/user/api/Dosen/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+                json_decode($this->curl->simple_post('http://localhost/microservice/user/api/Dosen/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
                 echo "dosen ditambahkan";
             }else{
                 echo "data sudah ada";
@@ -96,7 +105,8 @@ class user_model extends CI_Model
     //mahasiswa
     public function getMahasiswa()
     {
-        $mhs = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Mahasiswa/'),true);
+        // $mhs = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Mahasiswa/'),true);
+        $mhs = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/Mahasiswa/'),true);
         return $mhs['data'];
     }
     public function addMahasiswa()
@@ -104,7 +114,9 @@ class user_model extends CI_Model
         $nim=$this->input->post('nim');
         $nama=$this->input->post('nama');
         if($nim!="" && $nama!=""){
-            $user = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/User/'),true);
+            // $user = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/User/'),true);
+            $user = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/User/'),true);
+
             $cek=false;
             for ($i=0;$i<count($user);$i++){
                 if($user['data'][$i]['username']==$nim){
@@ -118,9 +130,13 @@ class user_model extends CI_Model
                     'password'=>$nim,
                     'level'=>"4"
                 ];
-                json_decode($this->curl->simple_post('http://10.5.12.26/user/api/user/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+                // json_decode($this->curl->simple_post('http://10.5.12.26/user/api/user/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+                json_decode($this->curl->simple_post('http://localhost/microservice/user/api/user/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+
             }
-            $mhs = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Mahasiswa/',array('nim'=>$nim),array(CURLOPT_BUFFERSIZE => 10)),true);
+            // $mhs = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Mahasiswa/',array('nim'=>$nim),array(CURLOPT_BUFFERSIZE => 10)),true);
+            $mhs = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/Mahasiswa/',array('nim'=>$nim),array(CURLOPT_BUFFERSIZE => 10)),true);
+
             if ($mhs==NULL){
                 $data=[
                     'nim'=>$nim,
@@ -129,7 +145,8 @@ class user_model extends CI_Model
                     'prodi'=> substr($nim, 4, 3),
                     'tanggal_buat'=> date("Y-m-d",time())
                 ];
-                json_decode($this->curl->simple_post('http://10.5.12.26/user/api/Mahasiswa/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+                // json_decode($this->curl->simple_post('http://10.5.12.26/user/api/Mahasiswa/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+                json_decode($this->curl->simple_post('http://localhost/microservice/user/api/Mahasiswa/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
                 echo "mahasiswa ditambahkan";
             }else{
                 echo "data sudah ada";
