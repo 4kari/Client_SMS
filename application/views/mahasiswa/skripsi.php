@@ -111,11 +111,11 @@
                                     echo "</tr>";
 
                                     echo "<tr>";
-                                      echo "<td>pembimbing_1</td>";
-                                      if($sk['pembimbing_1']==null){
+                                      echo "<td>nilai</td>";
+                                      if($sk['nilai']==null){
                                         echo "<td>belum ada</td>";
                                       }else{
-                                        echo "<td>$sk[pembimbing_1]</td>";
+                                        echo "<td>$sk[nilai]</td>";
                                       }
                                     echo "</tr>";
                                     ?>
