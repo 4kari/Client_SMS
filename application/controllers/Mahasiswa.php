@@ -57,9 +57,8 @@ class Mahasiswa extends CI_Controller
 	public function skripsi(){
 		$data['judul'] = 'Data Skripsi';
 		$data['aktor']="Mahasiswa";
-		$data['user'] = "mhs";
-		// $data['user'] = $this->session->userdata('username');
-
+		$data['user'] = $this->session->userdata['nama'];
+		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
 		$this->load->view('template/header',$data);
 		$this->load->view('mahasiswa/template/sidebar');
 		$this->load->view('template/topbar');
@@ -70,9 +69,8 @@ class Mahasiswa extends CI_Controller
 	public function bimbingan(){
 		$data['judul'] = 'Bimbingan Dosen';
 		$data['aktor']="Mahasiswa";
-		$data['user'] = "mhs";
-		// $data['user'] = $this->session->userdata('username');
-
+		$data['user'] = $this->session->userdata['nama'];
+		
 		$this->load->view('template/header',$data);
 		$this->load->view('mahasiswa/template/gila');
 		$this->load->view('mahasiswa/template/sidebar');

@@ -1,15 +1,3 @@
-<?php
-$data=[
-  [
-    'id'=>'0',
-    'judul'=>"Rekayasa Perangkat Lunak",
-    'abstrak'=>"ble ble ble",
-    'topik'=>"Rekayasa Perangkat Lunak", //cek kayak id dan topik
-    'nilai'=>'0'
-    ]
-];
-
-?>
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
@@ -33,11 +21,23 @@ $data=[
                       </tr>
                     </thead>
                     <tbody>
-                      <?php foreach ($data as $sk) : ?>
+                      <?php foreach ($skripsi as $sk) :?>
                         <tr>
-                          <td><?= $sk['judul']; ?></td>
-                          <td><?= $sk['topik']; ?></td>
-                          <td><?= '0' ?></td>
+                          <?php
+                            if($sk['judul']==null){
+                              echo "<td>belum ada</td>";
+                            }else{
+                              echo "<td>$sk[judul]</td>";
+                            }
+                            
+                            echo "<td>$sk[topik]</td>";
+
+                            if($sk['judul']==null){
+                              echo "<td>belum ada</td>";
+                            }else{
+                              echo "<td> $sk[nilai] </td>";
+                            }
+                          ?>
                           <td>
                             <a href="<?= base_url(); ?>Mahasiswa/detail_skripsi/<?= $sk['id']; ?>" data-toggle="modal" data-target="#detail<?=$sk['id'];?>" class="btn btn-warning btn-sm"><i class="fa fa-fw fa-eye"></i>lihat</a>
                           </td>
@@ -56,7 +56,7 @@ $data=[
       <!-- End of Main Content -->
 
       <!-- Modal -->
-      <?php foreach ($data as $sk) : ?>
+      <?php foreach ($skripsi as $sk) : ?>
             <!-- modal detail -->
             <div class="modal fade displaycontent" id="detail<?= $sk['id'] ?>">
                 <div class="modal-dialog" role="document">
@@ -68,34 +68,57 @@ $data=[
                         <div class="modal-body">
                             <table class="table table-striped">
                                 <tbody>
-                                    <tr>
-                                        <td>Judul</td>
-                                        <td><?php echo $sk['judul']; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Topik</td>
-                                        <td><?php echo $sk['topik']; ?></td>
-                                    </tr>
-                                    <!-- <tr>
-                                        <td>Dosen Pembimbing 1</td>
-                                        <td><?php echo $sk['dosbing1']; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dosen Pembimbing2</td>
-                                        <td><?php echo $sk['dosbing2']; ?></td>
-                                    </tr> -->
-                                    <!-- <tr>
-                                        <td>status</td>
-                                        <td><?php echo $sk['status']; //dicek nanti?></td>
-                                    </tr> -->
-                                    <tr>
-                                        <td>Nilai</td>
-                                        <?php if ($sk['nilai'] != 0) : ?>
-                                            <td><?= $sk['nilai']; ?></td>
-                                        <?php else : ?>
-                                            <td>N/A</td>
-                                        <?php endif; ?>
-                                    </tr>
+                                  <?php
+                                    echo "<tr>";
+                                      echo "<td>judul</td>";
+                                      if($sk['judul']==null){
+                                        echo "<td>belum ada</td>";
+                                      }else{
+                                        echo "<td>$sk[judul]</td>";
+                                      }
+                                    echo "</tr>";
+
+                                    echo "<tr>";
+                                      echo "<td>topik</td>";
+                                      echo "<td>$sk[topik]</td>";
+                                    echo "</tr>";
+                                    
+                                    echo "<tr>";
+                                      echo "<td>nilai</td>";
+                                      if($sk['nilai']==null){
+                                        echo "<td>belum ada</td>";
+                                      }else{
+                                        echo "<td>$sk[nilai]</td>";
+                                      }
+                                    echo "</tr>";
+
+                                    echo "<tr>";
+                                      echo "<td>pembimbing_1</td>";
+                                      if($sk['pembimbing_1']==null){
+                                        echo "<td>belum ada</td>";
+                                      }else{
+                                        echo "<td>$sk[pembimbing_1]</td>";
+                                      }
+                                    echo "</tr>";
+                                    
+                                    echo "<tr>";
+                                      echo "<td>pembimbing_2</td>";
+                                      if($sk['pembimbing_2']==null){
+                                        echo "<td>belum ada</td>";
+                                      }else{
+                                        echo "<td>$sk[pembimbing_2]</td>";
+                                      }
+                                    echo "</tr>";
+
+                                    echo "<tr>";
+                                      echo "<td>pembimbing_1</td>";
+                                      if($sk['pembimbing_1']==null){
+                                        echo "<td>belum ada</td>";
+                                      }else{
+                                        echo "<td>$sk[pembimbing_1]</td>";
+                                      }
+                                    echo "</tr>";
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
