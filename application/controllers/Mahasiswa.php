@@ -7,9 +7,9 @@ class Mahasiswa extends CI_Controller
 	{
 		parent::__construct();
 		if ($this->session->userdata('level') != 4) {
-            // redirect('Auth');
+            redirect('Auth');
 		}
-		$this->load->model('mahasiswa_model', 'userM');
+		$this->load->model('mahasiswa_model', 'mhsM');
 		
 	}
 
@@ -18,12 +18,12 @@ class Mahasiswa extends CI_Controller
 		$data['judul'] = 'Beranda';
 		$data['aktor']="Mahasiswa";
 		//PC
-		// $data['data'] = $this->userM->data_diri($this->session->userdata('username'));
-		// $this->session->set_userdata(['nama' => $data['data']['nama']]);
-		// $data['user'] = $this->session->userdata['nama'];
-		
+		$data['data'] = $this->mhsM->data_diri($this->session->userdata('username'));
+		$this->session->set_userdata(['nama' => $data['data']['nama']]);
+		$data['user'] = $this->session->userdata['nama'];
+
 		//laptop
-		$data['user'] = "mhs";
+		// $data['user'] = "mhs";
 
 		$this->load->view('template/header',$data);
 		$this->load->view('mahasiswa/template/sidebar');
@@ -35,14 +35,23 @@ class Mahasiswa extends CI_Controller
 	public function topik(){
 		$data['judul'] = 'Ajukan Topik';
 		$data['aktor']="Mahasiswa";
-		$data['user'] = "mhs";
-		// $data['user'] = $this->session->userdata('nama');
+		// $data['user'] = "mhs";
+		$data['dosen'] = $this->mhsM->getDosen(); // belum dibuat
+		$data['topik'] = $this->mhsM->getTopik(); // belum dibuat
+		$data['user'] = $this->session->userdata('nama');
 
 		$this->load->view('template/header',$data);
 		$this->load->view('mahasiswa/template/sidebar');
 		$this->load->view('template/topbar');
 		$this->load->view('mahasiswa/topik');
 		$this->load->view('template/footer');
+	}
+	public function ajukan_topik(){
+		$topik = $this->input->post('topik');
+		$dosbing1 = $this->input->post('dosbing1');
+		$dosbing2 = $this->input->post('dosbing2');
+		$this->mhsM->addTopik($topik,$dosbing1,$dosbing2);
+		redirect("Mahasiswa");
 	}
 
 	public function skripsi(){
@@ -420,7 +429,7 @@ class Mahasiswa extends CI_Controller
 		$data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['profil'] = $this->db->get_where('admin', ['username' => $data['user']['id']])->row_array();
 
-		$this->load->model('user_model', 'userM');
+		$this->load->model('user_model', 'mhsM');
 		$data['level'] = $this->db->get('user_level')->result_array();
 		//$data['user'] = $this->db->from('user');
 
@@ -448,7 +457,7 @@ class Mahasiswa extends CI_Controller
 			$data['start'] = 0;
 		}
 
-		$data['users'] = $this->userM->getUsers($config['per_page'], $data['start'], $data['keyword'], $data['user']['level_id']);
+		$data['users'] = $this->mhsM->getUsers($config['per_page'], $data['start'], $data['keyword'], $data['user']['level_id']);
 
 		$this->load->view('template/header', $data);
 		$this->load->view('template/sidebar', $data);

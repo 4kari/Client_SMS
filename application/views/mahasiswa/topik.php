@@ -1,21 +1,3 @@
-<?php
-$topik=[
-  ['id'=>'0', 'topik'=>"Rekayasa Perangkat Lunak"],
-  ['id'=>'1', 'topik'=>"Citra" ],
-  ['id'=>'2', 'topik'=>"Komputasi" ],
-];
-$Dosbing1=[
-  ['id'=>'0', 'dosen'=>"Dosen A"],
-  ['id'=>'1', 'dosen'=>"Dosen B" ],
-  ['id'=>'2', 'dosen'=>"Dosen c" ],
-];
-$Dosbing2=[
-  ['id'=>'0', 'dosen'=>"Dosen A"],
-  ['id'=>'1', 'dosen'=>"Dosen B" ],
-  ['id'=>'2', 'dosen'=>"Dosen c" ],
-];
-
-?>
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
@@ -45,8 +27,8 @@ $Dosbing2=[
                       <div class="form-floating mb-3">
                       <label for="dosbing1">Dosen Pembimbing 1</label>
                       <select name="dosbing1" id="dosbing1" class="form-control">
-                          <?php foreach ($Dosbing1 as $t) {
-                              echo "<option value='$t[id]'>$t[dosen]</option>";
+                          <?php foreach ($dosen as $d) {
+                              echo "<option value='$d[nip]'>$d[nama]</option>";
                           }
                           ?>
                         </select>
@@ -55,8 +37,8 @@ $Dosbing2=[
                       <div class="form-floating mb-3">
                       <label for="dosbing2">Dosen Pembimbing 2</label>
                       <select name="dosbing2" id="dosbing2" class="form-control">
-                          <?php foreach ($Dosbing2 as $t) {
-                              echo "<option value='$t[id]'>$t[dosen]</option>";
+                          <?php foreach ($dosen as $d) {
+                              echo "<option value='$d[nip]'>$d[nama]</option>";
                           }
                           ?>
                         </select>
