@@ -10,28 +10,28 @@ class Koordinator extends CI_Controller
 		if ($this->session->userdata('level') != 2) {
             redirect('Auth');
 		}
-		$this->load->model('koordinator_model', 'userM');
+		$this->load->model('koordinator_model', 'koorM');
 		// $this->load->model('dosen_model', 'dosenM');
 	}
 
 	public function index()
 	{
 		$data['judul'] = 'Data User';
-		// $data['user'] = $this->session->userdata('username');
 		$data['user'] = $this->session->userdata('username');
-		// $data['data'] = $this->userM->getUsers();
 		$data['aktor']="Koordinator";
+		$data['dosen']= $this->koorM->getDosen();
+		$data['mhs']= $this->koorM->getMahasiswa();
 
 		$this->load->view('template/header',$data);
 		$this->load->view('koordinator/template/sidebar');
 		$this->load->view('template/topbar');
-		$this->load->view('koordinator/user');
+		$this->load->view('koordinator/index');
 		$this->load->view('template/footer');
 	}
 	public function dosen(){
 		$data['judul'] = 'Data Dosen';
 		$data['user'] = $this->session->userdata('username');
-		$data['data'] = $this->userM->getDosen();
+		$data['data'] = $this->koorM->getDosen();
 		$data['aktor']="Koordinator";
 		//mendapatkan data users
 		// get semua user
@@ -45,7 +45,7 @@ class Koordinator extends CI_Controller
 	public function mahasiswa(){
 		$data['judul'] = 'Data Mahasiswa';
 		$data['user'] = $this->session->userdata('username');
-		$data['data'] = $this->userM->getMahasiswa();
+		$data['data'] = $this->koorM->getMahasiswa();
 		$data['aktor']="Koordinator";
 
 		//mendapatkan data users
@@ -416,7 +416,7 @@ class Koordinator extends CI_Controller
 		$data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['profil'] = $this->db->get_where('admin', ['username' => $data['user']['id']])->row_array();
 
-		$this->load->model('user_model', 'userM');
+		$this->load->model('user_model', 'koorM');
 		$data['level'] = $this->db->get('user_level')->result_array();
 		//$data['user'] = $this->db->from('user');
 
@@ -444,7 +444,7 @@ class Koordinator extends CI_Controller
 			$data['start'] = 0;
 		}
 
-		$data['users'] = $this->userM->getUsers($config['per_page'], $data['start'], $data['keyword'], $data['user']['level_id']);
+		$data['users'] = $this->koorM->getUsers($config['per_page'], $data['start'], $data['keyword'], $data['user']['level_id']);
 
 		$this->load->view('template/header', $data);
 		$this->load->view('template/sidebar', $data);

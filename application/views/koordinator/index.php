@@ -42,10 +42,10 @@
 						<tr>
 							<td scope="row"><?= ++$number; ?></td>
 							<td><?= $u['username']; ?></td>
-							<td><?= $u['level']; ?></td>
+							<td>dosen</td>
 							<td>
-                            <a href="" data-toggle="modal" data-target="#userEdit<?= $u['id'] ?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>Edit</a>
-                                <a href="<?= base_url() . 'admin/deleteU/' . $u['id'] ?>" data-nama="<?= $u['username']; ?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i>Delete</a>
+                            <a href="" data-toggle="modal" data-target="#userEdit<?= $u['nip'] ?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>Edit</a>
+                                <a href="<?= base_url() . 'admin/deleteU/' . $u['nip'] ?>" data-nama="<?= $u['username']; ?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i>Delete</a>
 							</td>
 						</tr>
 					<?php endforeach; ?>
@@ -53,10 +53,10 @@
 						<tr>
 							<td scope="row"><?= ++$number; ?></td>
 							<td><?= $u['username']; ?></td>
-							<td><?= $u['level']; ?></td>
+							<td>Mahasiswa</td>
 							<td>
-                            <a href="" data-toggle="modal" data-target="#userEdit<?= $u['id'] ?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>Edit</a>
-                                <a href="<?= base_url() . 'admin/deleteU/' . $u['id'] ?>" data-nama="<?= $u['username']; ?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i>Delete</a>
+                            <a href="" data-toggle="modal" data-target="#userEdit<?= $u['nim'] ?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>Edit</a>
+                                <a href="<?= base_url() . 'admin/deleteU/' . $u['nim'] ?>" data-nama="<?= $u['username']; ?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i>Delete</a>
 							</td>
 						</tr>
 					<?php endforeach; ?>
@@ -71,11 +71,10 @@
 
         </div>
         <!-- End of Main Content -->
-
 <?php foreach ($dosen as $u) : ?>
 
     <!-- Modal Edit -->
-    <div class="modal fade" id="userEdit<?= $u['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="pelamarEditLabel" aria-hidden="true">
+    <div class="modal fade" id="userEdit<?= $u['nip'] ?>" tabindex="-1" role="dialog" aria-labelledby="pelamarEditLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -84,7 +83,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?= base_url('admin/updateU/' . $u['id']); ?>" method="POST" class="needs-validation" novalidate>
+                <form action="<?= base_url('admin/updateU/' . $u['nip']); ?>" method="POST" class="needs-validation" novalidate>
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="username">Username</label>
@@ -111,7 +110,7 @@
 <?php foreach ($mhs as $u) : ?>
 
     <!-- Modal Edit -->
-    <div class="modal fade" id="userEdit<?= $u['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="pelamarEditLabel" aria-hidden="true">
+    <div class="modal fade" id="userEdit<?= $u['nim'] ?>" tabindex="-1" role="dialog" aria-labelledby="pelamarEditLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -120,7 +119,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?= base_url('admin/updateU/' . $u['id']); ?>" method="POST" class="needs-validation" novalidate>
+                <form action="<?= base_url('admin/updateU/' . $u['nim']); ?>" method="POST" class="needs-validation" novalidate>
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="username">Username</label>
@@ -128,19 +127,9 @@
                             <?= form_error('alamat', '<div class="alert-danger" role="alert">', '</div>'); ?>
                         </div>
                         <div class="form-group">
-                            <label for="level">Level</label>
-                            <select name="level" id="level" class="form-control">
-                                <?php foreach ($level as $l) {
-                                    if ($l['id'] > 2) {
-                                        if ($u['level_id'] == $l['id']) {
-                                            echo "<option value='$l[id]' selected>$l[level]</option>";
-                                        } else {
-                                            echo "<option value='$l[id]'>$l[level]</option>";
-                                        }
-                                    }
-                                }
-                                ?>
-                            </select>
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="newpass" name="newpass" placeholder="Masukan Password" autocomplete="off">
+                            <?= form_error('curpass', '<div class="alert-danger" role="alert">', '</div>'); ?>
                         </div>
                     </div>
                     <div class="modal-footer">

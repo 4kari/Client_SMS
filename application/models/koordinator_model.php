@@ -13,4 +13,16 @@ class koordinator_model extends CI_Model
         }
         return $data['data'];
     }
+    public function getDosen()
+    {
+        // $dosen = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Dosen/'),true);
+        $dosen = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/Dosen/'),true);
+        return $dosen['data'];
+    }
+    public function getMahasiswa()
+    {
+        // $mhs = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Mahasiswa/'),true);
+        $mhs = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/Mahasiswa/'),true);
+        return $mhs['data'];
+    }
 }
