@@ -20,14 +20,15 @@
                   <thead>
                     <tr>
 						<th>No</th>
-						<th>Username</th>
-						<th>Level</th>
-						<th>Action</th>
+						<th>Topik</th>
+						<th>Pembimbing 1</th>
+						<th>Pembimbing 2</th>
+                        <th>Action</th>
                     </tr>
                   </thead>
 
                   <tbody>
-				  	<?php if (empty($dosen) && empty($mhs)) : ?>
+				  	<?php if (empty($topik)) : ?>
 						<tr>
 							<td colspan="12">
 								<div class="alert alert-danger" role="alert">
@@ -38,25 +39,16 @@
 					<?php endif; ?>
 					
 					<?php $number=0;
-					foreach ($dosen as $u) : ?>
+					foreach ($topik as $t) : ?>
 						<tr>
 							<td scope="row"><?= ++$number; ?></td>
-							<td><?= $u['username']; ?></td>
-							<td>dosen</td>
+							<td><?= $t['topik']; ?></td>
+                            <td><?= $t['pembimbing_1']; ?></td>
+                            <td><?= $t['pembimbing_2']; ?></td>
 							<td>
-                            <a href="" data-toggle="modal" data-target="#userEdit<?= $u['nip'] ?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>Edit</a>
-                                <a href="<?= base_url() . 'admin/deleteU/' . $u['nip'] ?>" data-nama="<?= $u['username']; ?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i>Delete</a>
-							</td>
-						</tr>
-					<?php endforeach; ?>
-                    <?php foreach ($mhs as $u) : ?>
-						<tr>
-							<td scope="row"><?= ++$number; ?></td>
-							<td><?= $u['username']; ?></td>
-							<td>Mahasiswa</td>
-							<td>
-                            <a href="" data-toggle="modal" data-target="#userEdit<?= $u['nim'] ?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>Edit</a>
-                                <a href="<?= base_url() . 'admin/deleteU/' . $u['nim'] ?>" data-nama="<?= $u['username']; ?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i>Delete</a>
+                            <a href="" data-toggle="modal" data-target="#topikEdit<?= $t['id'] ?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>Ubah</a>
+                            <a href="" data-toggle="modal" data-target="#topikvalid<?= $t['id'] ?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-Check"></i>Validasi</a>
+                            <a href="<?= base_url() . 'admin/deleteU/' . $t['id'] ?>" data-nama="<?= $t['id']; ?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i>Delete</a>
 							</td>
 						</tr>
 					<?php endforeach; ?>
@@ -71,66 +63,36 @@
 
         </div>
         <!-- End of Main Content -->
-<?php foreach ($dosen as $u) : ?>
+<?php foreach ($topik as $t) : ?>
 
     <!-- Modal Edit -->
-    <div class="modal fade" id="userEdit<?= $u['nip'] ?>" tabindex="-1" role="dialog" aria-labelledby="pelamarEditLabel" aria-hidden="true">
+    <div class="modal fade" id="topikEdit<?= $t['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="LabelEditTopik" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="pelamarEditLabel">Edit Data Pelamar</h5>
+                    <h5 class="modal-title" id="EditTopik">Ubah data pembimbing</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?= base_url('admin/updateU/' . $u['nip']); ?>" method="POST" class="needs-validation" novalidate>
+                <form action="<?= base_url('admin/updateU/' . $t['id']); ?>" method="POST" class="needs-validation" novalidate>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" value="<?= $u['username']; ?>" required>
-                            <?= form_error('alamat', '<div class="alert-danger" role="alert">', '</div>'); ?>
+                            <label for="topik">Topik</label>
+                            <input type="text" class="form-control" id="topik" name="topik" value="<?= $t['topik']; ?>" required>
+                            <?= form_error('topik', '<div class="alert-danger" role="alert">', '</div>'); ?>
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="newpass" name="newpass" placeholder="Masukan Password" autocomplete="off">
-                            <?= form_error('curpass', '<div class="alert-danger" role="alert">', '</div>'); ?>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Edit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-<?php endforeach; ?>
-
-<?php foreach ($mhs as $u) : ?>
-
-    <!-- Modal Edit -->
-    <div class="modal fade" id="userEdit<?= $u['nim'] ?>" tabindex="-1" role="dialog" aria-labelledby="pelamarEditLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="pelamarEditLabel">Edit Data Pelamar</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="<?= base_url('admin/updateU/' . $u['nim']); ?>" method="POST" class="needs-validation" novalidate>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" value="<?= $u['username']; ?>" required>
-                            <?= form_error('alamat', '<div class="alert-danger" role="alert">', '</div>'); ?>
+                            <label for="topik">dosen pembimbing 1</label>
+                            <input type="text" class="form-control" id="pembimbing_1" name="pembimbing_1" value="<?= $t['pembimbing_1']; ?>" required>
+                            <?= form_error('pembimbing_1', '<div class="alert-danger" role="alert">', '</div>'); ?>
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="newpass" name="newpass" placeholder="Masukan Password" autocomplete="off">
-                            <?= form_error('curpass', '<div class="alert-danger" role="alert">', '</div>'); ?>
+                            <label for="topik">Dosen pembimbing 2</label>
+                            <input type="text" class="form-control" id="pembimbing_2" name="pembimbing_2" value="<?= $t['pembimbing_2']; ?>" required>
+                            <?= form_error('pembimbing_2', '<div class="alert-danger" role="alert">', '</div>'); ?>
                         </div>
+                        
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

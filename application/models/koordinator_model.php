@@ -25,4 +25,18 @@ class koordinator_model extends CI_Model
         $mhs = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/Mahasiswa/'),true);
         return $mhs['data'];
     }
+    public function getTopik()
+    {
+        // $mhs = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Topik/'),true);
+        $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Skripsi/'),true);
+        $data=[];
+        if ($skripsi){
+            for ($i=0;$i<count($skripsi['data']);$i++){
+                if ($skripsi['data'][$i]['status']==0){
+                    array_push($data,$skripsi['data'][$i]);
+                }
+            }
+        }
+        return $data;
+    }
 }

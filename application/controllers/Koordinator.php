@@ -16,11 +16,11 @@ class Koordinator extends CI_Controller
 
 	public function index()
 	{
-		$data['judul'] = 'Data User';
+		$data['judul'] = 'Data pengajuan topik';
 		$data['user'] = $this->session->userdata('username');
 		$data['aktor']="Koordinator";
 		$data['dosen']= $this->koorM->getDosen();
-		$data['mhs']= $this->koorM->getMahasiswa();
+		$data['topik'] = $this->koorM->getTopik();
 
 		$this->load->view('template/header',$data);
 		$this->load->view('koordinator/template/sidebar');
