@@ -43,12 +43,12 @@
 						<tr>
 							<td scope="row"><?= ++$number; ?></td>
 							<td><?= $t['topik']; ?></td>
-                            <td><?= $t['pembimbing_1']; ?></td>
-                            <td><?= $t['pembimbing_2']; ?></td>
+              <td><?= $t['pembimbing_1']; ?></td>
+              <td><?= $t['pembimbing_2']; ?></td>
 							<td>
-                            <a href="" data-toggle="modal" data-target="#topikEdit<?= $t['id'] ?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>Ubah</a>
-                            <a href="" data-toggle="modal" data-target="#topikvalid<?= $t['id'] ?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-Check"></i>Validasi</a>
-                            <a href="<?= base_url() . 'admin/deleteU/' . $t['id'] ?>" data-nama="<?= $t['id']; ?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i>Delete</a>
+              <a href="" data-toggle="modal" data-target="#topikEdit<?= $t['id'] ?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>Ubah</a>
+              <a href="<?= base_url($aktor) . '/validasi_topik/' . $t['id'] ?>"class="btn btn-success btn-sm"><i class="fa fa-fw fa-check"></i>Validasi</a>
+              <a href="<?= base_url($aktor) . '/delete_topik/' . $t['id'] ?>" data-nama="<?= $t['id']; ?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i>Delete</a>
 							</td>
 						</tr>
 					<?php endforeach; ?>

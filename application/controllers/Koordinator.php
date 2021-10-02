@@ -28,6 +28,31 @@ class Koordinator extends CI_Controller
 		$this->load->view('koordinator/index');
 		$this->load->view('template/footer');
 	}
+	public function validasi_topik($id){
+		echo $id;
+		//ubah status skripsi jadi 1
+	}
+	public function delete_topik($id){
+		echo $id;
+		//hapus data skripsi
+	}
+	public function update_skripsi($id){
+		echo $id;
+		//ubah data dosen yang diajukan
+	}
+	public function jadwal_skripsi(){
+		$data['judul'] = 'Data Pendaftar Skripsi';
+		$data['user'] = $this->session->userdata('username');
+		$data['aktor']="Koordinator";
+		$data['sempro']= $this->koorM->getJSempro();
+		$data['sidang'] = $this->koorM->getJSidang();
+
+		$this->load->view('template/header',$data);
+		$this->load->view('koordinator/template/sidebar');
+		$this->load->view('template/topbar');
+		$this->load->view('koordinator/index');
+		$this->load->view('template/footer');
+	}
 	public function dosen(){
 		$data['judul'] = 'Data Dosen';
 		$data['user'] = $this->session->userdata('username');
