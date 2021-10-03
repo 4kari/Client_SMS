@@ -14,6 +14,11 @@ class mahasiswa_model extends CI_Model
         }
         return $data['data'];
     }
+    public function getStatus(){
+        // $data = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/status/', array(CURLOPT_BUFFERSIZE => 10)),true);
+        $data = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/status/', array(CURLOPT_BUFFERSIZE => 10)),true);
+        return $data['data'];
+    }
     public function getTopik(){
         // $data = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/topik/', array(CURLOPT_BUFFERSIZE => 10)),true);
         $data = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/topik/', array(CURLOPT_BUFFERSIZE => 10)),true);
@@ -52,6 +57,7 @@ class mahasiswa_model extends CI_Model
     public function getSkripsi($nim){
         $topik = $this->getTopik();
         $dosen = $this->getDosen();
+        $status = $this->getStatus();
         $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/skripsi/', array(CURLOPT_BUFFERSIZE => 10)),true);
         // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/skripsi/', array(CURLOPT_BUFFERSIZE => 10)),true);
         $data = [];
@@ -74,6 +80,11 @@ class mahasiswa_model extends CI_Model
             for ($j=0;$j<count($dosen);$j++){
                 if($data[$i]['pembimbing_2']==$dosen[$j]['nip']){
                     $data[$i]['pembimbing_2']=$dosen[$j]['nama'];
+                }
+            }
+            for ($j=0;$j<count($status);$j++){
+                if($data[$i]['status']==$status[$j]['id']){
+                    $data[$i]['status']=$status[$j]['status'];
                 }
             }
         }

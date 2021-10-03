@@ -111,6 +111,15 @@
                                     echo "</tr>";
 
                                     echo "<tr>";
+                                      echo "<td>status</td>";
+                                      if($sk['status']==null){
+                                        echo "<td>belum ada</td>";
+                                      }else{
+                                        echo "<td>$sk[status]</td>";
+                                      }
+                                    echo "</tr>";
+
+                                    echo "<tr>";
                                       echo "<td>nilai</td>";
                                       if($sk['nilai']==null){
                                         echo "<td>belum ada</td>";
