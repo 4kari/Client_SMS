@@ -29,16 +29,18 @@ class Koordinator extends CI_Controller
 		$this->load->view('template/footer');
 	}
 	public function validasi_topik($id){
-		echo $id;
+		$this->koorM->valTopik($id);
+		redirect("Koordinator");
 		//ubah status skripsi jadi 1
 	}
-	public function delete_topik($id){
-		echo $id;
+	public function hapus_topik($id){
+		$this->koorM->deleteTopik($id);
+		redirect("Koordinator");
 		//hapus data skripsi
 	}
-	public function update_skripsi($id){
-		echo $id;
-		//ubah data dosen yang diajukan
+	public function ubah_topik(){
+		$this->koorM->updateTopik();
+		redirect("Koordinator");
 	}
 	public function jadwal_skripsi(){
 		$data['judul'] = 'Data Pendaftar Skripsi';

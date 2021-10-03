@@ -3,16 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class koordinator_model extends CI_Model
 {
-    public function data_diri($username){
-        $data = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/dosen/', array(CURLOPT_BUFFERSIZE => 10)),true);
-        for ($i=0;$i<count($data['data']);$i++){
-            if ($data['data'][$i]['username']==$username){
-                $data['data']=$data['data'][$i];
-                break;
-            }
-        }
-        return $data['data'];
-    }
     public function getDosen()
     {
         // $dosen = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Dosen/'),true);
@@ -27,7 +17,7 @@ class koordinator_model extends CI_Model
     }
     public function getTopik()
     {
-        // $mhs = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Topik/'),true);
+        // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Skripsi/'),true);
         $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Skripsi/'),true);
         $data=[];
         if ($skripsi){
@@ -38,5 +28,34 @@ class koordinator_model extends CI_Model
             }
         }
         return $data;
+    }
+    public function updateTopik(){
+        $dp1 = $this->input->post("pembimbing_1");
+		$dp2 = $this->input->post("pembimbing_2");
+        $id = $this->input->post("id");
+        $nim = $this->input->post("nim");
+        $topik = $this->input->post("topik");
+        $status = $this->input->post("status");
+        $data=[
+            'id' => $id,
+            'topik' => $topik,
+            'nim' => $nim,
+            'pembimbing_1' => $dp1,
+            'pembimbing_2' => $dp2,
+            'status' => $status
+        ];
+        // json_decode($this->curl->simple_put('http://10.5.12.26/skripsi/api/Skripsi/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+        json_decode($this->curl->simple_put('http://localhost/microservice/skripsi/api/Skripsi/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+    }
+    public function valTopik($id){
+        // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Skripsi/',array("id" => $id),array(CURLOPT_BUFFERSIZE => 10)),true);
+        $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Skripsi/',array("id" => $id),array(CURLOPT_BUFFERSIZE => 10)),true);
+        $skripsi['data']['status']=1;
+        // json_decode($this->curl->simple_put('http://10.5.12.21/skripsi/api/Skripsi/',$skripsi['data'],array(CURLOPT_BUFFERSIZE => 10)),true);
+        json_decode($this->curl->simple_put('http://localhost/microservice/skripsi/api/Skripsi/',$skripsi['data'],array(CURLOPT_BUFFERSIZE => 10)),true);
+    }
+    public function deleteTopik($id){
+        // json_decode($this->curl->simple_delete('http://10.5.12.26/skripsi/api/Skripsi/',array("id" => $id),array(CURLOPT_BUFFERSIZE => 10)),true);
+        json_decode($this->curl->simple_delete('http://localhost/microservice/skripsi/api/Skripsi/',array("id" => $id),array(CURLOPT_BUFFERSIZE => 10)),true);
     }
 }

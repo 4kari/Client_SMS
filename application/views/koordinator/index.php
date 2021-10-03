@@ -48,7 +48,7 @@
 							<td>
               <a href="" data-toggle="modal" data-target="#topikEdit<?= $t['id'] ?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>Ubah</a>
               <a href="<?= base_url($aktor) . '/validasi_topik/' . $t['id'] ?>"class="btn btn-success btn-sm"><i class="fa fa-fw fa-check"></i>Validasi</a>
-              <a href="<?= base_url($aktor) . '/delete_topik/' . $t['id'] ?>" data-nama="<?= $t['id']; ?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i>Delete</a>
+              <a href="<?= base_url($aktor) . '/hapus_topik/' . $t['id'] ?>" data-nama="<?= $t['id']; ?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i>Delete</a>
 							</td>
 						</tr>
 					<?php endforeach; ?>
@@ -75,7 +75,10 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?= base_url('admin/updateU/' . $t['id']); ?>" method="POST" class="needs-validation" novalidate>
+                <form action="<?= base_url($aktor.'/ubah_topik/');?>" method="POST" class="needs-validation" novalidate>
+                    <input type="text" name="nim" value="<?= $t['nim']; ?>" hidden required> 
+                    <input type="text" name="id" value="<?= $t['id']; ?>" hidden required> 
+                    <input type="text" name="status" value="<?= $t['status']; ?>" hidden required> 
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="topik">Topik</label>
