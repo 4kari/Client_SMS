@@ -55,6 +55,8 @@
 
   <!-- Page level custom scripts -->
   <script src="<?= base_url('assets/'); ?>js/admin/datatables-demo.js"></script>
+  <script type="text/javascript" src="<?= base_url('assets/'); ?>js/timeline.js"></script>
+
 
 </body>
 

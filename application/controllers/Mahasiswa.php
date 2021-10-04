@@ -19,16 +19,19 @@ class Mahasiswa extends CI_Controller
 		$data['aktor']="Mahasiswa";
 		//PC
 		$data['data'] = $this->mhsM->data_diri($this->session->userdata('username'));
+		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
+		$data['skripsi'] = $data['skripsi'][count($data['skripsi'])-1];
+		$data['status'] = $this->mhsM->getTimeline();
 		$this->session->set_userdata(['nama' => $data['data']['nama']]);
 		$data['user'] = $this->session->userdata['nama'];
-
+		
 		//laptop
 		// $data['user'] = "mhs";
 
 		$this->load->view('template/header',$data);
 		$this->load->view('mahasiswa/template/sidebar');
 		$this->load->view('template/topbar');
-		$this->load->view('mahasiswa/index');
+		$this->load->view('mahasiswa/index2');
 		$this->load->view('template/footer');
 	}
 

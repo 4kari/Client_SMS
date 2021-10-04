@@ -14,6 +14,19 @@ class mahasiswa_model extends CI_Model
         }
         return $data['data'];
     }
+    public function getTimeline(){
+        $status = $this->getStatus();
+        $data=[];
+        $index=[0,1,2,3,5];
+        for ($i=0;$i<count($status);$i++){
+            for ($j=0;$j<count($index);$j++){
+                if ($status[$i]['id']==$index[$j]){
+                    array_push($data,$status[$i]);
+                }
+            }
+        }
+        return $data;
+    }
     public function getStatus(){
         // $data = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/status/', array(CURLOPT_BUFFERSIZE => 10)),true);
         $data = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/status/', array(CURLOPT_BUFFERSIZE => 10)),true);
@@ -61,30 +74,33 @@ class mahasiswa_model extends CI_Model
         $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/skripsi/', array(CURLOPT_BUFFERSIZE => 10)),true);
         // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/skripsi/', array(CURLOPT_BUFFERSIZE => 10)),true);
         $data = [];
-        for ($i=0;$i<count($skripsi['data']);$i++){
-            if ($skripsi['data'][$i]['nim']==$nim){
-                array_push($data,$skripsi['data'][$i]);
-            }
-        }
-        for ($i=0;$i<count($data);$i++){
-            for ($j=0;$j<count($topik);$j++){
-                if($data[$i]['topik']==$topik[$j]['id']){
-                    $data[$i]['topik']=$topik[$j]['topik'];
+        if ($skripsi){
+            for ($i=0;$i<count($skripsi['data']);$i++){
+                if ($skripsi['data'][$i]['nim']==$nim){
+                    array_push($data,$skripsi['data'][$i]);
                 }
             }
-            for ($j=0;$j<count($dosen);$j++){
-                if($data[$i]['pembimbing_1']==$dosen[$j]['nip']){
-                    $data[$i]['pembimbing_1']=$dosen[$j]['nama'];
+            for ($i=0;$i<count($data);$i++){
+                for ($j=0;$j<count($topik);$j++){
+                    if($data[$i]['topik']==$topik[$j]['id']){
+                        $data[$i]['topik']=$topik[$j]['topik'];
+                    }
                 }
-            }
-            for ($j=0;$j<count($dosen);$j++){
-                if($data[$i]['pembimbing_2']==$dosen[$j]['nip']){
-                    $data[$i]['pembimbing_2']=$dosen[$j]['nama'];
+                for ($j=0;$j<count($dosen);$j++){
+                    if($data[$i]['pembimbing_1']==$dosen[$j]['nip']){
+                        $data[$i]['pembimbing_1']=$dosen[$j]['nama'];
+                    }
                 }
-            }
-            for ($j=0;$j<count($status);$j++){
-                if($data[$i]['status']==$status[$j]['id']){
-                    $data[$i]['status']=$status[$j]['status'];
+                for ($j=0;$j<count($dosen);$j++){
+                    if($data[$i]['pembimbing_2']==$dosen[$j]['nip']){
+                        $data[$i]['pembimbing_2']=$dosen[$j]['nama'];
+                    }
+                }
+                for ($j=0;$j<count($status);$j++){
+                    if($data[$i]['status']==$status[$j]['id']){
+                        $data[$i]['statusid']=$data[$i]['status'];
+                        $data[$i]['status']=$status[$j]['status'];
+                    }
                 }
             }
         }
