@@ -30,7 +30,7 @@
                     <?php foreach ($data as $users) : ?>
                       <tr>
                         <td><?= $users['username']; ?></td>
-                        <td><?= $users['level']; ?></td>
+                        <td><?= $users['levelket']; ?></td>
                         <td><a href="<?= base_url(); ?>admin/hapusUser/<?= $users['username']; ?>" data-nama="<?=$users['username'];?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i> hapus</a>
                             <a href="" data-toggle="modal" data-target="#ubahUser<?=$users['username'];?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>ubah</a>
                         </td>

@@ -39,17 +39,16 @@ class user_model extends CI_Model
     {
         // $user = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/User/'),true);
         $user = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/User/'),true);
-        $level=$this->getLevel();
-        $data=$user['data'];
-        for ($i=0;$i<count($data);$i++){
-            for ($j=0;$j<count($level);$j++){
-                if ($data[$i]['level']==$level[$j]['id']){
-                    $data[$i]['level']=$level[$j]['level'];
-                }
-            }
-            
-        }
-        return $data;
+        // $level=$this->getLevel();
+        // $data=$user['data'];
+        // for ($i=0;$i<count($data);$i++){
+        //     for ($j=0;$j<count($level);$j++){
+        //         if ($data[$i]['level']==$level[$j]['id']){
+        //             $data[$i]['level']=$level[$j]['level'];
+        //         }
+        //     }
+        // }
+        return $user['data'];
     }
     public function getLevel(){
         // $level = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Level/'),true);
