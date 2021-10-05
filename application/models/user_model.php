@@ -5,22 +5,34 @@ class user_model extends CI_Model
 {
     public function login($username, $password){
         // $data = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/User/',array('username'=>$username), array(CURLOPT_BUFFERSIZE => 10)),true);
-        $data = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/User/',array('username'=>$username), array(CURLOPT_BUFFERSIZE => 10)),true);
-        //hash password
-        if ($data!=null){
-            if ($data['data']['password']==$password){
-                echo "username dan password benar";
-                $user=[
-                        'username' => $data['data']['username'],
-                        'level' => $data['data']['level']
-                    ];
-                $this->session->set_flashdata('pesan', 'Login sukses!');
-                $this->session->set_userdata($user);
-            }else{
-                $this->session->set_flashdata('pesan', 'Password salah!');
-            }
+        // $data = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/User/',array('username'=>$username), array(CURLOPT_BUFFERSIZE => 10)),true);
+        // //hash password
+        // if ($data!=null){
+        //     if ($data['data']['password']==$password){
+        //         echo "username dan password benar";
+        //         $user=[
+        //                 'username' => $data['data']['username'],
+        //                 'level' => $data['data']['level']
+        //             ];
+        //         $this->session->set_flashdata('pesan', 'Login sukses!');
+        //         $this->session->set_userdata($user);
+        //     }else{
+        //         $this->session->set_flashdata('pesan', 'Password salah!');
+        //     }
+        // }else{
+        //     $this->session->set_flashdata('pesan', 'Username tidak ditemukan!');
+        // }
+        $data = [
+            'username' => $username,
+            'password' => $password
+        ];
+        $user = json_decode($this->curl->simple_post('http://localhost/microservice/user/api/Login/',$data, array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $user = json_decode($this->curl->simple_post('http://10.5.12.26/user/api/Login/',$data, array(CURLOPT_BUFFERSIZE => 10)),true);
+        if ($user['status']){
+            $this->session->set_userdata($user['data']);
+            $this->session->set_flashdata('pesan', 'Login sukses!');
         }else{
-            $this->session->set_flashdata('pesan', 'Username tidak ditemukan!');
+
         }
     }
     public function getUsers()
