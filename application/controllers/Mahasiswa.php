@@ -20,7 +20,7 @@ class Mahasiswa extends CI_Controller
 		//PC
 		$data['data'] = $this->mhsM->data_diri($this->session->userdata('username'));
 		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
-		$data['skripsi'] = $data['skripsi'][count($data['skripsi'])-1];
+		if ($data['skripsi']){ $data['skripsi'] = $data['skripsi'][count($data['skripsi'])-1];}
 		$data['status'] = $this->mhsM->getTimeline();
 		$this->session->set_userdata(['nama' => $data['data']['nama']]);
 		$data['user'] = $this->session->userdata['nama'];
