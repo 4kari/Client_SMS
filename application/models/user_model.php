@@ -14,7 +14,7 @@ class user_model extends CI_Model
             $this->session->set_userdata($user['data']);
             $this->session->set_flashdata('pesan', 'Login sukses!');
         }else{
-
+            $this->session->set_flashdata('pesan', 'Login gagal!');
         }
     }
     public function getUsers()
@@ -62,50 +62,17 @@ class user_model extends CI_Model
     {
         // $mhs = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Mahasiswa/'),true);
         $mhs = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/Mahasiswa/'),true);
-        return $mhs['data'];
+        if($mhs){return $mhs['data'];}
+        else{return null;}
     }
     public function addMahasiswa()
     {
         $nim=$this->input->post('nim');
         $nama=$this->input->post('nama');
-        if($nim!="" && $nama!=""){
-            // $user = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/User/'),true);
-            $user = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/User/'),true);
-
-            $cek=false;
-            for ($i=0;$i<count($user);$i++){
-                if($user['data'][$i]['username']==$nim){
-                    $cek=true;
-                }
-            }
-            if($cek==false){
-                echo "user tidak ditemukan";
-                $data=[
-                    'username'=>$nim,
-                    'password'=>$nim,
-                    'level'=>"4"
-                ];
-                // json_decode($this->curl->simple_post('http://10.5.12.26/user/api/user/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
-                json_decode($this->curl->simple_post('http://localhost/microservice/user/api/user/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
-
-            }
-            // $mhs = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Mahasiswa/',array('nim'=>$nim),array(CURLOPT_BUFFERSIZE => 10)),true);
-            $mhs = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/Mahasiswa/',array('nim'=>$nim),array(CURLOPT_BUFFERSIZE => 10)),true);
-
-            if ($mhs==NULL){
-                $data=[
-                    'nim'=>$nim,
-                    'nama'=>$nama,
-                    'username'=>$nim,
-                    'prodi'=> substr($nim, 4, 3),
-                    'tanggal_buat'=> date("Y-m-d",time())
-                ];
+        if($nim && $nama){
                 // json_decode($this->curl->simple_post('http://10.5.12.26/user/api/Mahasiswa/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
-                json_decode($this->curl->simple_post('http://localhost/microservice/user/api/Mahasiswa/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+                var_dump(json_decode($this->curl->simple_post('http://localhost/microservice/user/api/Mahasiswa/',$data,array(CURLOPT_BUFFERSIZE => 10)),true));
                 echo "mahasiswa ditambahkan";
-            }else{
-                echo "data sudah ada";
-            }
         }else{
             echo "data kosong";
         }

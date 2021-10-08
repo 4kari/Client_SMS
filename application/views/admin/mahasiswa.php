@@ -72,7 +72,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control validate" name="nama" id="nama" placeholder="Nama Dosen" required>
+						<input type="text" class="form-control validate" name="nama" id="nama" placeholder="Nama Mahasiswa" required>
 						<div class="invalid-feedback">
 							Masukan Nama Mahasiswa
 						</div>
