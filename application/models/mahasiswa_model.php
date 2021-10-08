@@ -68,42 +68,9 @@ class mahasiswa_model extends CI_Model
         }
     }
     public function getSkripsi($nim){
-        $topik = $this->getTopik();
-        $dosen = $this->getDosen();
-        $status = $this->getStatus();
-        $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/skripsi/', array(CURLOPT_BUFFERSIZE => 10)),true);
-        // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/skripsi/', array(CURLOPT_BUFFERSIZE => 10)),true);
-        $data = [];
-        if ($skripsi){
-            for ($i=0;$i<count($skripsi['data']);$i++){
-                if ($skripsi['data'][$i]['nim']==$nim){
-                    array_push($data,$skripsi['data'][$i]);
-                }
-            }
-            for ($i=0;$i<count($data);$i++){
-                for ($j=0;$j<count($topik);$j++){
-                    if($data[$i]['topik']==$topik[$j]['id']){
-                        $data[$i]['topik']=$topik[$j]['topik'];
-                    }
-                }
-                for ($j=0;$j<count($dosen);$j++){
-                    if($data[$i]['pembimbing_1']==$dosen[$j]['nip']){
-                        $data[$i]['pembimbing_1']=$dosen[$j]['nama'];
-                    }
-                }
-                for ($j=0;$j<count($dosen);$j++){
-                    if($data[$i]['pembimbing_2']==$dosen[$j]['nip']){
-                        $data[$i]['pembimbing_2']=$dosen[$j]['nama'];
-                    }
-                }
-                for ($j=0;$j<count($status);$j++){
-                    if($data[$i]['status']==$status[$j]['id']){
-                        $data[$i]['statusid']=$data[$i]['status'];
-                        $data[$i]['status']=$status[$j]['status'];
-                    }
-                }
-            }
-        }
-        return $data;
+////error gajelas////
+        $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Skripsi_mhs/', array('nim'=>$nim), array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/skripsi_mhs/',array('nim'=>$nim), array(CURLOPT_BUFFERSIZE => 10)),true);
+        return $skripsi['data'];
     }
 }
