@@ -15,11 +15,13 @@ class Mahasiswa extends CI_Controller
 
 	public function index()
 	{
+		$username = (int)$this->session->userdata('username');
 		$data['judul'] = 'Beranda';
 		$data['aktor']="Mahasiswa";
 		//PC
-		$data['data'] = $this->mhsM->data_diri($this->session->userdata('username'));
-		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
+		$data['data'] = $this->mhsM->data_diri($username);
+		$data['skripsi'] = $this->mhsM->getSkripsi($username);
+		// var_dump($username);
 		if ($data['skripsi']){ $data['skripsi'] = $data['skripsi'][count($data['skripsi'])-1];}
 		$data['status'] = $this->mhsM->getTimeline();
 		$this->session->set_userdata(['nama' => $data['data']['nama']]);
