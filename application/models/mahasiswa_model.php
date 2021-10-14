@@ -54,8 +54,8 @@ class mahasiswa_model extends CI_Model
         }
     }
     public function getSkripsi($nim){
-        $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Skripsi_mhs/',array('nim'=>$nim), array(CURLOPT_BUFFERSIZE => 10)),true);
-        // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/skripsi_mhs/',array('nim'=>$nim), array(CURLOPT_BUFFERSIZE => 10)),true);
+        $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Skripsi/',array('nim'=>$nim), array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/skripsi/',array('nim'=>$nim), array(CURLOPT_BUFFERSIZE => 10)),true);
         return $skripsi['data'];
     }
 }
