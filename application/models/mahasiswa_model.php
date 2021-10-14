@@ -4,14 +4,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class mahasiswa_model extends CI_Model
 {
     public function data_diri($username){
-        // $data = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Mahasiswa/', array(CURLOPT_BUFFERSIZE => 10)),true);
-        $data = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/Mahasiswa/', array(CURLOPT_BUFFERSIZE => 10)),true);
-        for ($i=0;$i<count($data['data']);$i++){
-            if ($data['data'][$i]['username']==$username){
-                $data['data']=$data['data'][$i];
-                break;
-            }
-        }
+        // $data = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Mahasiswa/',array('nim'=>$username), array(CURLOPT_BUFFERSIZE => 10)),true);
+        $data = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/Mahasiswa/',array('nim'=>$username), array(CURLOPT_BUFFERSIZE => 10)),true);
         return $data['data'];
     }
     public function getTimeline(){
@@ -60,10 +54,8 @@ class mahasiswa_model extends CI_Model
         }
     }
     public function getSkripsi($nim){
-////error gajelas////
         $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Skripsi_mhs/',array('nim'=>$nim), array(CURLOPT_BUFFERSIZE => 10)),true);
         // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/skripsi_mhs/',array('nim'=>$nim), array(CURLOPT_BUFFERSIZE => 10)),true);
-
         return $skripsi['data'];
     }
 }
