@@ -18,16 +18,12 @@ class koordinator_model extends CI_Model
     public function getTopik()
     {
         // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Skripsi/'),true);
-        $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Skripsi/'),true);
-        $data=[];
+        $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Skripsi/',array('status'=>0)),true);
         if ($skripsi){
-            for ($i=0;$i<count($skripsi['data']);$i++){
-                if ($skripsi['data'][$i]['status']==0){
-                    array_push($data,$skripsi['data'][$i]);
-                }
-            }
+            return $skripsi['data'];
+        }else{
+            return NULL;
         }
-        return $data;
     }
     public function updateTopik(){
         $dp1 = $this->input->post("pembimbing_1");
@@ -50,9 +46,9 @@ class koordinator_model extends CI_Model
     public function valTopik($id){
         // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Skripsi/',array("id" => $id),array(CURLOPT_BUFFERSIZE => 10)),true);
         $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Skripsi/',array("id" => $id),array(CURLOPT_BUFFERSIZE => 10)),true);
-        $skripsi['data']['status']=1;
+        $skripsi['data'][0]['status']="1";
         // json_decode($this->curl->simple_put('http://10.5.12.21/skripsi/api/Skripsi/',$skripsi['data'],array(CURLOPT_BUFFERSIZE => 10)),true);
-        json_decode($this->curl->simple_put('http://localhost/microservice/skripsi/api/Skripsi/',$skripsi['data'],array(CURLOPT_BUFFERSIZE => 10)),true);
+        json_decode($this->curl->simple_put('http://localhost/microservice/skripsi/api/Skripsi/',$skripsi['data'][0],array(CURLOPT_BUFFERSIZE => 10)),true);
     }
     public function deleteTopik($id){
         // json_decode($this->curl->simple_delete('http://10.5.12.26/skripsi/api/Skripsi/',array("id" => $id),array(CURLOPT_BUFFERSIZE => 10)),true);

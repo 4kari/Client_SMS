@@ -28,7 +28,7 @@
                   </thead>
 
                   <tbody>
-				  	<?php if (empty($topik)) : ?>
+				  	<?php if (empty($topik)) { ?>
 						<tr>
 							<td colspan="12">
 								<div class="alert alert-danger" role="alert">
@@ -36,7 +36,7 @@
 								</div>
 							</td>
 						</tr>
-					<?php endif; ?>
+					<?php }else{ ?>
 					
 					<?php $number=0;
 					foreach ($topik as $t) : ?>
@@ -51,7 +51,8 @@
               <a href="<?= base_url($aktor) . '/hapus_topik/' . $t['id'] ?>" data-nama="<?= $t['id']; ?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i>Delete</a>
 							</td>
 						</tr>
-					<?php endforeach; ?>
+					<?php endforeach; 
+          } ?>
                   </tbody>
                 </table>
               </div>
@@ -63,7 +64,7 @@
 
         </div>
         <!-- End of Main Content -->
-<?php foreach ($topik as $t) : ?>
+<?php if($topik){ foreach ($topik as $t) : ?>
 
     <!-- Modal Edit -->
     <div class="modal fade" id="topikEdit<?= $t['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="LabelEditTopik" aria-hidden="true">
@@ -106,4 +107,5 @@
         </div>
     </div>
 
-<?php endforeach; ?>
+<?php endforeach;
+}?>
