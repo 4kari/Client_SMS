@@ -41,14 +41,15 @@ class koordinator_model extends CI_Model
             'status' => $status
         ];
         // json_decode($this->curl->simple_put('http://10.5.12.26/skripsi/api/Skripsi/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
-        json_decode($this->curl->simple_put('http://localhost/microservice/skripsi/api/Skripsi/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+        json_decode($this->curl->simple_put('http://localhost/microservice/skripsi/api/Skripsi/',$data,array(CURLOPT_BUFFERSIZE => 10),),true);
     }
     public function valTopik($id){
         // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Skripsi/',array("id" => $id),array(CURLOPT_BUFFERSIZE => 10)),true);
         $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Skripsi/',array("id" => $id),array(CURLOPT_BUFFERSIZE => 10)),true);
-        // $skripsi['data'][0]['status']="1";
+        $skripsi['data'][0]['status']="1";
         // json_decode($this->curl->simple_put('http://10.5.12.21/skripsi/api/Skripsi/',$skripsi['data'],array(CURLOPT_BUFFERSIZE => 10)),true);
         json_decode($this->curl->simple_put('http://localhost/microservice/skripsi/api/Skripsi/',$skripsi['data'][0],array(CURLOPT_BUFFERSIZE => 10)),true);
+
         $data=[
             'id_skripsi' => $skripsi['data'][0]['id'],
             'tipe' => 1,
@@ -56,7 +57,10 @@ class koordinator_model extends CI_Model
         ];
         // json_decode($this->curl->simple_post('http://10.5.12.56/diskusi/api/posting/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
         json_decode($this->curl->simple_post('http://localhost/microservice/diskusi/api/posting/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
-        die;
+        
+        
+        // var_dump($data);
+        // die;
     }
     public function deleteTopik($id){
         // json_decode($this->curl->simple_delete('http://10.5.12.26/skripsi/api/Skripsi/',array("id" => $id),array(CURLOPT_BUFFERSIZE => 10)),true);
