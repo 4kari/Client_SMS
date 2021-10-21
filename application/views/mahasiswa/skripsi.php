@@ -80,7 +80,7 @@
 
                                     echo "<tr>";
                                       echo "<td>topik</td>";
-                                      echo "<td>$sk[topik]</td>";
+                                      echo "<td>$sk[ktopik]</td>";
                                     echo "</tr>";
                                     
                                     echo "<tr>";
@@ -97,7 +97,7 @@
                                       if($sk['pembimbing_1']==null){
                                         echo "<td>belum ada</td>";
                                       }else{
-                                        echo "<td>$sk[pembimbing_1]</td>";
+                                        echo "<td>$sk[npembimbing_1]</td>";
                                       }
                                     echo "</tr>";
                                     
@@ -106,7 +106,7 @@
                                       if($sk['pembimbing_2']==null){
                                         echo "<td>belum ada</td>";
                                       }else{
-                                        echo "<td>$sk[pembimbing_2]</td>";
+                                        echo "<td>$sk[npembimbing_2]</td>";
                                       }
                                     echo "</tr>";
 
