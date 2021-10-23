@@ -21,7 +21,6 @@ class Mahasiswa extends CI_Controller
 		//PC
 		$data['data'] = $this->mhsM->data_diri($username);
 		$data['skripsi'] = $this->mhsM->getSkripsi($username);
-		// var_dump($username);
 		if ($data['skripsi']){ $data['skripsi'] = $data['skripsi'][count($data['skripsi'])-1];}
 		$data['status'] = $this->mhsM->getTimeline();
 		$this->session->set_userdata(['nama' => $data['data']['nama']]);
@@ -75,6 +74,11 @@ class Mahasiswa extends CI_Controller
 		$data['judul'] = 'Bimbingan Dosen';
 		$data['aktor']="Mahasiswa";
 		$data['user'] = $this->session->userdata['nama'];
+		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
+		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
+
+		if($data['skripsi']){$data['posting'] = $this->mhsM->getBimbingan($data['skripsi']['id']);}
+		if($data['posting']){$data['komentar'] = $this->mhsM->getkomentar($data['posting']['id']);}
 		
 		$this->load->view('template/header',$data);
 		$this->load->view('mahasiswa/template/gila');

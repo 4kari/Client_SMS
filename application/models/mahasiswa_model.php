@@ -56,6 +56,28 @@ class mahasiswa_model extends CI_Model
     public function getSkripsi($nim){
         $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Skripsi/',array('nim'=>$nim), array(CURLOPT_BUFFERSIZE => 10)),true);
         // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/skripsi/',array('nim'=>$nim), array(CURLOPT_BUFFERSIZE => 10)),true);
-        return $skripsi['data'];
+        if ($skripsi){
+            return($skripsi['data']);
+        }else{
+            return NULL;
+        }
+    }
+    public function getBimbingan($id){
+        $diskusi = json_decode($this->curl->simple_get('http://localhost/microservice/diskusi/api/Posting/',array('id_skripsi'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.56/diskusi/api/Posting/',array('id_skripsi'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
+        if ($diskusi){
+            return($diskusi['data']);
+        }else{
+            return NULL;
+        }
+    }
+    public function getKomentar($id){
+        $komentar = json_decode($this->curl->simple_get('http://localhost/microservice/diskusi/api/Komentar/',array('id_post'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $komentar = json_decode($this->curl->simple_get('http://10.5.12.56/diskusi/api/Komentar/',array('id_post'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
+        if ($komentar){
+            return($komentar['data']);
+        }else{
+            return NULL;
+        }
     }
 }
