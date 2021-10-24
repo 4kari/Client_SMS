@@ -1,10 +1,3 @@
-<?php
-$post=[
-  ['id'=>'0', 'judul'=>"Rekayasa Perangkat Lunak", 'file'=>'coba.pdf', 'tipe' => 1, 'tanggal_dibuat'=>'19/10/2021'],
-  ['id'=>'1', 'judul'=>"Rekayasa Perangkat Lunak", 'file'=>'coba.pdf', 'tipe' => 1, 'tanggal_dibuat'=>'19/10/2021'],
-  ['id'=>'2', 'judul'=>"Rekayasa Perangkat Lunak", 'file'=>'coba.pdf', 'tipe' => 1, 'tanggal_dibuat'=>'19/10/2021']
-];
-?>
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
@@ -17,24 +10,22 @@ $post=[
               <h6 class="m-0 font-weight-bold text-primary">Bimbingan Skripsi</h6>
             </div>
             <div class="card-body">
-              <?php if (empty($post)){ ?>
+              <?php if (empty($posting)){ ?>
                 <div id="primary" class="content-area">
-                <div class="layout social"> 
-                  <div class="container-fluid">
-                    <div class="row">
-                      <div class="col-lg-8 col-main">
-                        <main id="main" class="main-content">
-                          <div class="beehive-title-bar social">
-                            <div class="title-bar-wrapper">
-                              <div class="title-wrapper screen-reader-text">
-                                <div class="alert alert-danger" role="alert">
-                                  Data not found!
-                                </div>
+                  <div class="layout social"> 
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-lg-8 col-main">
+                          <main id="main" class="main-content">
+                            <div class="beehive-title-bar social">
+                              <div class="title-bar-wrapper">
+                                  <div class="alert alert-danger" role="alert">
+                                    <a>Data not found!</a>
+                                  </div>
                               </div>
                             </div>
-                          </div>
-                        </main><!-- #main -->
-                      </div><!-- .col-main -->
+                          </main><!-- #main -->
+                        </div><!-- .col-main -->
               <?php }else{ ?>
               <div id="primary" class="content-area">
                 <div class="layout social"> 
