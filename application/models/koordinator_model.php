@@ -53,6 +53,7 @@ class koordinator_model extends CI_Model
         $data=[
             'id_skripsi' => $skripsi['data'][0]['id'],
             'tipe' => 1,
+            'file' => "",
             'tanggal_dibuat' => time()
         ];
         // json_decode($this->curl->simple_post('http://10.5.12.56/diskusi/api/posting/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
