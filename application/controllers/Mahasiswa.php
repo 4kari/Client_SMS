@@ -32,7 +32,7 @@ class Mahasiswa extends CI_Controller
 		$this->load->view('template/header',$data);
 		$this->load->view('mahasiswa/template/sidebar');
 		$this->load->view('template/topbar');
-		$this->load->view('mahasiswa/index2');
+		$this->load->view('mahasiswa/index');
 		$this->load->view('template/footer');
 	}
 
@@ -76,16 +76,20 @@ class Mahasiswa extends CI_Controller
 		$data['user'] = $this->session->userdata['nama'];
 		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
 		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
-		if ($data['skripsi']['status']>=1){
-			if($data['skripsi']){$data['posting'] = $this->mhsM->getBimbingan($data['skripsi']['id']);}
-			if($data['posting']){$data['komentar'] = $this->mhsM->getkomentar($data['posting']['id']);}
+		if($data['skripsi']){
+			if ($data['skripsi']['statusid']>=1){
+				$data['posting'] = $this->mhsM->getBimbingan($data['skripsi']['id']);
+				if($data['posting']){
+					$data['komentar'] = $this->mhsM->getkomentar($data['posting']['id']);
+				}
+			}
 		}
 		
 		$this->load->view('template/header',$data);
 		$this->load->view('mahasiswa/template/gila');
 		$this->load->view('mahasiswa/template/sidebar');
 		$this->load->view('template/topbar');
-		$this->load->view('mahasiswa/bimbingan');
+		$this->load->view('mahasiswa/bimbingan2');
 		$this->load->view('template/footer');
 	}
 }

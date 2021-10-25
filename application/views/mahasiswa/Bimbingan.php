@@ -55,10 +55,15 @@
                                         <div class="activity-content">
                                           <div class="activity-header">
                                             <div class="posted-meta">
-                                              <p>judul skripsi ; <?= $post[0]['judul'];?> <br>file : unduh file <a href="#">di sini</a></p>
+                                              <?php if ($skripsi['judul']){
+                                                echo "<h1>judul skripsi : ".$skripsi['judul']."</h1>";
+                                              }else{
+                                                echo "<h1>judul skripsi : belum ada </h1>";
+                                              }?>
+                                              file : unduh file <a href='#'>di sini</a></h1>
                                             </div>
                                             <div class="date mute">
-                                              Diunggah pada <?=$post[0]['tanggal_dibuat'];?>
+                                              Diunggah pada <?=$posting['tanggal_dibuat'];?>
                                             </div>
                                           </div>
                                           <hhr>

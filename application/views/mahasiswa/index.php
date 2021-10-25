@@ -5,160 +5,47 @@
     <!-- Page Heading -->
     <h1 style="text-align: center;" class="h3 mb-4 text-gray-800"><?= "Timeline Skripsi" ?></h1>
     
-    
     <ul class="timeline" id="timeline">
         <?php if($skripsi){
-             if ($skripsi['statusid'] >= 1) : ?>
-            <li class="li complete">
-            <?php else : ?>
-            <li class="li">
-            <?php endif; ?>
-            <div class="timestamp">
-                <?php if ($skripsi['statusid'] == 1) : ?>
-                    <span class="date">Proses<span>
-                        <?php elseif ($skripsi['statusid'] > 1) : ?>
-                            <span class="date">Selesai<span>
-                                <?php else : ?>
-                                    <span class="date">Belum<span>
-                                        <?php endif; ?>
-            </div>
-            <div class="status">
-                <h4> Mendaftarkan Skripsi </h4>
-            </div>
-            </li>
-            <?php if ($skripsi['statusid'] >= 2) : ?>
-                <li class="li complete">
-                <?php else : ?>
-                <li class="li">
-                <?php endif; ?>
-                <div class="timestamp">
-                    <?php if ($skripsi['statusid'] == 2) : ?>
-                        <span class="date">Proses<span>
-                            <?php elseif ($skripsi['statusid'] > 2) : ?>
-                                <span class="date">Selesai<span>
-                                    <?php else : ?>
-                                        <span class="date">Belum<span>
-                                            <?php endif; ?>
-                </div>
-                <div class="status">
-                    <h4> Seminar Proposal </h4>
-                </div>
-                </li>
-                <?php if ($skripsi['statusid'] >= 3) : ?>
-                    <li class="li complete">
-                    <?php else : ?>
-                    <li class="li">
-                    <?php endif; ?>
-                    <div class="timestamp">
-                        <!-- <span class="author">Aaron Rodgers</span> -->
-                        <?php if ($skripsi['statusid'] == 3) : ?>
-                            <span class="date">Proses<span>
-                                <?php elseif ($skripsi['statusid'] > 3) : ?>
-                                    <span class="date">Selesai<span>
-                                        <?php else : ?>
-                                            <span class="date">Belum<span>
-                                                <?php endif; ?>
-                    </div>
-                    <div class="status">
-                        <h4> Bimbingan Skripsi </h4>
-                    </div>
-                    </li>
-                    <?php if ($skripsi['statusid'] >= 5) : ?>
-                        <li class="li complete">
-                        <?php else : ?>
-                        <li class="li">
-                        <?php endif; ?>
-                        <div class="timestamp">
-                            <!-- <span class="author">PAM Admin</span> -->
-                            <?php if ($skripsi['statusid'] == 5) : ?>
-                                <span class="date">Proses<span>
-                                    <?php elseif ($skripsi['statusid'] >= 5) : ?>
-                                        <span class="date">Selesai<span>
-                                            <?php else : ?>
-                                                <span class="date">Belum<span>
-                                                    <?php endif; ?>
-                        </div>
-                        <div class="status">
-                            <h4> Sidang Skripsi </h4>
-                        </div>
-                        </li>
-                        <?php if ($skripsi['statusid'] == 6) : ?>
-                            <li class="li complete">
-                            <?php else : ?>
-                            <li class="li">
-                            <?php endif; ?>
-                            <div class="timestamp">
-                                <!-- <span class="author">PAM Admin</span> -->
-                                <?php if ($skripsi['statusid'] == 6) : ?>
-                                    <span class="date">Selesai<span>
-
-                                        <?php else : ?>
-                                            <span class="date">Belum<span>
-                                                <?php endif; ?>
-                            </div>
-                            <div class="status">
-                                <h4> Skripsi Lulus </h4>
-                            </div>
-                            </li>
-
-
-
-            <?php } else{?>                    
-            <li class="li">
-                <div class="timestamp">
-                        <span class="date">Proses<span>
-                </div>
-                <div class="status">
-                    <h4> Mendaftarkan Skripsi </h4>
-                </div>
-            </li>
-            <li class="li">
-                <div class="timestamp">
-                    <span class="date">Belum<span>
-                </div>
-                <div class="status">
-                    <h4> Seminar Proposal </h4>
-                </div>
-            </li>
-            <li class="li">
-                <div class="timestamp">
-                    <span class="date">Belum<span>
-                </div>
-                <div class="status">
-                    <h4> Bimbingan Skripsi </h4>
-                </div>
-            </li>
-            <li class="li">
-                <div class="timestamp">
-                    <span class="date">Belum<span>
-                </div>
-                <div class="status">
-                    <h4> Sidang Skripsi </h4>
-                </div>
-            </li>
-            <li class="li">
-                <div class="timestamp">
-                    <span class="date">Belum<span>
-                </div>
-                <div class="status">
-                    <h4> Skripsi Lulus </h4>
-                </div>
-            </li>
-            <?php } ?>
-
+            for ($i=0;$i<count($status);$i++){
+                if($skripsi['statusid']>=$status[$i]['id']){
+                    echo "<li class='li complete'>";
+                }else{
+                    echo "<li class='li'>";
+                }
+                echo "<div class='timestamp'>";
+                    if ($skripsi['statusid'] == $status[$i]['id']){
+                        echo "<span class='date'>Proses<span>";
+                    }elseif($skripsi['statusid'] > $status[$i]['id']){
+                        echo "<span class='date'>Selesai<span>";
+                    }else{
+                        echo "<span class='date'>Belum<span>";
+                    }
+                echo "</div>";
+                $ket = $status[$i]['status'];
+                echo "<div class='status'><h4> $ket </h4></div>";
+            }
+        }else{
+            echo "<li class='li'>";
+                echo "<div class='timestamp'>";
+                    echo "<span class='date'>Belum<span>";
+                echo "</div>";
+                echo "<div class='status'><h4> $ket </h4></div>";
+        }
+        ?>
+        </li>
     </ul>
-    <hr>
     <h1 style="text-align: center;" class="h3 mb-4 text-gray-800"><?= $judul; ?></h1>
 
     <!-- <div class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
             <div class="col-md-4 text-center">
-                <img src="<?= base_url('assets/img/profile/') . $profil['gambar']; ?>" class="card-img" alt="gambar"><BR>
+                <img src="<?= base_url('assets/img/profile/') . $data['gambar']; ?>" class="card-img" alt="gambar"><BR>
                 <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#FotoBaru"><i class="fa fa-fw fa-user"></i> Ubah Foto</a>
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title"><?= $profil['nama']; ?></h5>
+                    <h5 class="card-title"><?= $data['nama']; ?></h5>
                     <p class="card-text"><?= $user['username']; ?></p>
                     <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#PassBaru"><i class="fa fa-fw fa-key"></i> Ubah Password</a>
                 </div>
@@ -173,8 +60,8 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="hero-text">
-                                <h2><?= $profil['nama']; ?></h2>
-                                <p><?= $user['username']; ?></p>
+                                <h2><?= $data['nama']; ?></h2>
+                                <p><?= $data['username']; ?></p>
                             </div>
                             <hr>
                             <div class="hero-info">
@@ -189,7 +76,7 @@
                                         <span>Tanggal Lahir</span>
                                     </div>
                                     <div class="col-lg-7">
-                                        <span><?= $profil['tanggal_lahir']; ?></span>
+                                        <span><?= $data['tanggal_lahir']; ?></span>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -202,7 +89,7 @@
                                         <span>Jenis Kelamin</span>
                                     </div>
                                     <div class="col-lg-7">
-                                        <span><?= $profil['Jenis_Kelamin']; ?></span>
+                                        <span><?= $data['jenis_kelamin']; ?></span>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -215,7 +102,7 @@
                                         <span>Alamat</span>
                                     </div>
                                     <div class="col-lg-7">
-                                        <span><?= $profil['Alamat']; ?></span>
+                                        <span><?= $data['alamat']; ?></span>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -228,7 +115,7 @@
                                         <span>Email</span>
                                     </div>
                                     <div class="col-lg-7">
-                                        <span><?= $profil['email']; ?></span>
+                                        <span><?= $data['email']; ?></span>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -241,12 +128,12 @@
                                         <span>No.Hp</span>
                                     </div>
                                     <div class="col-lg-7">
-                                        <span><?= $profil['No_HP']; ?></span>
+                                        <span><?= $data['no_hp']; ?></span>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg">
-                                        <span><a href="<?= base_url('Mahasiswa/updateProfile/') . $profil['username']; ?>"> >Klik untuk ubah profil</a></span>
+                                        <span><a href="<?= base_url('Mahasiswa/updateProfile/') . $data['username']; ?>"> >Klik untuk ubah profil</a></span>
                                     </div>
                                 </div>
 
@@ -254,7 +141,7 @@
                         </div>
                         <div class="col-lg-6 text-md-center">
                             <figure class="hero-image">
-                                <img class="img-fluid w-50" src="<?= base_url('assets/img/profile/') . $profil['gambar']; ?>" alt="5">
+                                <img class="img-fluid w-50" src="<?= base_url('assets/img/profile/') . $data['gambar']; ?>" alt="5">
                             </figure>
                             <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#FotoBaru"><i class="fa fa-fw fa-user"></i> Ubah Foto</a>
                             <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#PassBaru"><i class="fa fa-fw fa-key"></i> Ubah Password</a>
