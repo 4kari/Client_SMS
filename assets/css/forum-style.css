@@ -5,13 +5,6 @@
     box-sizing: border-box;
 }
 
-html{
-    font-size: 14px;
-    font-family: 'Titillium Web', sans-serif;
-    background-color:rgb(0,0,0);
-    color:#FEFEFE;
-}
-
 a{
     color:#FF0042;
     font-weight: bolder;
@@ -123,7 +116,7 @@ h1{
     }
 
   }
-/*   Header Section    */
+  Header Section   
 
 header{
     margin-inline: 10px;
@@ -154,6 +147,7 @@ header{
     overflow: hidden;
 }
 
+/* 
 .nav-item a{
     float: right;
     display:block;
@@ -163,7 +157,7 @@ header{
     padding: 10px;
     color:#fff;
 }
-
+*/
 .nav-item a:hover{
     background-color: rgb(0,0,0,0.1);
 }
@@ -219,7 +213,7 @@ header{
     }
 }
 
-  /* Search Box styles */
+/* Search Box styles */
 .search-box{
     border: solid 1px #52057b;
     margin-top: 20px;
@@ -404,9 +398,10 @@ footer{
 
 .content{
     flex: 80%;
+    padding-left: 10px;
 }
 
-.body{
+.body-forum{
     display: flex;
     background-color: #ffffff;
     padding: 10px;

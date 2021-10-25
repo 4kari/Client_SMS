@@ -30,7 +30,7 @@
                               echo "<td>$sk[judul]</td>";
                             }
                             
-                            echo "<td>$sk[topik]</td>";
+                            echo "<td>$sk[ktopik]</td>";
 
                             if($sk['judul']==null){
                               echo "<td>belum ada</td>";
@@ -115,7 +115,7 @@
                                       if($sk['status']==null){
                                         echo "<td>belum ada</td>";
                                       }else{
-                                        echo "<td>$sk[status]</td>";
+                                        echo "<td>$sk[kstatus]</td>";
                                       }
                                     echo "</tr>";
 

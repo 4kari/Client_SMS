@@ -77,7 +77,7 @@ class Mahasiswa extends CI_Controller
 		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
 		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
 		if($data['skripsi']){
-			if ($data['skripsi']['statusid']>=1){
+			if ($data['skripsi']['status']>=1){
 				$data['posting'] = $this->mhsM->getBimbingan($data['skripsi']['id']);
 				if($data['posting']){
 					$data['komentar'] = $this->mhsM->getkomentar($data['posting']['id']);

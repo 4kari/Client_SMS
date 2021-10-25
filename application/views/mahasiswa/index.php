@@ -8,15 +8,15 @@
     <ul class="timeline" id="timeline">
         <?php if($skripsi){
             for ($i=0;$i<count($status);$i++){
-                if($skripsi['statusid']>=$status[$i]['id']){
+                if($skripsi['status']>=$status[$i]['id']){
                     echo "<li class='li complete'>";
                 }else{
                     echo "<li class='li'>";
                 }
                 echo "<div class='timestamp'>";
-                    if ($skripsi['statusid'] == $status[$i]['id']){
+                    if ($skripsi['status'] == $status[$i]['id']){
                         echo "<span class='date'>Proses<span>";
-                    }elseif($skripsi['statusid'] > $status[$i]['id']){
+                    }elseif($skripsi['status'] > $status[$i]['id']){
                         echo "<span class='date'>Selesai<span>";
                     }else{
                         echo "<span class='date'>Belum<span>";
