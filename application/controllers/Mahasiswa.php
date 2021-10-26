@@ -89,7 +89,7 @@ class Mahasiswa extends CI_Controller
 		$this->load->view('mahasiswa/template/gila');
 		$this->load->view('mahasiswa/template/sidebar');
 		$this->load->view('template/topbar');
-		$this->load->view('mahasiswa/bimbingan2');
+		$this->load->view('mahasiswa/bimbingan');
 		$this->load->view('template/footer');
 	}
 }

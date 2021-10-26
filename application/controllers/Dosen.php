@@ -27,6 +27,50 @@ class Dosen extends CI_Controller
 		$this->load->view('dosen/index');
 		$this->load->view('template/footer');
 	}
+	public function posting(){
+		$data['judul'] = 'Bimbingan Dosen';
+		$data['aktor']="Mahasiswa";
+		$data['user'] = $this->session->userdata['nama'];
+		$data['skripsi'] = $this->dosenM->getSkripsiB($this->session->userdata['username']);
+		if($data['skripsi']){$data['posting'] = $this->dosenM->getPosting($data['skripsi']);}
+
+		// $data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
+		// $data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
+		// if($data['skripsi']){
+		// 	if ($data['skripsi']['status']>=1){
+		// 		$data['posting'] = $this->mhsM->getBimbingan($data['skripsi']['id']);
+		// 	}
+		// }
+		
+		$this->load->view('template/header',$data);
+		$this->load->view('dosen/template/gila');
+		$this->load->view('dosen/template/sidebar');
+		$this->load->view('template/topbar');
+		$this->load->view('dosen/bimbingan');
+		$this->load->view('template/footer');
+	}
+	public function bimbingan($id_post){
+		$data['judul'] = 'Bimbingan Dosen';
+		$data['aktor']="Mahasiswa";
+		$data['user'] = $this->session->userdata['nama'];
+		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
+		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
+		if($data['skripsi']){
+			if ($data['skripsi']['status']>=1){
+				$data['posting'] = $this->mhsM->getBimbingan($data['skripsi']['id']);
+				if($data['posting']){
+					$data['komentar'] = $this->mhsM->getkomentar($data['posting']['id']);
+				}
+			}
+		}
+		
+		$this->load->view('template/header',$data);
+		$this->load->view('mahasiswa/template/gila');
+		$this->load->view('mahasiswa/template/sidebar');
+		$this->load->view('template/topbar');
+		$this->load->view('mahasiswa/bimbingan');
+		$this->load->view('template/footer');
+	}
 	public function dosen(){
 		$data['judul'] = 'Data Dosen';
 		$data['user'] = $this->session->userdata('username');
