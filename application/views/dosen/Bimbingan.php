@@ -3,201 +3,53 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800"><?=$judul;?></h1>
-          <p class="mb-4">halaman ini digunakan umtuk melakukan proses bimbingan skripsi</p>
+          <p class="mb-4">halaman ini digunakan untuk memudahkan pengelolaan data mahasiswa</p>
           <!-- DataTales Example -->
-          <div class="card shadow mb-4 h-75">
+          <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Bimbingan Skripsi</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Kelola <?=$judul;?>
+                <span class="float-right text-white mr-4">
+                  <a href="" data-toggle="modal" data-target="#TambahMhs" class="btn btn-success btn-sm"><i class="fa fa-fw fa-plus"></i>tambah</a>
+                  <a href="" data-toggle="modal" data-target="#ImportMhs" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-plus"></i>import</a>
+                </span>
+              </h6>
             </div>
             <div class="card-body">
-              <div class="row mb-5">
-                <div class="col-lg">
-                  <!--Display posts table-->
-                  <div class="posts-table">
-                      <div class="table-head">
-                          <div class="status">Status</div>
-                          <div class="subjects">Subjects</div>
-                          <div class="replies">Replies/Views</div>
-                          <div class="last-reply">Last Reply</div>
-                      </div>
-                      <div class="table-row">
-                          <div class="status"><i class="fa fa-fire"></i></div>
-                          <div class="subjects">
-                              <a href="">Is learning Python on 2021 worth it?</a>
-                              <br>
-                              <span>Started by <b><a href="">User</a></b> .</span>
-                          </div>
-                          <div class="replies">
-                              2 replies <br> 125 views
-                          </div>
-
-                          <div class="last-reply">
-                              Oct 12 2021
-                              <br>By <b><a href="">User</a></b>
-                          </div>
-                      </div>
-                      <!--starts here-->
-                      <div class="table-row">
-                          <div class="status"><i class="fa fa-fire"></i></div>
-                          <div class="subjects">
-                              <a href="">Is learning Python on 2021 worth it?</a>
-                              <br>
-                              <span>Started by <b><a href="">User</a></b> .</span>
-                          </div>
-                          <div class="replies">
-                              2 replies <br> 125 views
-                          </div>
-
-                          <div class="last-reply">
-                              Oct 12 2021
-                              <br>By <b><a href="">User</a></b>
-                          </div>
-                      </div>
-
-                      <div class="table-row">
-                          <div class="status"><i class="fa fa-fire"></i></div>
-                          <div class="subjects">
-                              <a href="">Is learning Python on 2021 worth it?</a>
-                              <br>
-                              <span>Started by <b><a href="">User</a></b> .</span>
-                          </div>
-                          <div class="replies">
-                              2 replies <br> 125 views
-                          </div>
-
-                          <div class="last-reply">
-                              Oct 12 2021
-                              <br>By <b><a href="">User</a></b>
-                          </div>
-                      </div>
-
-                      <div class="table-row">
-                          <div class="status"><i class="fa fa-book"></i></div>
-                          <div class="subjects">
-                              <a href="">Is learning Python on 2021 worth it?</a>
-                              <br>
-                              <span>Started by <b><a href="">User</a></b> .</span>
-                          </div>
-                          <div class="replies">
-                              2 replies <br> 125 views
-                          </div>
-
-                          <div class="last-reply">
-                              Oct 12 2021
-                              <br>By <b><a href="">User</a></b>
-                          </div>
-                      </div>
-
-                      <div class="table-row">
-                          <div class="status"><i class="fa fa-rocket"></i></div>
-                          <div class="subjects">
-                              <a href="">Is learning Python on 2021 worth it?</a>
-                              <br>
-                              <span>Started by <b><a href="">User</a></b> .</span>
-                          </div>
-                          <div class="replies">
-                              2 replies <br> 125 views
-                          </div>
-
-                          <div class="last-reply">
-                              Oct 12 2021
-                              <br>By <b><a href="">User</a></b>
-                          </div>
-                      </div>
-
-                      <div class="table-row">
-                          <div class="status"><i class="fa fa-frown-o"></i></div>
-                          <div class="subjects">
-                              <a href="">Is learning Python on 2021 worth it?</a>
-                              <br>
-                              <span>Started by <b><a href="">User</a></b> .</span>
-                          </div>
-                          <div class="replies">
-                              2 replies <br> 125 views
-                          </div>
-
-                          <div class="last-reply">
-                              Oct 12 2021
-                              <br>By <b><a href="">User</a></b>
-                          </div>
-                      </div>
-
-
-                      <div class="table-row">
-                          <div class="status"><i class="fa fa-fire"></i></div>
-                          <div class="subjects">
-                              <a href="">Is learning Python on 2021 worth it?</a>
-                              <br>
-                              <span>Started by <b><a href="">User</a></b> .</span>
-                          </div>
-                          <div class="replies">
-                              2 replies <br> 125 views
-                          </div>
-
-                          <div class="last-reply">
-                              Oct 12 2021
-                              <br>By <b><a href="">User</a></b>
-                          </div>
-                      </div>
-
-                      <div class="table-row">
-                          <div class="status"><i class="fa fa-fire"></i></div>
-                          <div class="subjects">
-                              <a href="">Is learning Python on 2021 worth it?</a>
-                              <br>
-                              <span>Started by <b><a href="">User</a></b> .</span>
-                          </div>
-                          <div class="replies">
-                              2 replies <br> 125 views
-                          </div>
-
-                          <div class="last-reply">
-                              Oct 12 2021
-                              <br>By <b><a href="">User</a></b>
-                          </div>
-                      </div>
-
-                      <div class="table-row">
-                          <div class="status"><i class="fa fa-lock"></i></div>
-                          <div class="subjects">
-                              <a href="">Is learning Python on 2021 worth it?</a>
-                              <br>
-                              <span>Started by <b><a href="">User</a></b> .</span>
-                          </div>
-                          <div class="replies">
-                              2 replies <br> 125 views
-                          </div>
-
-                          <div class="last-reply">
-                              Oct 12 2021
-                              <br>By <b><a href="">User</a></b>
-                          </div>
-                      </div>
-
-                      <div class="table-row">
-                          <div class="status"><i class="fa fa-fire"></i></div>
-                          <div class="subjects">
-                              <a href="">Is learning Python on 2021 worth it?</a>
-                              <br>
-                              <span>Started by <b><a href="">User</a></b> .</span>
-                          </div>
-                          <div class="replies">
-                              2 replies <br> 125 views
-                          </div>
-
-                          <div class="last-reply">
-                              Oct 12 2021
-                              <br>By <b><a href="">User</a></b>
-                          </div>
-                      </div>
-                      <!--ends here-->
-                  </div>
-                  <!--Pagination starts-->
-                      <div class="pagination">
-                          pages: <a href="">1</a><a href="">2</a><a href="">3</a>
-                      </div>
-                  <!--pagination ends-->
-                </div>
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Nim</th>
+                      <th>Judul</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>No</th>
+                      <th>Nim</th>
+                      <th>Judul</th>
+                      <th>Action</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <?php foreach ($posting as $p) : ?>
+                      <tr>
+						<td>none</td>
+                        <td><?= $p['id_skripsi']; ?></td>
+						<?php if($p['data_skripsi']['judul']){
+							echo "<td>".$skripsi['judul']."</td>";
+						}else{
+							echo "<td>belum ada</td>";
+						}
+						?> 
+                        <!-- <td><a href="<?= base_url(); ?>admin/hapusMhs/<?= $mhs['nim']; ?>" data-nama="<?=$mhs['nim'];?>" class="btn btn-danger btn-sm deleteU"><i class="fa fa-fw fa-trash"></i> hapus</a> -->
+                        </td>
+                      </tr>
+                    <?php endforeach;?>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -207,3 +59,65 @@
 
       </div>
       <!-- End of Main Content -->
+
+<!-- modal tambah -->
+<div class="modal fade" id="TambahMhs" tabindex="-1" role="dialog" aria-labelledby="MahasiswaLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="MahasiswaLabel">Tambah Mahasiswa</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<form action="<?= base_url('Admin/tambahmahasiswa'); ?>" method="POST" class="needs-validation" novalidate>
+				<div class="modal-body">
+					<div class="form-group">
+						<input type="text" class="form-control" name="nim" id="nim" placeholder="NIM Mahasiswa" required>
+						<div class="invalid-feedback">
+							Masukan NIM Mahasiswa
+						</div>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control validate" name="nama" id="nama" placeholder="Nama Mahasiswa" required>
+						<div class="invalid-feedback">
+							Masukan Nama Mahasiswa
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Tambah</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<!-- modal import -->
+<div class="modal fade" id="ImportMhs" tabindex="-1" role="dialog" aria-labelledby="MahasiswaLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="MahasiswaLabel">Tambah Mahasiswa</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<form action="<?= base_url('Admin/importMahasiswa'); ?>" method="POST" class="needs-validation" novalidate>
+				<div class="modal-body">
+					<div class="form-group">
+						<input type="file" class="form-control" name="file" id="file" required>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Tambahkan</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

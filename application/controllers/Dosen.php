@@ -31,8 +31,7 @@ class Dosen extends CI_Controller
 		$data['judul'] = 'Bimbingan Dosen';
 		$data['aktor']="Mahasiswa";
 		$data['user'] = $this->session->userdata['nama'];
-		$data['skripsi'] = $this->dosenM->getSkripsiB($this->session->userdata['username']);
-		if($data['skripsi']){$data['posting'] = $this->dosenM->getPosting($data['skripsi']);}
+		$data['posting'] = $this->dosenM->getPosting($this->session->userdata['username']);
 
 		// $data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
 		// $data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
@@ -41,9 +40,8 @@ class Dosen extends CI_Controller
 		// 		$data['posting'] = $this->mhsM->getBimbingan($data['skripsi']['id']);
 		// 	}
 		// }
-		
 		$this->load->view('template/header',$data);
-		$this->load->view('dosen/template/gila');
+		// $this->load->view('dosen/template/gila');
 		$this->load->view('dosen/template/sidebar');
 		$this->load->view('template/topbar');
 		$this->load->view('dosen/bimbingan');
