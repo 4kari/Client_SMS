@@ -23,7 +23,7 @@
 
       <!-- Nav Item - Charts -->
       <li class="nav-item <?php if($judul=='Data Skripsi'){echo 'active';}?>">
-        <a class="nav-link" href="<?= base_url('dosen/Data Skripsi'); ?>">
+        <a class="nav-link" href="<?= base_url('dosen/data_skripsi'); ?>">
           <i class="fas fa-fw fa-edit"></i>
           <span>Data Skripsi</span></a>
       </li>
