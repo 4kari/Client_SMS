@@ -35,21 +35,21 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item <?php if($judul=='Bimbingan'){echo 'active';}?>">
-      <a class="nav-link" href="<?= base_url('dosen/posting'); ?>">
+      <a class="nav-link" href="<?= base_url($aktor.'/data_bimbingan'); ?>">
           <i class="fas fa-fw fa-comments"></i>
           <span>Bimbingan</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item <?php if($judul=='Data Mahasiswa'){echo 'active';}?>">
-      <a class="nav-link" href="<?= base_url('mahasiswa/sempro'); ?>">
+      <li class="nav-item <?php if($judul=='Sempro'){echo 'active';}?>">
+      <a class="nav-link" href="<?= base_url($aktor.'/data_sempro'); ?>">
           <i class="fas fa-fw fa-comments"></i>
           <span>Seminar Proposal</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item <?php if($judul=='Data Mahasiswa'){echo 'active';}?>">
-      <a class="nav-link" href="<?= base_url('mahasiswa/sidang'); ?>">
+      <li class="nav-item <?php if($judul=='Sidang'){echo 'active';}?>">
+      <a class="nav-link" href="<?= base_url($aktor.'/data_sidang'); ?>">
           <i class="fas fa-fw fa-comments"></i>
           <span>Sidang Skripsi</span></a>
       </li>
