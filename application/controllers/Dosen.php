@@ -93,7 +93,7 @@ class Dosen extends CI_Controller
 		$this->load->view('dosen/template/gila');
 		$this->load->view('dosen/template/sidebar');
 		$this->load->view('template/topbar');
-		$this->load->view('dosen/bimbingan');
+		$this->load->view('dosen/detail_bimbingan');
 		$this->load->view('template/footer');
 	}
 	public function detail_sempro($id_post){
