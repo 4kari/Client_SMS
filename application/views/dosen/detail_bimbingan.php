@@ -53,12 +53,11 @@
                     </div>
 
                     <!--Comment Area-->
-                    <div class="comment-area hide" id="comment-area">
-                      <form action="<?= base_url('Mahasiswa/komentar/')?>" class="form-control">
-
-                        <textarea name="comment" id="" placeholder="comment here ... "></textarea>
-                        <input type="checkbox" id="catatan" name="catatan" value="1">
-                        <!-- <label for="catatan" class="d-flex flex-row-reverse">Catatan &nbsp; </label> untuk dosen -->
+                    <div class="comment-area hide" id="comment-area" >
+                      <form action="<?= base_url($aktor)?>/komentar/" class="form-control" method="post">
+                        <input name="id" type="hidden" value="<?=$posting['id']?>"></input>
+                        <input name="page" type="hidden" value="<?=$aktor?>/detail_bimbingan/<?=$posting['id']?>"></input>
+                        <textarea name="komentar" id="" placeholder="comment here ... "></textarea>
                         <input type="submit" value="submit">
                       </form>
                     </div>
@@ -87,19 +86,10 @@
                             </div>
                         </div>
                     </div>
-                    <!--Reply Area-->
-                    <div class="comment-area hide" id="reply-area">
-                      <form action="<?= base_url('Mahasiswa/reply/')?>">
-                        <textarea name="komentar" id="" placeholder="reply here ... "></textarea>
-
-
-
-                        <input type="submit" value="submit">
-                      </form>
-                    </div>
                     <?php endforeach;
                     } //penutup komentar
                   } //penutup adanya postingan ?>
+
                 </div>
               </div>
             </div>
