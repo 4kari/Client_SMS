@@ -88,6 +88,7 @@ class Dosen extends CI_Controller
 		if($data['posting']){
 			$data['komentar'] = $this->dosenM->getKomentar($data['posting']['id']);
 		}
+		var_dump($data['komentar']);
 		$this->load->view('template/header',$data);
 		$this->load->view('dosen/template/gila');
 		$this->load->view('dosen/template/sidebar');
@@ -128,10 +129,8 @@ class Dosen extends CI_Controller
 		$this->load->view('template/footer');
 	}
 	public function komentar(){
-		$id=$this->input->post('id');
-		$komentar = $this->input->post('komentar');
+		$this->dosenM->addKomentar();
 		$page = $this->input->post('page');
-		
 		redirect($page);
 	}
 }

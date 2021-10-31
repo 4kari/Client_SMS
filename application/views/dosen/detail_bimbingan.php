@@ -57,18 +57,18 @@
                       <form action="<?= base_url($aktor)?>/komentar/" class="form-control" method="post">
                         <input name="id" type="hidden" value="<?=$posting['id']?>"></input>
                         <input name="page" type="hidden" value="<?=$aktor?>/detail_bimbingan/<?=$posting['id']?>"></input>
-                        <textarea name="komentar" id="" placeholder="comment here ... "></textarea>
+                        <textarea name="pesan" id="" placeholder="comment here ... "></textarea>
                         <input type="submit" value="submit">
                       </form>
                     </div>
                     <?php if ($komentar){ //cek komentar
                       foreach($komentar as $k) : ?>
                     <!--Comments Section-->
-                    <div class="comments-container">
+                    <div class="comments-container pl-4 ml-4">
                         <div class="body">
                             <div class="authors">
-                                <div class="username"><a href="">AnotherUser</a></div>
-                                <div>Role</div>
+                                <div class="username"><a href=""><?=$k['pengirim']?></a></div>
+                                <div>role</div>
                                 <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt="">
                                 <div>Posts: <u>455</u></div>
                                 <div>Points: <u>4586</u></div>
@@ -80,9 +80,6 @@
                                 Nothing more and nothing less.
                                 <br>
                                 <br>
-                                <div class="comment">
-                                    <button onclick="showReply()">Reply</button>
-                                </div>
                             </div>
                         </div>
                     </div>

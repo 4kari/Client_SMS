@@ -36,6 +36,22 @@ class dosen_model extends CI_Model
         }
     }
     public function getKomentar($id){
-        return null;
+        $komentar = json_decode($this->curl->simple_get('http://localhost/microservice/diskusi/api/komentar/',array('id_post'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $komentar = json_decode($this->curl->simple_get('http://10.5.12.56/diskusi/api/komentar/', array('id_post'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
+        if($komentar){
+            return $komentar['data'];
+        }else{
+            return null;
+        }
+    }
+    public function addKomentar(){
+        $data=[
+			'id_post' => $this->input->post('id'),
+			'pesan' => $this->input->post('pesan'),
+            'pengirim' => $this->session->userdata['username'],
+            'waktu' => time()
+		];
+        json_decode($this->curl->simple_post('http://localhost/microservice/diskusi/api/komentar/',$data, array(CURLOPT_BUFFERSIZE => 10)),true);
+        // json_decode($this->curl->simple_post('http://10.5.12.56/diskusi/api/komentar/',$data, array(CURLOPT_BUFFERSIZE => 10)),true);
     }
 }
