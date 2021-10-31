@@ -33,7 +33,6 @@ class Dosen extends CI_Controller
 		$data['user'] = $this->session->userdata['nama'];
 		$data['aktor']="Dosen";
 		$data['posting'] = $this->dosenM->getPosting($this->session->userdata['username']);
-		var_dump($data['posting']);
 		$this->load->view('template/header',$data);
 		$this->load->view('dosen/template/sidebar');
 		$this->load->view('template/topbar');
@@ -105,7 +104,7 @@ class Dosen extends CI_Controller
 		if($data['posting']){
 			$data['komentar'] = $this->dosenM->getKomentar($data['posting']['id']);
 		}
-		
+		var_dump($data['posting']);
 		$this->load->view('template/header',$data);
 		$this->load->view('dosen/template/gila');
 		$this->load->view('dosen/template/sidebar');
