@@ -23,8 +23,8 @@
 
                         <div class="head">
                             <div class="authors">Judul Skripsi</div>
-                            <?php if ($skripsi['judul']){
-                              echo " <div class='content'>Judul Skripsi : ".$skripsi['judul']."</div>";
+                            <?php if ($posting['data_skripsi'][0]['judul']){
+                              echo " <div class='content'>Judul Skripsi : ".$posting['data_skripsi'][0]['judul']."</div>";
                             }else{
                               echo " <div class='content'>Judul Skripsi : Belum ada</div>";
                             }?>
@@ -32,17 +32,17 @@
 
                         <div class="body-forum">
                             <div class="authors">
-                                <div class="username"><a href=""><?=$skripsi['nama'];?></a></div>
-                                <div><?= $skripsi['ktopik']; ?></div>
+                                <div class="username"><a href=""><?=$posting['data_skripsi'][0]['nama'];?></a></div>
+                                <div><?= $posting['data_skripsi'][0]['ktopik']; ?></div>
                                 <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt="foto user">
-                                <div>nim <u><?=$skripsi['nim'];?></u></div>
-                                <div>status: <u><?=$skripsi['kstatus'];?></u></div>
-                                <div>file: <u><?php if($posting['data_skripsi'][0]['berkas']){echo $posting['data_skripsi'][0]['berkas'];}else { echo "belum ada";}?></u></div>
+                                <div>nim <u><?=$posting['data_skripsi'][0]['nim'];?></u></div>
+                                <div>status: <u><?=$posting['data_skripsi'][0]['kstatus'];?></u></div>
+                                <div>file: <u><?=$posting['data_skripsi'][0]['berkas'];?></u></div>
 
                             </div>
                             <div class="content">
                                 Skripsi ini sudah diverivikasi oleh koordinator skripsi
-                                <br>mohon bantuan dan bimbingannya kepada <?=$skripsi['npembimbing_1'];?> dan <?=$skripsi['npembimbing_2'];?>
+                                <br>mohon bantuan dan bimbingannya kepada <?=$posting['data_skripsi'][0]['npembimbing_1'];?> dan <?=$posting['data_skripsi'][0]['npembimbing_2'];?>
                                 <br>demi kelancaran proses skripsi dari awal sampai akhir skripsi ini dinyatakan lulus.
                                 <hr>
                                 Terimakasih atas perhatiannya
@@ -56,14 +56,15 @@
 
                     <!--Comment Area-->
                     <div class="comment-area pb-5 hide" id="comment-area">
-                    <form action="<?= base_url($aktor)?>/komentar/" class="form-control" method="post">
-                        <input name="id" type="hidden" value="<?=$posting['id']?>"></input>
-                        <input name="page" type="hidden" value="<?=$aktor?>/Bimbingan/"></input>
-                        <textarea name="pesan" id="" placeholder="comment here ... "></textarea>
+                      <form action="<?= base_url('Mahasiswa/komentar/')?>" class="form-control">
+
+                        <textarea name="comment" id="" placeholder="comment here ... "></textarea>
+                        <input type="checkbox" id="catatan" name="catatan" value="1">
+                        <!-- <label for="catatan" class="d-flex flex-row-reverse">Catatan &nbsp; </label> untuk dosen -->
                         <input type="submit" value="submit">
                       </form>
                     </div>
-
+                    
                     <?php if ($komentar){ //cek komentar
                       foreach($komentar as $k) : ?>
                     <!--Comments Section-->

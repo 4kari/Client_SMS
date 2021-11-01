@@ -44,14 +44,14 @@
       </li>
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item <?php if($judul=='Data Mahasiswa'){echo 'active';}?>">
+      <li class="nav-item <?php if($judul=='Sempro'){echo 'active';}?>">
       <a class="nav-link" href="<?= base_url('Mahasiswa/sempro'); ?>">
           <i class="fas fa-fw fa-comments"></i>
           <span>Seminar Proposal</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item <?php if($judul=='Data Mahasiswa'){echo 'active';}?>">
+      <li class="nav-item <?php if($judul=='Sidang'){echo 'active';}?>">
       <a class="nav-link" href="<?= base_url('Mahasiswa/sidang'); ?>">
           <i class="fas fa-fw fa-comments"></i>
           <span>Sidang Skripsi</span></a>

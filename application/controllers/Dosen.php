@@ -88,7 +88,7 @@ class Dosen extends CI_Controller
 		if($data['posting']){
 			$data['komentar'] = $this->dosenM->getKomentar($data['posting']['id']);
 		}
-		var_dump($data['komentar']);
+		
 		$this->load->view('template/header',$data);
 		$this->load->view('dosen/template/gila');
 		$this->load->view('dosen/template/sidebar');

@@ -92,4 +92,56 @@ class Mahasiswa extends CI_Controller
 		$this->load->view('mahasiswa/bimbingan');
 		$this->load->view('template/footer');
 	}
+
+	public function sempro(){
+		$data['judul'] = 'Sempro';
+		$data['aktor']="Mahasiswa";
+		$data['user'] = $this->session->userdata['nama'];
+		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
+		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
+		if($data['skripsi']){
+			if ($data['skripsi']['status']>=1){
+				$data['posting'] = $this->mhsM->getBimbingan($data['skripsi']['id']);
+				if($data['posting']){
+					$data['komentar'] = $this->mhsM->getkomentar($data['posting']['id']);
+				}
+			}
+		}
+		
+		$this->load->view('template/header',$data);
+		$this->load->view('mahasiswa/template/gila');
+		$this->load->view('mahasiswa/template/sidebar');
+		$this->load->view('template/topbar');
+		$this->load->view('mahasiswa/sempro');
+		$this->load->view('template/footer');
+	}
+
+	public function sidang(){
+		$data['judul'] = 'Sidang';
+		$data['aktor']="Mahasiswa";
+		$data['user'] = $this->session->userdata['nama'];
+		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
+		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
+		if($data['skripsi']){
+			if ($data['skripsi']['status']>=1){
+				$data['posting'] = $this->mhsM->getBimbingan($data['skripsi']['id']);
+				if($data['posting']){
+					$data['komentar'] = $this->mhsM->getkomentar($data['posting']['id']);
+				}
+			}
+		}
+		
+		$this->load->view('template/header',$data);
+		$this->load->view('mahasiswa/template/gila');
+		$this->load->view('mahasiswa/template/sidebar');
+		$this->load->view('template/topbar');
+		$this->load->view('mahasiswa/sidang');
+		$this->load->view('template/footer');
+	}
+
+	public function komentar(){
+		$this->mhsM->addKomentar();
+		$page = $this->input->post('page');
+		redirect($page);
+	}
 }

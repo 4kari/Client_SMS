@@ -37,6 +37,7 @@
                                 <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt="foto user">
                                 <div>nim <u><?=$posting['data_skripsi'][0]['nim'];?></u></div>
                                 <div>status: <u><?=$posting['data_skripsi'][0]['kstatus'];?></u></div>
+                                <div>file: <u><?=$posting['data_skripsi'][0]['file'];?></u></div>
                             </div>
                             <div class="content">
                                 Skripsi ini sudah diverivikasi oleh koordinator skripsi
@@ -53,7 +54,7 @@
                     </div>
 
                     <!--Comment Area-->
-                    <div class="comment-area hide" id="comment-area" >
+                    <div class="comment-area pb-5 hide" id="comment-area" >
                       <form action="<?= base_url($aktor)?>/komentar/" class="form-control" method="post">
                         <input name="id" type="hidden" value="<?=$posting['id']?>"></input>
                         <input name="page" type="hidden" value="<?=$aktor?>/detail_bimbingan/<?=$posting['id']?>"></input>
@@ -61,25 +62,19 @@
                         <input type="submit" value="submit">
                       </form>
                     </div>
+                    
                     <?php if ($komentar){ //cek komentar
                       foreach($komentar as $k) : ?>
                     <!--Comments Section-->
-                    <div class="comments-container pl-4 ml-4">
+                    <div class="comments-container p-2">
                         <div class="body">
                             <div class="authors">
-                                <div class="username"><a href=""><?=$k['pengirim']?></a></div>
-                                <div>role</div>
+                                <div class="username"><a href=""><?=$k['npengirim']?></a></div>
+                                <div><?= $k['pengirim']?> </div>
                                 <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt="">
-                                <div>Posts: <u>455</u></div>
-                                <div>Points: <u>4586</u></div>
                             </div>
                             <div class="content">
-                                Just a comment of the above random topic.
-                                <br>To see how it looks like.
-                                <br><br>
-                                Nothing more and nothing less.
-                                <br>
-                                <br>
+                                <?= $k['pesan'] ?>
                             </div>
                         </div>
                     </div>
