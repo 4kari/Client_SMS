@@ -144,4 +144,17 @@ class Mahasiswa extends CI_Controller
 		$page = $this->input->post('page');
 		redirect($page);
 	}
+	public function daftar_sempro(){
+		$data['judul'] = 'Daftar Sempro';
+		$data['aktor']="Mahasiswa";
+		$data['user'] = $this->session->userdata('nama');
+		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
+		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
+
+		$this->load->view('template/header',$data);
+		$this->load->view('mahasiswa/template/sidebar');
+		$this->load->view('template/topbar');
+		$this->load->view('mahasiswa/daftar_sempro');
+		$this->load->view('template/footer');
+	}
 }

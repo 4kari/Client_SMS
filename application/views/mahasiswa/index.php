@@ -61,7 +61,7 @@
                         <div class="col-lg-6">
                             <div class="hero-text">
                                 <h2><?= $data['nama']; ?></h2>
-                                <p><?= $data['username']; ?></p>
+                                <p><?= $data['nim']; ?></p>
                             </div>
                             <hr>
                             <div class="hero-info">
