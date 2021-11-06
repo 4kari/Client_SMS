@@ -78,7 +78,7 @@ class Mahasiswa extends CI_Controller
 		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
 		if($data['skripsi']){
 			if ($data['skripsi']['status']>=1){
-				$data['posting'] = $this->mhsM->getBimbingan($data['skripsi']['id']);
+				$data['posting'] = $this->mhsM->getDiskusi($data['skripsi']['id'],0);
 				if($data['posting']){
 					$data['komentar'] = $this->mhsM->getkomentar($data['posting']['id']);
 				}
@@ -101,7 +101,7 @@ class Mahasiswa extends CI_Controller
 		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
 		if($data['skripsi']){
 			if ($data['skripsi']['status']>=1){
-				$data['posting'] = $this->mhsM->getBimbingan($data['skripsi']['id']);
+				$data['posting'] = $this->mhsM->getDiskusi($data['skripsi']['id'],1);
 				if($data['posting']){
 					$data['komentar'] = $this->mhsM->getkomentar($data['posting']['id']);
 				}
@@ -124,7 +124,7 @@ class Mahasiswa extends CI_Controller
 		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
 		if($data['skripsi']){
 			if ($data['skripsi']['status']>=1){
-				$data['posting'] = $this->mhsM->getBimbingan($data['skripsi']['id']);
+				$data['posting'] = $this->mhsM->getDiskusi($data['skripsi']['id'],2);
 				if($data['posting']){
 					$data['komentar'] = $this->mhsM->getkomentar($data['posting']['id']);
 				}

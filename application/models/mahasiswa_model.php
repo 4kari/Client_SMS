@@ -62,11 +62,13 @@ class mahasiswa_model extends CI_Model
             return NULL;
         }
     }
-    public function getBimbingan($id){
+    public function getDiskusi($id,$code){
         $diskusi = json_decode($this->curl->simple_get('http://localhost/microservice/diskusi/api/Posting/',array('id_skripsi'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
         // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.56/diskusi/api/Posting/',array('id_skripsi'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
         if ($diskusi){
-            return($diskusi['data'][0]);
+            if (count($diskusi['data'][0])>$code){
+                return($diskusi['data'][0][$code]);
+            }
         }else{
             return NULL;
         }
