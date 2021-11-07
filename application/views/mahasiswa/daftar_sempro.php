@@ -89,8 +89,9 @@
                           ?>    
                       </div>
                   </div>
-                  <form action="<?= base_url('Mahasiswa/ajukan_topik');?>" method="POST" id="contactForm" data-sb-form-api-token="API_TOKEN" class="text-center">
-                          <input type="hidden" name="id" value="<?= $skripsi['id']; ?>">
+                  <form action="<?= base_url('Mahasiswa/ajukan_topik/');?>" method="POST" class="text-center">
+                    <input type="hidden" name="id" value="<?= $skripsi['id']; ?>">
+                    <input type="hidden" name="tipe" value="2">
                     <button class="btn btn-primary btn-xl" type="submit">Ajukan</button>
                   </form>
                 </div>

@@ -92,4 +92,16 @@ class mahasiswa_model extends CI_Model
         json_decode($this->curl->simple_post('http://localhost/microservice/diskusi/api/komentar/',$data, array(CURLOPT_BUFFERSIZE => 10)),true);
         // json_decode($this->curl->simple_post('http://10.5.12.56/diskusi/api/komentar/',$data, array(CURLOPT_BUFFERSIZE => 10)),true);
     }
+    public function getValidasi($id){
+        $validasi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Validasi/',array('id_skripsi'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $validasi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Validasi/',array('id_skripsi'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
+        if ($validasi){
+            return($validasi['data']);
+        }else{
+            return NULL;
+        }
+    }
+    public function ajukanSempro($id,$tipe){
+
+    }
 }

@@ -150,11 +150,18 @@ class Mahasiswa extends CI_Controller
 		$data['user'] = $this->session->userdata('nama');
 		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
 		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
+		$data['validasi']=$this->mhsM->getValidasi($data['skripsi']['id']);
 
 		$this->load->view('template/header',$data);
 		$this->load->view('mahasiswa/template/sidebar');
 		$this->load->view('template/topbar');
 		$this->load->view('mahasiswa/daftar_sempro');
 		$this->load->view('template/footer');
+	}
+	public function ajukan_sempro(){
+		$id = $this->input->post('id');
+		$tipe=$this->input->post('tipe');
+		$this->mhsM->ajukanSempro($id,$tipe);
+		redirect("Mahasiswa");
 	}
 }
