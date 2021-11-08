@@ -70,6 +70,16 @@ class Mahasiswa extends CI_Controller
 		$this->load->view('template/footer');
 	}
 
+	public function perbaikiBerkas($id){
+		$link = $this->input->post('berkas');
+		$data = [
+			'id'=>$id,
+			'berkas'=>$link
+		];
+		$this->mhsM->updateBerkas($data);
+		redirect("mahasiswa/skripsi/");
+	}
+
 	public function bimbingan(){
 		$data['judul'] = 'Bimbingan Dosen';
 		$data['aktor']="Mahasiswa";

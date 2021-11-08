@@ -39,7 +39,8 @@
                             }
                           ?>
                           <td>
-                            <a href="<?= base_url(); ?>Mahasiswa/detail_skripsi/<?= $sk['id']; ?>" data-toggle="modal" data-target="#detail<?=$sk['id'];?>" class="btn btn-warning btn-sm"><i class="fa fa-fw fa-eye"></i>lihat</a>
+                            <a href="" data-toggle="modal" data-target="#detail<?=$sk['id'];?>" class="btn btn-warning btn-sm"><i class="fa fa-fw fa-eye"></i>lihat</a>
+                            <a href="" data-toggle="modal" data-target="#berkas<?=$sk['id'];?>" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-edit"></i>berkas</a>
                           </td>
                         </tr>
                       <?php endforeach;?>
@@ -135,4 +136,35 @@
                 </div>
             </div>
             <!-- end modal detail -->
+
+            <!-- modal perbaiki berkas -->
+            <div class="modal fade displaycontent" id="berkas<?= $sk['id'] ?>">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">perbaiki berkas skripsi Skripsi</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+
+                        <form action="<?= base_url('Mahasiswa/perbaikiBerkas/') . $sk['id']; ?>" method="POST">
+                          <div class="modal-body">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label for="berkas">Masukkan link berkas terbaru</label>
+                                    <div class="inputWithIcon">
+                                      <input type="text" class="form-control" id="berkas" name="berkas" placeholder="Masukan Link Berkas" autocomplete="off" value = "<?=$sk['berkas']?>">
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-primary">perbarui</button>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- end modal detail -->
     <?php endforeach; ?>
+    
