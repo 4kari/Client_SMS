@@ -151,17 +151,33 @@ class Mahasiswa extends CI_Controller
 		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
 		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
 		$data['validasi']=$this->mhsM->getValidasi($data['skripsi']['id']);
-
+		// $data['jadwal']= req jadwal;
+		
 		$this->load->view('template/header',$data);
 		$this->load->view('mahasiswa/template/sidebar');
 		$this->load->view('template/topbar');
 		$this->load->view('mahasiswa/daftar_sempro');
 		$this->load->view('template/footer');
 	}
-	public function ajukan_sempro(){
+	public function daftar_sidang(){
+		$data['judul'] = 'Daftar Sidang';
+		$data['aktor']="Mahasiswa";
+		$data['user'] = $this->session->userdata('nama');
+		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
+		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
+		$data['validasi']=$this->mhsM->getValidasi($data['skripsi']['id']);
+		// $data['jadwal']= req jadwal;
+
+		$this->load->view('template/header',$data);
+		$this->load->view('mahasiswa/template/sidebar');
+		$this->load->view('template/topbar');
+		$this->load->view('mahasiswa/daftar_sidang');
+		$this->load->view('template/footer');
+	}
+	public function ajukanSidang(){
 		$id = $this->input->post('id');
 		$tipe=$this->input->post('tipe');
-		$this->mhsM->ajukanSempro($id,$tipe);
+		$this->mhsM->ajukanSidang($id,$tipe);
 		redirect("Mahasiswa");
 	}
 }

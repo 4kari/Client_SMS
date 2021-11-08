@@ -70,7 +70,7 @@
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item <?php if($judul=='Mendaftar Sidang'){echo 'active';}?>">
-        <a class="nav-link" href="<?= base_url('Mahasiswa/daftar sidang'); ?>">
+        <a class="nav-link" href="<?= base_url('Mahasiswa/daftar_sidang'); ?>">
           <i class="fas fa-fw fa-edit"></i>
           <span>Sidang Skripsi</span></a>
       </li>

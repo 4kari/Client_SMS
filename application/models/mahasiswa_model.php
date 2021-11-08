@@ -101,7 +101,8 @@ class mahasiswa_model extends CI_Model
             return NULL;
         }
     }
-    public function ajukanSempro($id,$tipe){
-
+    public function ajukanSidang($id,$tipe){
+        $validasi = json_decode($this->curl->simple_post('http://localhost/microservice/skripsi/api/Validasi/',array('id_skripsi'=>$id, 'tipe'=>$tipe), array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $validasi = json_decode($this->curl->simple_post('http://10.5.12.21/skripsi/api/Validasi/',array('id_skripsi'=>$id, 'tipe'=>$tipe), array(CURLOPT_BUFFERSIZE => 10)),true);
     }
 }

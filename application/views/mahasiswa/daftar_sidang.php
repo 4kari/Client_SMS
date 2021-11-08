@@ -3,14 +3,14 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800"><?=$judul;?></h1>
-          <p class="mb-4">halaman ini digunakan untuk mengajukan pendaftaran seminar proposal skripsi</p>
+          <p class="mb-4">halaman ini digunakan untuk mengajukan pendaftaran sidang skripsi</p>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Pengajuan seminar proposal</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Pengajuan Sidang Skripsi</h6>
             </div>
             <div class="card-body">
-              <?php if ($validasi[0]){?>
+              <?php if ($validasi[1]){?>
                 <!-- cek jadwal sempro -->
                 <!-- jika ada tampilkan -->
                 <!-- jika tidak -->
@@ -18,10 +18,10 @@
                 <a>Menunggu persetujuan dosen</a>
               </div>
               <?php }
-              elseif($skripsi['status']==1){?>
+              elseif($skripsi['status']==3){?>
               <section class="hero-section spad">
                 <div class="hero-text text-center">
-                    <h2>Mendaftar Seminar Proposal</h2>
+                    <h2>Mendaftar Sidang Skripsi</h2>
                 </div>
                 <hr>
                 <div class="hero-info">
@@ -107,7 +107,7 @@
               </section>
               <?php }else{?>
                 <div class="alert alert-danger" role="alert">
-                <a>tidak dapat daftar seminar proposal hubungi admin</a>
+                <a>tidak dapat daftar sidang skripsi hubungi admin</a>
               </div>
               <?php }?>
             </div>
