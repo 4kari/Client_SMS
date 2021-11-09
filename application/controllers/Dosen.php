@@ -33,6 +33,7 @@ class Dosen extends CI_Controller
 		$data['user'] = $this->session->userdata['nama'];
 		$data['aktor']="Dosen";
 		$data['posting'] = $this->dosenM->getPosting($this->session->userdata['username']);
+
 		$this->load->view('template/header',$data);
 		$this->load->view('dosen/template/sidebar');
 		$this->load->view('template/topbar');
@@ -133,4 +134,15 @@ class Dosen extends CI_Controller
 		$page = $this->input->post('page');
 		redirect($page);
 	}
+	public function validasi(){
+		
+		$data=[
+			'id'=>$this->input->get('id'),
+			'sebagai'=>$this->input->get('sebagai'),
+			'nip'=>$this->session->userdata['username']
+		];
+		$this->dosenM->validasi($data);
+		redirect('dosen/data_skripsi');
+	}
+
 }
