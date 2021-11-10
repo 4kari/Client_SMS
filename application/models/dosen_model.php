@@ -62,6 +62,5 @@ class dosen_model extends CI_Model
         // put
         json_decode($this->curl->simple_put('http://localhost/microservice/skripsi/api/Validasi/',$validasi[0][0], array(CURLOPT_BUFFERSIZE => 10)),true);
         // json_decode($this->curl->simple_put('http://10.5.12.21/skripsi/api/Validasi/',$validasi[0][0], array(CURLOPT_BUFFERSIZE => 10)),true);
-
     }
 }

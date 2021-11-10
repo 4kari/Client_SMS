@@ -60,7 +60,7 @@
 								<a href="<?= base_url($aktor); ?>/validasi/?id=<?= $p['data_skripsi']['validasi'][0][0]['id']; ?>&sebagai=<?= $p['data_skripsi']['sebagai']?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-check"></i> validasi sempro</a>
 								<?php } ?>
 								<?php if($p['data_skripsi']['validasi'][1] && !$p['data_skripsi']['validasi'][1][0][$p['data_skripsi']['sebagai']]){?>
-								<a href="<?= base_url($aktor); ?>/validasi/?id=<?= $p['data_skripsi']['validasi'][1][0]['id']; ?>&sebagai=<?= $p['data_skripsi']['sebagai']?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-check"></i> validasi sempro</a>
+								<a href="<?= base_url($aktor); ?>/validasi/?id=<?= $p['data_skripsi']['validasi'][1][0]['id']; ?>&sebagai=<?= $p['data_skripsi']['sebagai']?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-check"></i> validasi sidang</a>
 								<?php } ?>
 							</td>
 						</tr>

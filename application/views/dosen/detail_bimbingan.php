@@ -37,7 +37,7 @@
                                 <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt="foto user">
                                 <div>nim <u><?=$posting['data_skripsi'][0]['nim'];?></u></div>
                                 <div>status: <u><?=$posting['data_skripsi'][0]['kstatus'];?></u></div>
-                                <div>file: <u><?=$posting['data_skripsi'][0]['file'];?></u></div>
+                                <div>file: <u><?=$posting['data_skripsi'][0]['berkas'];?></u></div>
                             </div>
                             <div class="content">
                                 Skripsi ini sudah diverivikasi oleh koordinator skripsi
