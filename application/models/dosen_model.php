@@ -58,10 +58,10 @@ class dosen_model extends CI_Model
         $validasi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Validasi/',array('id'=>$data['id']), array(CURLOPT_BUFFERSIZE => 10)),true)['data'];
         // $validasi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Validasi/',array('id'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true)['data'];
         $validasi[0][0][$data['sebagai']]=$data['nip'];
-
+        
         // put
-        json_decode($this->curl->simple_put('http://localhost/microservice/skripsi/api/Validasi/',$validasi, array(CURLOPT_BUFFERSIZE => 10)),true)['data'];
-        // json_decode($this->curl->simple_put('http://10.5.12.21/skripsi/api/Validasi/',$validasi, array(CURLOPT_BUFFERSIZE => 10)),true)['data'];
+        json_decode($this->curl->simple_put('http://localhost/microservice/skripsi/api/Validasi/',$validasi[0][0], array(CURLOPT_BUFFERSIZE => 10)),true);
+        // json_decode($this->curl->simple_put('http://10.5.12.21/skripsi/api/Validasi/',$validasi[0][0], array(CURLOPT_BUFFERSIZE => 10)),true);
 
     }
 }
