@@ -10,15 +10,8 @@
               <h6 class="m-0 font-weight-bold text-primary">Pengajuan seminar proposal</h6>
             </div>
             <div class="card-body">
-              <?php if ($validasi[0]){?>
-                <!-- cek jadwal sempro -->
-                <!-- jika ada tampilkan -->
-                <!-- jika tidak -->
-              <div class="alert alert-danger" role="alert">
-                <a>Menunggu persetujuan dosen</a>
-              </div>
-              <?php }
-              elseif($skripsi['status']==1){?>
+              <?php if (!$validasi){
+                if($skripsi['status']==1){?>
               <section class="hero-section spad">
                 <div class="hero-text text-center">
                     <h2>Mendaftar Seminar Proposal</h2>
@@ -105,9 +98,15 @@
                   </form>
                 </div>
               </section>
-              <?php }else{?>
+              
+              <?php }else{ ?>
                 <div class="alert alert-danger" role="alert">
-                <a>tidak dapat daftar seminar proposal hubungi admin</a>
+                  <a>tidak dapat daftar seminar proposal hubungi admin</a>
+                </div>
+              <?php }
+              }else{?>
+                <div class="alert alert-danger" role="alert">
+                <a>Menunggu persetujuan dosen</a>
               </div>
               <?php }?>
             </div>
