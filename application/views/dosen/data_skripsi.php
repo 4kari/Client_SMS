@@ -44,7 +44,15 @@
 						</tr>
 					</tfoot>
 					<tbody>
-						<?php for($i=0;$i<3;$i++){foreach ($posting[$i] as $p) : if($p['tipe']==1){ ?>
+						<?php foreach ($posting[0] as $p) : if($p['tipe']==1){
+							$id=null;
+							$index=null;
+							for($i=0;$i<count($validasi);$i++){
+								if($validasi[$i]['id_skripsi']==$p['id_skripsi']){
+									$id=$validasi[$i]['id'];
+									$index=$i;
+								}
+							}?>
 						<tr>
 							<td>none</td>
 							<td><?= $p['data_skripsi']['nim']; ?></td>
@@ -56,15 +64,15 @@
 							?> 
 							<td>
 								<a href="<?= base_url($aktor); ?>/detail_bimbingan/<?= $p['id']; ?>" class="btn btn-warning btn-sm"><i class="fa fa-fw fa-eye"></i> Lihat Detail</a>
-								<?php if($p['data_skripsi']['validasi'][0] && !$p['data_skripsi']['validasi'][0][0][$p['data_skripsi']['sebagai']]){?>
-								<a href="<?= base_url($aktor); ?>/validasi/?id=<?= $p['data_skripsi']['validasi'][0][0]['id']; ?>&sebagai=<?= $p['data_skripsi']['sebagai']?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-check"></i> validasi sempro</a>
+								<?php if(!$index!==null && !$validasi[$index][$p['data_skripsi']['sebagai']] && $validasi[$index]['tipe']=="2"){?>
+								<a href="<?= base_url($aktor); ?>/validasi/?id=<?= $id; ?>&sebagai=<?= $p['data_skripsi']['sebagai']?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-check"></i> validasi sempro</a>
 								<?php } ?>
-								<?php if($p['data_skripsi']['validasi'][1] && !$p['data_skripsi']['validasi'][1][0][$p['data_skripsi']['sebagai']]){?>
-								<a href="<?= base_url($aktor); ?>/validasi/?id=<?= $p['data_skripsi']['validasi'][1][0]['id']; ?>&sebagai=<?= $p['data_skripsi']['sebagai']?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-check"></i> validasi sidang</a>
+								<?php if($index!==null && !$validasi[$index][$p['data_skripsi']['sebagai']] && $validasi[$index]['tipe']=="3"){?>
+								<a href="<?= base_url($aktor); ?>/validasi/?id=<?= $id ?>&sebagai=<?= $p['data_skripsi']['sebagai']?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-check"></i> validasi sidang</a>
 								<?php } ?>
 							</td>
 						</tr>
-						<?php } endforeach;}?>
+						<?php } endforeach;?>
 					</tbody>
 					</table>
 				</div>

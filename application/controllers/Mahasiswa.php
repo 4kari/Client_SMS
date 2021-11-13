@@ -161,8 +161,7 @@ class Mahasiswa extends CI_Controller
 		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
 		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
 		$data['validasi']=$this->mhsM->getValidasi($data['skripsi']['id']);
-		// $data['jadwal']= req jadwal;
-		var_dump($data['validasi']);
+		
 		$this->load->view('template/header',$data);
 		$this->load->view('mahasiswa/template/sidebar');
 		$this->load->view('template/topbar');

@@ -26,6 +26,16 @@ class dosen_model extends CI_Model
             return NULL;
         }
     }
+    public function getValidasi(){
+        $validasi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Validasi/', array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $validasi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Validasi/', array(CURLOPT_BUFFERSIZE => 10)),true);
+        if($validasi){
+            return($validasi['data']);
+        }else{
+            return null;
+        }
+        
+    }
     public function getBimbingan($id){
         $posting = json_decode($this->curl->simple_get('http://localhost/microservice/diskusi/api/Posting/',array('id'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
         // $posting[$i] = json_decode($this->curl->simple_get('http://10.5.12.56/diskusi/api/Posting/',array('id'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);

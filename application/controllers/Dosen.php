@@ -33,6 +33,7 @@ class Dosen extends CI_Controller
 		$data['user'] = $this->session->userdata['nama'];
 		$data['aktor']="Dosen";
 		$data['posting'] = $this->dosenM->getPosting($this->session->userdata['username']);
+		$data['validasi'] = $this->dosenM->getValidasi();
 		
 		$this->load->view('template/header',$data);
 		$this->load->view('dosen/template/sidebar');
