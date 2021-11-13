@@ -42,6 +42,23 @@ class Koordinator extends CI_Controller
 		$this->koorM->updateTopik();
 		redirect("Koordinator");
 	}
+	public function kelola_pendaftar(){
+		$data['judul'] = 'Kelola_Pendaftar';
+		$data['user'] = $this->session->userdata('username');
+		$data['aktor']="Koordinator";
+		$data['validasi']= $this->koorM->getvalidasi();
+		$data['jadwal'] = $this->koorM->getJadwal($data['validasi']);
+
+		$this->load->view('template/header',$data);
+		$this->load->view('koordinator/template/sidebar');
+		$this->load->view('template/topbar');
+		$this->load->view('koordinator/kelola_daftar');
+		$this->load->view('template/footer');
+	}
+	public function jadwalakan(){
+
+	}
+ 
 	public function jadwal_skripsi(){
 		$data['judul'] = 'Data Pendaftar Skripsi';
 		$data['user'] = $this->session->userdata('username');

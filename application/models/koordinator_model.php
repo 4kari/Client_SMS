@@ -67,4 +67,23 @@ class koordinator_model extends CI_Model
         // json_decode($this->curl->simple_delete('http://10.5.12.26/skripsi/api/Skripsi/',array("id" => $id),array(CURLOPT_BUFFERSIZE => 10)),true);
         json_decode($this->curl->simple_delete('http://localhost/microservice/skripsi/api/Skripsi/',array("id" => $id),array(CURLOPT_BUFFERSIZE => 10)),true);
     }
+    public function getValidasi(){
+        $validasi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Validasi/', array(CURLOPT_BUFFERSIZE => 10)),true)['data'];
+        // $validasi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Validasi/', array(CURLOPT_BUFFERSIZE => 10)),true)['data'];
+        return $validasi;
+    }
+    public function getJadwal($validasi){
+        $sempro = json_decode($this->curl->simple_get('http://localhost/microservice/penjadwalan/api/Kelola_Jadwal/',array('tipe'=>1), array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $sempro = json_decode($this->curl->simple_get('http://10.5.12.47/penjadwalan/api/Kelola_Jadwal/',array('tipe'=>1), array(CURLOPT_BUFFERSIZE => 10)),true);
+        if($sempro){$sempro=$sempro['data'];}
+        $sidang = json_decode($this->curl->simple_get('http://localhost/microservice/penjadwalan/api/Kelola_Jadwal/',array('tipe'=>2), array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $sidang = json_decode($this->curl->simple_get('http://10.5.12.47/penjadwalan/api/Kelola_Jadwal/',array('tipe'=>2), array(CURLOPT_BUFFERSIZE => 10)),true);
+        if($sidang){$sidang=$sidang['data'];}
+        $data = [$sempro,$sidang];
+        if($validasi){
+            
+        }else{
+            return($data);
+        }
+    }
 }

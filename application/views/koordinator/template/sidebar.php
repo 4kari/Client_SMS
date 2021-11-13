@@ -35,8 +35,8 @@
       </div>
 
       <!-- Nav Item - Tables -->
-      <li class='nav-item <?php if($judul=="Pendaftar"){echo "active";}?>'>
-      <a class="nav-link" href="<?= base_url($aktor.'/pendaftar'); ?>">
+      <li class='nav-item <?php if($judul=="Kelola_Pendaftar"){echo "active";}?>'>
+      <a class="nav-link" href="<?= base_url($aktor.'/kelola_pendaftar'); ?>">
           <i class="fas fa-fw fa-edit"></i>
           <span>Kelola Pendaftar</span></a>
       </li>
