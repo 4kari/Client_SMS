@@ -17,7 +17,7 @@ class koordinator_model extends CI_Model
     }
     public function getTopik()
     {
-        // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Skripsi/'),true);
+        // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Skripsi/',array('status'=>0)),true);
         $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Skripsi/',array('status'=>0)),true);
         if ($skripsi){
             return $skripsi['data'];
@@ -58,20 +58,24 @@ class koordinator_model extends CI_Model
         ];
         // json_decode($this->curl->simple_post('http://10.5.12.56/diskusi/api/posting/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
         json_decode($this->curl->simple_post('http://localhost/microservice/diskusi/api/posting/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
-        
-        
-        // var_dump($data);
-        // die;
     }
     public function deleteTopik($id){
         // json_decode($this->curl->simple_delete('http://10.5.12.26/skripsi/api/Skripsi/',array("id" => $id),array(CURLOPT_BUFFERSIZE => 10)),true);
         json_decode($this->curl->simple_delete('http://localhost/microservice/skripsi/api/Skripsi/',array("id" => $id),array(CURLOPT_BUFFERSIZE => 10)),true);
     }
-    public function getValidasi(){
-        $validasi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Validasi/', array(CURLOPT_BUFFERSIZE => 10)),true)['data'];
-        // $validasi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Validasi/', array(CURLOPT_BUFFERSIZE => 10)),true)['data'];
-        return $validasi;
+    
+    public function getPendaftar(){
+        $validasi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Kelola_Pendaftar/', array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $validasi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Kelola_Pendaftar  /', array(CURLOPT_BUFFERSIZE => 10)),true);
+        if($validasi){
+            return $validasi['data'];
+        }else{
+            return $validasi;
+        }
     }
+
+
+    //belum digunakan
     public function getJadwal($validasi){
         $sempro = json_decode($this->curl->simple_get('http://localhost/microservice/penjadwalan/api/Kelola_Jadwal/',array('tipe'=>1), array(CURLOPT_BUFFERSIZE => 10)),true);
         // $sempro = json_decode($this->curl->simple_get('http://10.5.12.47/penjadwalan/api/Kelola_Jadwal/',array('tipe'=>1), array(CURLOPT_BUFFERSIZE => 10)),true);

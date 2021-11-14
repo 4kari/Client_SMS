@@ -16,7 +16,7 @@
             </div>
             <div class="card-body">
 				<h2>Seminar Proposal</h2>
-				<?php if ($validasi[0]) { ?>
+				<?php if ($pendaftar) { ?>
 					<div class="table-responsive">
 					<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 					<thead>
@@ -36,8 +36,8 @@
 						</tr>
 					</tfoot>
 					<tbody>
-						<?php foreach ($validasi[0] as $p){ ?>
-						<?php if ($p['pembimbing_1'] && $p['pembimbing_2']) {?> 
+						<?php foreach ($pendaftar as $p){ ?>
+						<?php if ($p['tipe']==2) {?> 
 						<tr>
 							<td>none</td>
 							<td><?= $p['data_skripsi']['nim']; ?></td>
@@ -67,7 +67,7 @@
 				<?php } ?>
 				<br>
 				<h2>Sidang Skripsi</h2>
-				<?php if ($validasi[1]) { ?>
+				<?php if ($pendaftar) { ?>
 					<div class="table-responsive">
 					<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 					<thead>
@@ -87,8 +87,8 @@
 						</tr>
 					</tfoot>
 					<tbody>
-						<?php foreach ($validasi[1] as $p){ ?>
-						<?php if ($p['pembimbing_1'] || $p['pembimbing_2']) {?> 
+						<?php foreach ($pendaftar as $p){ ?>
+						<?php if ($p['tipe']==3) {?> 
 						<tr>
 							<td>none</td>
 							<td><?= $p['data_skripsi']['nim']; ?></td>

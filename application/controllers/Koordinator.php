@@ -46,8 +46,8 @@ class Koordinator extends CI_Controller
 		$data['judul'] = 'Kelola_Pendaftar';
 		$data['user'] = $this->session->userdata('username');
 		$data['aktor']="Koordinator";
-		$data['validasi']= $this->koorM->getvalidasi();
-		$data['jadwal'] = $this->koorM->getJadwal($data['validasi']);
+		$data['pendaftar']= $this->koorM->getPendaftar();
+
 
 		$this->load->view('template/header',$data);
 		$this->load->view('koordinator/template/sidebar');
