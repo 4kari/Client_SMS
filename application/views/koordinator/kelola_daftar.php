@@ -16,7 +16,7 @@
             </div>
             <div class="card-body">
 				<h2>Seminar Proposal</h2>
-				<?php if ($pendaftar) { ?>
+				<?php if ($sempro) { ?>
 					<div class="table-responsive">
 					<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 					<thead>
@@ -36,19 +36,19 @@
 						</tr>
 					</tfoot>
 					<tbody>
-						<?php foreach ($pendaftar as $p){ ?>
-						<?php if ($p['tipe']==2) {?> 
+						<?php foreach ($sempro as $s){ ?>
+						<?php if ($s['tipe']==2) {?> 
 						<tr>
 							<td>none</td>
-							<td><?= $p['data_skripsi']['nim']; ?></td>
-							<?php if($p['data_skripsi']['judul']){
-								echo "<td>".$p['data_skripsi']['judul']."</td>";
+							<td><?= $s['data_skripsi']['nim']; ?></td>
+							<?php if($s['data_skripsi']['judul']){
+								echo "<td>".$s['data_skripsi']['judul']."</td>";
 							}else{
 								echo "<td>belum ada</td>";
 							}
 							?> 
 							<td>
-								<a href="<?= base_url($aktor); ?>/validasi/<?= $p['id']; ?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-check"></i>jadwalkan</a>
+								<a href="<?= base_url($aktor); ?>/Jadwalkan/?id=<?= $s['id_skripsi']; ?>&tipe=<?=$s['tipe']?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-check"></i>jadwalkan</a>
 							</td>
 						</tr>
 
@@ -67,7 +67,7 @@
 				<?php } ?>
 				<br>
 				<h2>Sidang Skripsi</h2>
-				<?php if ($pendaftar) { ?>
+				<?php if ($sidang) { ?>
 					<div class="table-responsive">
 					<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 					<thead>
@@ -87,19 +87,19 @@
 						</tr>
 					</tfoot>
 					<tbody>
-						<?php foreach ($pendaftar as $p){ ?>
-						<?php if ($p['tipe']==3) {?> 
+						<?php foreach ($sidang as $s){ ?>
+						<?php if ($s['tipe']==3) {?> 
 						<tr>
 							<td>none</td>
-							<td><?= $p['data_skripsi']['nim']; ?></td>
-							<?php if($p['data_skripsi']['judul']){
-								echo "<td>".$p['data_skripsi']['judul']."</td>";
+							<td><?= $s['data_skripsi']['nim']; ?></td>
+							<?php if($s['data_skripsi']['judul']){
+								echo "<td>".$s['data_skripsi']['judul']."</td>";
 							}else{
 								echo "<td>belum ada</td>";
 							}
 							?> 
 							<td>
-								<a href="<?= base_url($aktor); ?>/validasi/<?= $p['id']; ?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-check"></i>jadwalkan</a>
+								<a href="<?= base_url($aktor); ?>/Jadwalkan/?id=<?= $s['id_skripsi']; ?>&tipe=<?=$s['tipe']?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-check"></i>jadwalkan</a>
 							</td>
 						</tr>
 

@@ -46,7 +46,9 @@ class Koordinator extends CI_Controller
 		$data['judul'] = 'Kelola_Pendaftar';
 		$data['user'] = $this->session->userdata('username');
 		$data['aktor']="Koordinator";
-		$data['pendaftar']= $this->koorM->getPendaftar();
+		$pendaftar= $this->koorM->getPendaftar();
+		$data['sempro']=$this->koorM->Splitter($pendaftar,2);
+		$data['sidang']=$this->koorM->Splitter($pendaftar,3);
 
 
 		$this->load->view('template/header',$data);
@@ -55,8 +57,11 @@ class Koordinator extends CI_Controller
 		$this->load->view('koordinator/kelola_daftar');
 		$this->load->view('template/footer');
 	}
-	public function jadwalakan(){
-
+	public function jadwalkan(){
+		$id_skripsi=$this->input->get('id');
+		$tipe=$this->input->get('tipe');
+		$this->koorM->TambahJadwal($id_skripsi,$tipe);
+		redirect('Koordinator/kelola_pendaftar');
 	}
  
 	public function jadwal_skripsi(){

@@ -63,7 +63,7 @@ class koordinator_model extends CI_Model
         // json_decode($this->curl->simple_delete('http://10.5.12.26/skripsi/api/Skripsi/',array("id" => $id),array(CURLOPT_BUFFERSIZE => 10)),true);
         json_decode($this->curl->simple_delete('http://localhost/microservice/skripsi/api/Skripsi/',array("id" => $id),array(CURLOPT_BUFFERSIZE => 10)),true);
     }
-    
+
     public function getPendaftar(){
         $validasi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Kelola_Pendaftar/', array(CURLOPT_BUFFERSIZE => 10)),true);
         // $validasi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Kelola_Pendaftar  /', array(CURLOPT_BUFFERSIZE => 10)),true);
@@ -73,10 +73,29 @@ class koordinator_model extends CI_Model
             return $validasi;
         }
     }
+    public function Splitter($pendaftar,$tipe){
+        $data=[];
+        if($pendaftar){
+            foreach($pendaftar as $p){
+                if($p['tipe']==$tipe){
+                    array_push($data,$p);
+                }
+            }
+        }
+        return $data;
+    }
 
+    public function TambahJadwal($id,$tipe){
+        $data=[
+            'id_skripsi'=>$id,
+            'tipe'=>$tipe
+        ];
+        // json_decode($this->curl->simple_post('http://10.5.12.47/penjadwalan/api/Kelola_Jadwal/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+        json_decode($this->curl->simple_post('http://localhost/microservice/penjadwalan/api/Kelola_Jadwal/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+    }
 
     //belum digunakan
-    public function getJadwal($validasi){
+    public function getJadwal(){
         $sempro = json_decode($this->curl->simple_get('http://localhost/microservice/penjadwalan/api/Kelola_Jadwal/',array('tipe'=>1), array(CURLOPT_BUFFERSIZE => 10)),true);
         // $sempro = json_decode($this->curl->simple_get('http://10.5.12.47/penjadwalan/api/Kelola_Jadwal/',array('tipe'=>1), array(CURLOPT_BUFFERSIZE => 10)),true);
         if($sempro){$sempro=$sempro['data'];}
@@ -84,10 +103,7 @@ class koordinator_model extends CI_Model
         // $sidang = json_decode($this->curl->simple_get('http://10.5.12.47/penjadwalan/api/Kelola_Jadwal/',array('tipe'=>2), array(CURLOPT_BUFFERSIZE => 10)),true);
         if($sidang){$sidang=$sidang['data'];}
         $data = [$sempro,$sidang];
-        if($validasi){
-            
-        }else{
-            return($data);
-        }
+        return($data);
+        
     }
 }
