@@ -22,6 +22,7 @@
 
   <!-- Custom styles for this page -->
   <link href="<?= base_url('assets/'); ?>css/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link href="<?= base_url('assets/'); ?>css/bootstrap/bootstrap.min.css" rel="stylesheet">
   <link href="<?= base_url('assets/'); ?>css/timeline.css" rel="stylesheet">
 
 

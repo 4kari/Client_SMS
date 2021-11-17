@@ -64,46 +64,32 @@ class Koordinator extends CI_Controller
 		redirect('Koordinator/kelola_pendaftar');
 	}
  
-	public function jadwal_skripsi(){
+	public function jadwal_sempro(){
 		$data['judul'] = 'Data Pendaftar Skripsi';
 		$data['user'] = $this->session->userdata('username');
 		$data['aktor']="Koordinator";
 		$data['sempro']= $this->koorM->getJSempro();
+		$data['dosen']= $this->koorM->getDosen();
+		$data['ruangan']= $this->koorM->getRuangan();
+		$data['periode']= $this->koorM->getPeriode();
+		$data['waktu']= $this->koorM->getWaktu();
+		
+		$this->load->view('template/header',$data);
+		$this->load->view('koordinator/template/sidebar');
+		$this->load->view('template/topbar');
+		$this->load->view('koordinator/jadwal_sempro');
+		$this->load->view('template/footer');
+	}
+	public function jadwal_sidang(){
+		$data['judul'] = 'Data Pendaftar Skripsi';
+		$data['user'] = $this->session->userdata('username');
+		$data['aktor']="Koordinator";
 		$data['sidang'] = $this->koorM->getJSidang();
 
 		$this->load->view('template/header',$data);
 		$this->load->view('koordinator/template/sidebar');
 		$this->load->view('template/topbar');
-		$this->load->view('koordinator/index');
-		$this->load->view('template/footer');
-	}
-	public function dosen(){
-		$data['judul'] = 'Data Dosen';
-		$data['user'] = $this->session->userdata('username');
-		$data['data'] = $this->koorM->getDosen();
-		$data['aktor']="Koordinator";
-		//mendapatkan data users
-		// get semua user
-
-		$this->load->view('template/header',$data);
-		$this->load->view('Koordinator/template/sidebar');
-		$this->load->view('template/topbar');
-		$this->load->view('Koordinator/dosen');
-		$this->load->view('template/footer');
-	}
-	public function mahasiswa(){
-		$data['judul'] = 'Data Mahasiswa';
-		$data['user'] = $this->session->userdata('username');
-		$data['data'] = $this->koorM->getMahasiswa();
-		$data['aktor']="Koordinator";
-
-		//mendapatkan data users
-		// get semua user
-
-		$this->load->view('template/header',$data);
-		$this->load->view('Koordinator/template/sidebar');
-		$this->load->view('template/topbar');
-		$this->load->view('Koordinator/mahasiswa');
+		$this->load->view('koordinator/jadwal_sidang');
 		$this->load->view('template/footer');
 	}
 }

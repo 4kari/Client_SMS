@@ -9,6 +9,38 @@ class koordinator_model extends CI_Model
         $dosen = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/Dosen/'),true);
         return $dosen['data'];
     }
+    public function getRuangan()
+    {
+        $ruangan = json_decode($this->curl->simple_get('http://localhost/microservice/penjadwalan/api/Ruangan/', array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $ruangan = json_decode($this->curl->simple_get('http://10.5.12.47/penjadwalan/api/Ruangan/', array(CURLOPT_BUFFERSIZE => 10)),true);
+        if($ruangan){
+            return $ruangan['data'];
+        }else{
+            return $ruangan;
+        }
+    }
+    public function getPeriode()
+    {
+        $periode = json_decode($this->curl->simple_get('http://localhost/microservice/penjadwalan/api/periode/', array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $periode = json_decode($this->curl->simple_get('http://10.5.12.47/penjadwalan/api/periode/', array(CURLOPT_BUFFERSIZE => 10)),true);
+        if($periode){
+            return $periode['data'];
+        }else{
+            return $periode;
+        }
+    }
+    public function getWaktu()
+    {
+        $waktu = json_decode($this->curl->simple_get('http://localhost/microservice/penjadwalan/api/waktu/', array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $waktu = json_decode($this->curl->simple_get('http://10.5.12.47/penjadwalan/api/waktu/', array(CURLOPT_BUFFERSIZE => 10)),true);
+        if($waktu){
+            return $waktu['data'];
+        }else{
+            return $waktu;
+        }
+    }
+    
+
     public function getMahasiswa()
     {
         // $mhs = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Mahasiswa/'),true);
@@ -88,10 +120,22 @@ class koordinator_model extends CI_Model
     public function TambahJadwal($id,$tipe){
         $data=[
             'id_skripsi'=>$id,
-            'tipe'=>$tipe
+            'tipe'=>$tipe-1
         ];
         // json_decode($this->curl->simple_post('http://10.5.12.47/penjadwalan/api/Kelola_Jadwal/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
         json_decode($this->curl->simple_post('http://localhost/microservice/penjadwalan/api/Kelola_Jadwal/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+    }
+    public function getJSempro(){
+        $sempro = json_decode($this->curl->simple_get('http://localhost/microservice/penjadwalan/api/Kelola_Jadwal/',array('tipe'=>"1"), array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $sempro = json_decode($this->curl->simple_get('http://10.5.12.47/penjadwalan/api/Kelola_Jadwal/',array('tipe'=>1), array(CURLOPT_BUFFERSIZE => 10)),true);
+        if($sempro){return $sempro['data'];}
+        else{return $sempro;}
+    }
+    public function getJSidang(){
+        $sidang = json_decode($this->curl->simple_get('http://localhost/microservice/penjadwalan/api/Kelola_Jadwal/',array('tipe'=>2), array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $sidang = json_decode($this->curl->simple_get('http://10.5.12.47/penjadwalan/api/Kelola_Jadwal/',array('tipe'=>2), array(CURLOPT_BUFFERSIZE => 10)),true);
+        if($sidang){return $sidang['data'];}
+        else{return $sidang;}
     }
 
     //belum digunakan
@@ -106,4 +150,5 @@ class koordinator_model extends CI_Model
         return($data);
         
     }
+
 }
