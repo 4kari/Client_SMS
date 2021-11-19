@@ -102,12 +102,12 @@
                                       echo "<td>".$sp['data_skripsi']['ktopik']."</td>";
                                     echo "</tr>";
 
-									echo "<tr>";
+									                  echo "<tr>";
                                       echo "<td>NIM</td>";
                                       echo "<td>".$sp['data_skripsi']['nim']."</td>";
                                     echo "</tr>";
 
-									echo "<tr>";
+									                  echo "<tr>";
                                       echo "<td>Nama</td>";
                                       echo "<td>".$sp['data_skripsi']['nama']."</td>";
                                     echo "</tr>";
@@ -130,7 +130,7 @@
                                       }
                                     echo "</tr>";
 
-									echo "<tr>";
+									                  echo "<tr>";
                                       echo "<td>Penguji 1</td>";
                                       if($sp['data_skripsi']['penguji_1']==null){
                                         echo "<td>belum ada</td>";
@@ -148,7 +148,7 @@
                                       }
                                     echo "</tr>";
 									
-									echo "<tr>";
+									                  echo "<tr>";
                                       echo "<td>Penguji 3</td>";
                                       if($sp['data_skripsi']['penguji_3']==null){
                                         echo "<td>belum ada</td>";
@@ -157,30 +157,30 @@
                                       }
                                     echo "</tr>";
 
-									echo "<tr>";
+									                  echo "<tr>";
                                       echo "<td>Ruangan</td>";
                                       if($sp['ruangan']==null){
                                         echo "<td>belum ada</td>";
                                       }else{
-                                        echo "<td>".$sp['ruangan']."</td>";
+                                        echo "<td>".$sp['kruangan']."</td>";
                                       }
                                     echo "</tr>";
 
-									echo "<tr>";
-									echo "<td>Periode</td>";
-									if($sp['periode']==null){
-									  echo "<td>belum ada</td>";
-									}else{
-									  echo "<td>".$sp['periode']."</td>";
-									}
-								  echo "</tr>";
-									
-								  echo "<tr>";
+                                    echo "<tr>";
+                                    echo "<td>Periode</td>";
+                                    if($sp['periode']==null){
+                                      echo "<td>belum ada</td>";
+                                    }else{
+                                      echo "<td>".$sp['kperiode']."</td>";
+                                    }
+                                    echo "</tr>";
+                                    
+                                    echo "<tr>";
                                       echo "<td>Waktu</td>";
                                       if($sp['waktu']==null){
                                         echo "<td>belum ada</td>";
                                       }else{
-                                        echo "<td>".$sp['waktu']."</td>";
+                                        echo "<td>".$sp['kwaktu']."</td>";
                                       }
                                     echo "</tr>";
                                     ?>
