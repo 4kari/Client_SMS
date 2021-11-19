@@ -92,4 +92,18 @@ class Koordinator extends CI_Controller
 		$this->load->view('koordinator/jadwal_sidang');
 		$this->load->view('template/footer');
 	}
+	
+	public function editJadwal($id){
+		$data=[
+			'id' => $id,
+			'penguji_1' => $this->input->post('penguji1'),
+			'penguji_2' => $this->input->post('penguji2'),
+			'penguji_3' => $this->input->post('penguji3'),
+			'ruangan' => $this->input->post('ruangan'),
+			'periode' => $this->input->post('periode'),
+			'waktu' => $this->input->post('waktu')
+		];
+		$this->koorM->updateJadwal($data);
+		redirect($this->input->post('page'));
+	}
 }

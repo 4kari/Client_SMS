@@ -49,7 +49,7 @@
 								<td>
 									<a href="" data-toggle="modal" data-target="#detail<?=$s['id'];?>" class="btn btn-warning btn-sm"><i class="fa fa-fw fa-eye"></i>lihat data</a>
 									<a href="" data-toggle="modal" data-target="#update<?=$s['id'];?>" class="btn btn-info btn-sm"><i class="fa fa-fw fa-edit"></i>edit</a>
-									<a href="<?= base_url($aktor); ?>/Jadwalkan/?id=<?= $s['id_skripsi']; ?>&tipe=<?=$s['tipe']?>" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-check"></i>mulai</a>
+									<a href="<?= base_url($aktor); ?>/mulai_acara/?id=<?= $s['id_skripsi']; ?>&tipe=<?=$s['tipe']?>" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-check"></i>mulai</a>
 								</td>
 							</tr>
 							<?php }?>
@@ -201,55 +201,56 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
 
-                        <form action="<?= base_url('Mahasiswa/perbaikiBerkas/') . $sp['id']; ?>" method="POST">
+                        <form action="<?= base_url('Koordinator/editJadwal/') . $sp['id']; ?>" method="POST">
+                        <input hidden name="page" value="Koordinator/jadwal_sempro">
                           <div class="modal-body">
                             <div class="form-group">
-								<label for="penguji1">Pilih Dosen Penguji 1</label>
-								<select id="penguji1" name="penguji1" class="form-control" aria-label="Default select example">
-									<?php foreach($dosen as $d){?>
-									<option  value="<?=$d['nip']?>"><?=$d['nama']?></option>
-									<?php }?>
-								</select>
+                              <label for="penguji1">Pilih Dosen Penguji 1</label>
+                              <select id="penguji1" name="penguji1" class="form-control" aria-label="Default select example">
+                                <?php foreach($dosen as $d){?>
+                                <option  value="<?=$d['nip']?>" <?php if($d['nip']==$sp['data_skripsi']['penguji_1']){echo "selected";}?>><?=$d['nama']?></option>
+                                <?php }?>
+                              </select>
                             </div>
-							<div class="form-group">
-								<label for="penguji2">Pilih Dosen Penguji 2</label>
-								<select id="penguji2" name="penguji2" class="form-control" aria-label="Default select example">
-									<?php foreach($dosen as $d){?>
-									<option  value="<?=$d['nip']?>"><?=$d['nama']?></option>
-									<?php }?>
-								</select>
-                            </div>
-							<div class="form-group">
-								<label for="penguji3">Pilih Dosen Penguji 3</label>
-								<select id="penguji3" name="penguji3" class="form-control" aria-label="Default select example">
-									<?php foreach($dosen as $d){?>
-									<option  value="<?=$d['nip']?>"><?=$d['nama']?></option>
-									<?php }?>
-								</select>
-                            </div>
-							<div class="form-group">
-								<label for="ruangan">Pilih Ruangan</label><br>
-								<select id="ruangan" name="ruangan" class="form-control" aria-label="Default select example">
-									<?php foreach($ruangan as $r){?>
-									<option  value="<?=$r['id']?>"><?=$r['ruangan']?></option>
-									<?php }?>
-								</select>
-                            </div>
-							<div class="form-group">
-								<label for="periode">Pilih Periode</label><br>
-								<select id="periode" name="periode" class="form-control" aria-label="Default select example">
-									<?php foreach($periode as $p){?>
-									<option  value="<?=$p['id']?>"><?=$p['periode']?></option>
-									<?php }?>
-								</select>
-                            </div>
-							<div class="form-group">
-								<label for="waktu">Pilih Waktu</label><br>
-								<select id="waktu" name="waktu" class="form-control" aria-label="Default select example">
-									<?php foreach($waktu as $w){?>
-									<option  value="<?=$w['id']?>"><?=$w['waktu']?></option>
-									<?php }?>
-								</select>
+                            <div class="form-group">
+                              <label for="penguji2">Pilih Dosen Penguji 2</label>
+                              <select id="penguji2" name="penguji2" class="form-control" aria-label="Default select example">
+                                <?php foreach($dosen as $d){?>
+                                <option  value="<?=$d['nip']?>" <?php if($d['nip']==$sp['data_skripsi']['penguji_2']){echo "selected";}?>><?=$d['nama']?></option>
+                                <?php }?>
+                              </select>
+                                          </div>
+                            <div class="form-group">
+                              <label for="penguji3">Pilih Dosen Penguji 3</label>
+                              <select id="penguji3" name="penguji3" class="form-control" aria-label="Default select example">
+                                <?php foreach($dosen as $d){?>
+                                <option  value="<?=$d['nip']?>" <?php if($d['nip']==$sp['data_skripsi']['penguji_3']){echo "selected";}?>><?=$d['nama']?></option>
+                                <?php }?>
+                              </select>
+                                          </div>
+                            <div class="form-group">
+                              <label for="ruangan">Pilih Ruangan</label><br>
+                              <select id="ruangan" name="ruangan" class="form-control" aria-label="Default select example">
+                                <?php foreach($ruangan as $r){?>
+                                <option  value="<?=$r['id']?>" <?php if($r['id']==$sp['ruangan']){echo "selected";}?>><?=$r['ruangan']?></option>
+                                <?php }?>
+                              </select>
+                                          </div>
+                            <div class="form-group">
+                              <label for="periode">Pilih Periode</label><br>
+                              <select id="periode" name="periode" class="form-control" aria-label="Default select example">
+                                <?php foreach($periode as $p){?>
+                                <option  value="<?=$p['id']?>" <?php if($p['id']==$sp['periode']){echo "selected";}?>><?=$p['periode']?></option>
+                                <?php }?>
+                              </select>
+                                          </div>
+                            <div class="form-group">
+                              <label for="waktu">Pilih Waktu</label><br>
+                              <select id="waktu" name="waktu" class="form-control" aria-label="Default select example">
+                                <?php foreach($waktu as $w){?>
+                                <option  value="<?=$w['id']?>" <?php if($w['id']==$sp['waktu']){echo "selected";}?>><?=$w['waktu']?></option>
+                                <?php }?>
+                              </select>
                             </div>
                           </div>
                           <div class="modal-footer">
