@@ -75,7 +75,7 @@
       <!-- </div> -->
       <!-- End of Main Content -->
 
-	  <?php foreach ($sempro as $sp) : ?>
+	  <?php if($sempro){foreach ($sempro as $sp) : ?>
             <!-- modal detail -->
             <div class="modal fade displaycontent" id="detail<?= $sp['id'] ?>">
                 <div class="modal-dialog" role="document">
@@ -262,4 +262,4 @@
                 </div>
             </div>
             <!-- end modal detail -->
-    <?php endforeach; ?>
+    <?php endforeach; } ?>
