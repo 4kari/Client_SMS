@@ -49,7 +49,7 @@
 								<td>
 									<a href="" data-toggle="modal" data-target="#detail<?=$s['id'];?>" class="btn btn-warning btn-sm"><i class="fa fa-fw fa-eye"></i>lihat data</a>
 									<a href="" data-toggle="modal" data-target="#update<?=$s['id'];?>" class="btn btn-info btn-sm"><i class="fa fa-fw fa-edit"></i>edit</a>
-									<a href="<?= base_url($aktor); ?>/mulai_acara/?id=<?= $s['id_skripsi']; ?>&tipe=<?=$s['tipe']?>" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-check"></i>mulai</a>
+									<a href="<?= base_url($aktor); ?>/mulai_acara/?id=<?= $s['id']; ?>&page=Koordinator/jadwal_sempro" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-check"></i>mulai</a>
 								</td>
 							</tr>
 							<?php }?>

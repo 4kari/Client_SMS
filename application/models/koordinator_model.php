@@ -141,4 +141,8 @@ class koordinator_model extends CI_Model
         // json_decode($this->curl->simple_put('http://10.5.12.47/penjadwalan/api/Kelola_Jadwal/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
         json_decode($this->curl->simple_put('http://localhost/microservice/penjadwalan/api/Kelola_Jadwal/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
     }
+    public function startAcara($data){
+        // json_decode($this->curl->simple_post('http://10.5.12.47/penjadwalan/api/Acara/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+        json_decode($this->curl->simple_post('http://localhost/microservice/penjadwalan/api/Acara/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+    }
 }

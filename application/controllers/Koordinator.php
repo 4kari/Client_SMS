@@ -106,4 +106,12 @@ class Koordinator extends CI_Controller
 		$this->koorM->updateJadwal($data);
 		redirect($this->input->post('page'));
 	}
+	public function mulai_acara(){
+		$data=[
+            'id'=>$this->input->get('id')
+        ];
+		$page=$this->input->get('page');
+		$this->koorM->startAcara($data);
+		redirect($page);
+	}
 }
