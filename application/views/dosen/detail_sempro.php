@@ -41,9 +41,11 @@
 
                             </div>
                             <div class="content">
-                                Skripsi ini sudah diverivikasi oleh koordinator skripsi
-                                <br>mohon bantuan dan bimbingannya kepada <?=$posting['data_skripsi'][0]['npembimbing_1'];?> dan <?=$posting['data_skripsi'][0]['npembimbing_2'];?>
-                                <br>demi kelancaran proses skripsi dari awal sampai akhir skripsi ini dinyatakan lulus.
+                                Proposal skripsi ini sudah dapat diseminarkan
+                                <br>mohon bantuan pelaksanaan seminar proposal kepada 
+                                <br><?=$posting['data_skripsi'][0]['npembimbing_1'];?> dan <?=$posting['data_skripsi'][0]['npembimbing_2'];?> sebagai pembimbing
+                                <br><?=$posting['data_skripsi'][0]['npenguji_1'];?>, <?=$posting['data_skripsi'][0]['npenguji_2'];?> dan <?=$posting['data_skripsi'][0]['npenguji_3'];?> sebagai penguji
+                                <br>demi kelancaran proses pelaksanaan skripsi ini.
                                 <hr>
                                 Terimakasih atas perhatiannya
                                 <br>

@@ -16,7 +16,7 @@
             </div>
             <div class="card-body">
 				<h2>Sidang Skripsi</h2>
-				<?php if (empty($posting[2])) { ?>
+				<?php if (empty($posting)) { ?>
 					<tr>
 						<td colspan="12">
 							<div class="alert alert-danger" role="alert">
@@ -44,7 +44,7 @@
 						</tr>
 					</tfoot>
 					<tbody>
-						<?php foreach ($posting[2] as $p) : if($p['tipe']==3){ ?>
+						<?php foreach ($posting as $p) : ?>
 						<tr>
 							<td>none</td>
 							<td><?= $p['data_skripsi']['nim']; ?></td>
@@ -58,13 +58,13 @@
 								<a href="<?= base_url($aktor); ?>/detail_sidang/<?= $p['id']; ?>" class="btn btn-warning btn-sm"><i class="fa fa-fw fa-eye"></i> Lihat Detail</a>
 							</td>
 						</tr>
-						<?php } endforeach;?>
+						<?php endforeach;?>
 					</tbody>
 					</table>
 				</div>
 				<?php } ?>
 				<br>
-
+				
             </div>
           </div>
 

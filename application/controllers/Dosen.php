@@ -47,7 +47,7 @@ class Dosen extends CI_Controller
 		$data['aktor']="Mahasiswa";
 		$data['user'] = $this->session->userdata['nama'];
 		$data['aktor']="Dosen";
-		$data['posting'] = $this->dosenM->getPosting($this->session->userdata['username']);
+		$data['posting'] = $this->dosenM->getPosting($this->session->userdata['username'],1);
 
 		$this->load->view('template/header',$data);
 		$this->load->view('dosen/template/sidebar');
@@ -60,7 +60,7 @@ class Dosen extends CI_Controller
 		$data['aktor']="Mahasiswa";
 		$data['user'] = $this->session->userdata['nama'];
 		$data['aktor']="Dosen";
-		$data['posting'] = $this->dosenM->getPosting($this->session->userdata['username']);
+		$data['posting'] = $this->dosenM->getPosting($this->session->userdata['username'],2);
 
 		$this->load->view('template/header',$data);
 		$this->load->view('dosen/template/sidebar');
@@ -73,7 +73,7 @@ class Dosen extends CI_Controller
 		$data['aktor']="Mahasiswa";
 		$data['user'] = $this->session->userdata['nama'];
 		$data['aktor']="Dosen";
-		$data['posting'] = $this->dosenM->getPosting($this->session->userdata['username']);
+		$data['posting'] = $this->dosenM->getPosting($this->session->userdata['username'],3);
 
 		$this->load->view('template/header',$data);
 		$this->load->view('dosen/template/sidebar');

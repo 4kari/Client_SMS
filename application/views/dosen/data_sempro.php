@@ -16,7 +16,7 @@
             </div>
             <div class="card-body">
 				<h2>Seminar Proposal</h2>
-				<?php if (empty($posting[1])) { ?>
+				<?php if (empty($posting)) { ?>
 					<tr>
 						<td colspan="12">
 							<div class="alert alert-danger" role="alert">
@@ -44,7 +44,7 @@
 						</tr>
 					</tfoot>
 					<tbody>
-						<?php foreach ($posting[1] as $p) : if($p['tipe']==2){ ?>
+						<?php foreach ($posting as $p) : ?>
 						<tr>
 							<td>none</td>
 							<td><?= $p['data_skripsi']['nim']; ?></td>
@@ -58,7 +58,7 @@
 								<a href="<?= base_url($aktor); ?>/detail_sempro/<?= $p['id']; ?>" class="btn btn-warning btn-sm"><i class="fa fa-fw fa-eye"></i> Lihat Detail</a>
 							</td>
 						</tr>
-						<?php } endforeach;?>
+						<?php endforeach;?>
 					</tbody>
 					</table>
 				</div>

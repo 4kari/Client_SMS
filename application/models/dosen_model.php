@@ -17,11 +17,32 @@ class dosen_model extends CI_Model
             return null;
         }
     }
-    public function getPosting($nip){
+    public function getPosting($nip,$tipe=NULL){
         $posting = json_decode($this->curl->simple_get('http://localhost/microservice/diskusi/api/Posting/',array('nip'=>$nip), array(CURLOPT_BUFFERSIZE => 10)),true);
         // $posting[$i] = json_decode($this->curl->simple_get('http://10.5.12.56/diskusi/api/Posting/',array('nip'=>$nip), array(CURLOPT_BUFFERSIZE => 10)),true);
         if ($posting){
-            return($posting['data']);
+            if($tipe){
+                $hasil=[];
+                foreach($posting['data'] as $p){
+                    if($p['tipe']==$tipe){
+                        array_push($hasil,$p);
+                    }
+                }
+            }else{
+                $hasil=[[],[],[]];
+                foreach($posting['data'] as $p){
+                    if($p['tipe']==1){
+                        array_push($hasil[0],$p);
+                    }
+                    if($p['tipe']==2){
+                        array_push($hasil[1],$p);
+                    }
+                    if($p['tipe']==3){
+                        array_push($hasil[2],$p);
+                    }
+                }
+            }
+            return $hasil;
         }else{
             return NULL;
         }
@@ -34,7 +55,6 @@ class dosen_model extends CI_Model
         }else{
             return null;
         }
-        
     }
     public function getBimbingan($id){
         $posting = json_decode($this->curl->simple_get('http://localhost/microservice/diskusi/api/Posting/',array('id'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);

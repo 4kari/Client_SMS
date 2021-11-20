@@ -16,7 +16,7 @@
             </div>
             <div class="card-body">
 				<h2>Bimbingan Skripsi</h2>
-				<?php if (empty($posting[0])) { ?>
+				<?php if (empty($posting)) { ?>
 					<tr>
 						<td colspan="12">
 							<div class="alert alert-danger" role="alert">
@@ -24,7 +24,7 @@
 							</div>
 						</td>
 					</tr>
-					<?php }else{ ?>
+				<?php }else{ ?>
 				<div class="table-responsive">
 					<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 					<thead>
@@ -44,7 +44,7 @@
 						</tr>
 					</tfoot>
 					<tbody>
-						<?php foreach ($posting[0] as $p) : if($p['tipe']==1){ ?>
+						<?php foreach ($posting as $p) : ?>
 						<tr>
 							<td>none</td>
 							<td><?= $p['data_skripsi']['nim']; ?></td>
@@ -58,13 +58,13 @@
 								<a href="<?= base_url($aktor); ?>/detail_bimbingan/<?= $p['id']; ?>" class="btn btn-warning btn-sm"><i class="fa fa-fw fa-eye"></i> Lihat Detail</a>
 							</td>
 						</tr>
-						<?php } endforeach;?>
+						<?php endforeach;?>
 					</tbody>
 					</table>
 				</div>
 				<?php } ?>
 				<br>
-
+				
             </div>
           </div>
 
