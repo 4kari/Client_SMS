@@ -7,18 +7,11 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Pengajuan Sidang Skripsi</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Pengajuan sidang skripsi</h6>
             </div>
             <div class="card-body">
-              <?php if ($validasi[1]){?>
-                <!-- cek jadwal sempro -->
-                <!-- jika ada tampilkan -->
-                <!-- jika tidak -->
-              <div class="alert alert-danger" role="alert">
-                <a>Menunggu persetujuan dosen</a>
-              </div>
-              <?php }
-              elseif($skripsi['status']==3){?>
+              <?php if (!$validasi){
+                if($skripsi['status']==2){?>
               <section class="hero-section spad">
                 <div class="hero-text text-center">
                     <h2>Mendaftar Sidang Skripsi</h2>
@@ -105,9 +98,15 @@
                   </form>
                 </div>
               </section>
-              <?php }else{?>
+              
+              <?php }else{ ?>
                 <div class="alert alert-danger" role="alert">
-                <a>tidak dapat daftar sidang skripsi hubungi admin</a>
+                <a>Menunggu persetujuan dosen</a>
+                </div>
+              <?php }
+              }else{?>
+                <div class="alert alert-danger" role="alert">
+                <a>tidak ada data sidang skripsi hubungi admin</a>
               </div>
               <?php }?>
             </div>

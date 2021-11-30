@@ -101,12 +101,12 @@
               
               <?php }else{ ?>
                 <div class="alert alert-danger" role="alert">
-                  <a>tidak dapat daftar seminar proposal hubungi admin</a>
+                <a>Menunggu persetujuan dosen</a>
                 </div>
               <?php }
               }else{?>
                 <div class="alert alert-danger" role="alert">
-                <a>Menunggu persetujuan dosen</a>
+                <a>tidak dapat daftar seminar proposal hubungi admin</a>
               </div>
               <?php }?>
             </div>
