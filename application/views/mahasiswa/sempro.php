@@ -3,11 +3,11 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800"><?=$judul;?></h1>
-          <p class="mb-4">halaman ini digunakan umtuk melakukan proses bimbingan skripsi</p>
+          <p class="mb-4">halaman ini digunakan umtuk melakukan proses Seminar Proposal</p>
           <!-- DataTales Example -->
           <div class="card shadow mb-4 h-75">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Bimbingan Skripsi</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Seminar Proposal</h6>
             </div>
             <div class="card-body">
               <div class="row mb-5">
@@ -41,9 +41,11 @@
 
                             </div>
                             <div class="content">
-                                Skripsi ini sudah diverivikasi oleh koordinator skripsi
-                                <br>mohon bantuan dan bimbingannya kepada <?=$posting['data_skripsi'][0]['npembimbing_1'];?> dan <?=$posting['data_skripsi'][0]['npembimbing_2'];?>
-                                <br>demi kelancaran proses skripsi dari awal sampai akhir skripsi ini dinyatakan lulus.
+                                Proposal skripsi ini sudah dapat diseminarkan
+                                <br>mohon bantuan pelaksanaan seminar proposal kepada 
+                                <br><?=$posting['data_skripsi'][0]['npembimbing_1'];?> dan <?=$posting['data_skripsi'][0]['npembimbing_2'];?> sebagai pembimbing
+                                <br><?=$posting['data_skripsi'][0]['npenguji_1'];?>, <?=$posting['data_skripsi'][0]['npenguji_2'];?> dan <?=$posting['data_skripsi'][0]['npenguji_3'];?> sebagai penguji
+                                <br>demi kelancaran proses pelaksanaan skripsi ini.
                                 <hr>
                                 Terimakasih atas perhatiannya
                                 <br>

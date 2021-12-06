@@ -161,6 +161,9 @@ class Mahasiswa extends CI_Controller
 		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
 		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
 		$data['validasi']=$this->mhsM->getValidasi($data['skripsi']['id']);
+		if($data['skripsi']){
+			$data['posting'] = $this->mhsM->getDiskusi($data['skripsi']['id'],2);
+		}
 		
 		$this->load->view('template/header',$data);
 		$this->load->view('mahasiswa/template/sidebar');
