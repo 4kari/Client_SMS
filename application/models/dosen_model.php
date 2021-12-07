@@ -56,7 +56,20 @@ class dosen_model extends CI_Model
             return null;
         }
     }
-    public function getBimbingan($id){
+    public function getPosisi($nip,$id){
+        $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/skripsi/', array('id'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
+        if($skripsi){
+            $skripsi=$skripsi['data'][0];
+            $validasi=null;
+            if($nip==$skripsi['pembimbing_1']){$validasi="pembimbing_1";}
+            if($nip==$skripsi['pembimbing_2']){$validasi="pembimbing_2";}
+            if($nip==$skripsi['penguji_1']){$validasi="penguji_1";}
+            if($nip==$skripsi['penguji_2']){$validasi="penguji_2";}
+            if($nip==$skripsi['penguji_3']){$validasi="penguji_3";}
+        }
+        return $validasi;
+    }
+    public function getDiskusi($id){
         $posting = json_decode($this->curl->simple_get('http://localhost/microservice/diskusi/api/Posting/',array('id'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
         // $posting[$i] = json_decode($this->curl->simple_get('http://10.5.12.56/diskusi/api/Posting/',array('id'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
         if ($posting){
@@ -90,6 +103,25 @@ class dosen_model extends CI_Model
         $validasi[0][$data['sebagai']]=$data['nip'];
         // put
         json_decode($this->curl->simple_put('http://localhost/microservice/skripsi/api/Validasi/',$validasi[0], array(CURLOPT_BUFFERSIZE => 10)),true);
-        // json_decode($this->curl->simple_put('http://10.5.12.21/skripsi/api/Validasi/',$validasi[0][0], array(CURLOPT_BUFFERSIZE => 10)),true);
+        // json_decode($this->curl->simple_put('http://10.5.12.21/skripsi/api/Validasi/',$validasi[0], array(CURLOPT_BUFFERSIZE => 10)),true);
+    }
+    public function validasi_Acara($data){
+        // cari jadwal pakai id skripsi dulu
+        $jadwal = json_decode($this->curl->simple_get('http://localhost/microservice/penjadwalan/api/Jadwal/',array('id_skripsi'=>$data['id']), array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $jadwal = json_decode($this->curl->simple_get('http://10.5.12.47/penjadwalan/api/Jadwal/',array('id_skripsi'=>$data['id']), array(CURLOPT_BUFFERSIZE => 10)),true);
+
+        // cari validasi pakai id jadwal
+        $validasi = json_decode($this->curl->simple_get('http://localhost/microservice/penjadwalan/api/Validasi/',array('id_jadwal'=>$jadwal['data'][0]['id']), array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $validasi = json_decode($this->curl->simple_get('http://10.5.12.47/penjadwalan/api/Validasi/',array('id_jadwal'=>$jadwal['data']['id']), array(CURLOPT_BUFFERSIZE => 10)),true);
+
+        // isikan nip dosen ke kolom $sebagai pada tabel validasi
+        $validasi = json_decode($this->curl->simple_get('http://localhost/microservice/penjadwalan/api/Validasi/',array('id'=>$validasi['data'][0]['id']), array(CURLOPT_BUFFERSIZE => 10)),true)['data'];
+        // $validasi = json_decode($this->curl->simple_get('http://10.5.12.47/penjadwalan/api/Validasi/',array('id'=>$validasi['data'][0]['id']), array(CURLOPT_BUFFERSIZE => 10)),true)['data'];
+        
+        $validasi[0][$data['posisi']]=$data['nip'];
+        
+        // update data
+        json_decode($this->curl->simple_put('http://localhost/microservice/penjadwalan/api/Validasi/',$validasi[0], array(CURLOPT_BUFFERSIZE => 10)),true);
+        // json_decode($this->curl->simple_put('http://10.5.12.21/penjadwalan/api/Validasi/',$validasi[0], array(CURLOPT_BUFFERSIZE => 10)),true);
     }
 }
