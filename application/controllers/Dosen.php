@@ -106,7 +106,7 @@ class Dosen extends CI_Controller
 		if($data['posting']){
 			$data['komentar'] = $this->dosenM->getKomentar($data['posting']['id']);
 			$data['posisi'] = $this->dosenM->getPosisi($this->session->userdata['username'],$data['posting']['id_skripsi']);
-
+			$data['validasi'] = $this->dosenM->getValAcara($data['posting']['id_skripsi']);
 		}
 
 		$this->load->view('template/header',$data);
