@@ -9,8 +9,8 @@
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Sidang Skripsi
               <span class="float-right text-white mr-4">
-                  <?php if($posisi){?>
-                    <a href="" class="btn btn-success btn-sm"><i class="fa fa-fw fa-check"></i>validasi</a>
+                  <?php if($validasi[$posisi]==null){?>
+                    <a href="<?= base_url($aktor); ?>/valAcara/?id=<?= $posting['id_skripsi']; ?>&&posisi=<?= $posisi; ?>&&tipe=2" class="btn btn-success btn-sm"><i class="fa fa-fw fa-check"></i>validasi</a>
                   <?php } ?>
                 </span>
               </h6>
