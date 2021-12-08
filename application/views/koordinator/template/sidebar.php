@@ -50,7 +50,7 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item <?php if($judul=='Jadwal Sidang Skripsi'){echo 'active';}?>">
-      <a class="nav-link" href="<?= base_url($aktor.'/jadwal_skripsi'); ?>">
+      <a class="nav-link" href="<?= base_url($aktor.'/jadwal_sidang'); ?>">
           <i class="fas fa-fw fa-eye"></i>
           <span>Kelola Jadwal Sidang</span></a>
       </li>

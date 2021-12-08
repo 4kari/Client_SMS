@@ -132,7 +132,7 @@ class koordinator_model extends CI_Model
         else{return $sempro;}
     }
     public function getJSidang(){
-        $sidang = json_decode($this->curl->simple_get('http://localhost/microservice/penjadwalan/api/Kelola_Jadwal/',array('tipe'=>2), array(CURLOPT_BUFFERSIZE => 10)),true);
+        $sidang = json_decode($this->curl->simple_get('http://localhost/microservice/penjadwalan/api/Kelola_Jadwal/',array('tipe'=>"2"), array(CURLOPT_BUFFERSIZE => 10)),true);
         // $sidang = json_decode($this->curl->simple_get('http://10.5.12.47/penjadwalan/api/Kelola_Jadwal/',array('tipe'=>2), array(CURLOPT_BUFFERSIZE => 10)),true);
         if($sidang){return $sidang['data'];}
         else{return $sidang;}

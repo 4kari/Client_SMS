@@ -85,7 +85,10 @@ class Koordinator extends CI_Controller
 		$data['user'] = $this->session->userdata('username');
 		$data['aktor']="Koordinator";
 		$data['sidang'] = $this->koorM->getJSidang();
-
+		$data['dosen']= $this->koorM->getDosen();
+		$data['ruangan']= $this->koorM->getRuangan();
+		$data['periode']= $this->koorM->getPeriode();
+		$data['waktu']= $this->koorM->getWaktu();
 		$this->load->view('template/header',$data);
 		$this->load->view('koordinator/template/sidebar');
 		$this->load->view('template/topbar');
