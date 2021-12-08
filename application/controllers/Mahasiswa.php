@@ -160,7 +160,7 @@ class Mahasiswa extends CI_Controller
 		$data['user'] = $this->session->userdata('nama');
 		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
 		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
-		$data['validasi']=$this->mhsM->getValidasi($data['skripsi']['id']);
+		$data['validasi']=$this->mhsM->getValidasi($data['skripsi']['id'],2);
 		if($data['skripsi']){
 			$data['posting'] = $this->mhsM->getDiskusi($data['skripsi']['id'],2);
 		}
@@ -177,9 +177,10 @@ class Mahasiswa extends CI_Controller
 		$data['user'] = $this->session->userdata('nama');
 		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
 		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
-		$data['validasi']=$this->mhsM->getValidasi($data['skripsi']['id']);
-		// $data['jadwal']= req jadwal;
-
+		$data['validasi']=$this->mhsM->getValidasi($data['skripsi']['id'],3);
+		if($data['skripsi']){
+			$data['posting'] = $this->mhsM->getDiskusi($data['skripsi']['id'],3);
+		}
 		$this->load->view('template/header',$data);
 		$this->load->view('mahasiswa/template/sidebar');
 		$this->load->view('template/topbar');
