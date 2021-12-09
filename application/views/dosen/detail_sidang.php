@@ -9,9 +9,7 @@
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Sidang Skripsi
               <span class="float-right text-white mr-4">
-                  <?php if($validasi[$posisi]==null){?>
-                    <a href="<?= base_url($aktor); ?>/valAcara/?id=<?= $posting['id_skripsi']; ?>&&posisi=<?= $posisi; ?>&&tipe=2" class="btn btn-success btn-sm"><i class="fa fa-fw fa-check"></i>validasi</a>
-                  <?php } ?>
+                    <a href="" data-toggle="modal" data-target="#nilai" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>Nilai</a>
                 </span>
               </h6>
             </div>
@@ -100,5 +98,63 @@
         </div>
         <!-- /.container-fluid -->
 
-      </div>
+      <!-- </div> -->
       <!-- End of Main Content -->
+            <!-- modal perbaiki berkas -->
+            <div class="modal fade displaycontent" id="nilai">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Penilaian Skripsi</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+
+                        <form action="<?= base_url('dosen/menilai/')?>" method="POST">
+                        <input type="hidden" name="id" value="<?=$posting['id_skripsi']?>">
+                          <div class="modal-body">
+                            <div class="form-group">
+                                <label for="k1">Penguasaan materi dan obyektifitas dalam menanggapi pertanyaan</label>
+                                <div class="inputWithIcon">
+                                  <input type="text" class="form-control" id="berkas" name="k1" placeholder="Masukan Nilai" autocomplete="off" value = "">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="k2">Kemampuan menjelaskan dan mempertahankan ide</label>
+                                <div class="inputWithIcon">
+                                  <input type="text" class="form-control" id="berkas" name="k2" placeholder="Masukan Nilai" autocomplete="off" value = "">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="k3">Hasil yang dicapai</label>
+                                <div class="inputWithIcon">
+                                  <input type="text" class="form-control" id="berkas" name="k3" placeholder="Masukan Nilai" autocomplete="off" value = "">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="k4">Persiapan sidang tugas akhir</label>
+                                <div class="inputWithIcon">
+                                  <input type="text" class="form-control" id="berkas" name="k4" placeholder="Masukan Nilai" autocomplete="off" value = "">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="k5">Sikap dan penampilan sidang</label>
+                                <div class="inputWithIcon">
+                                  <input type="text" class="form-control" id="berkas" name="k5" placeholder="Masukan Nilai" autocomplete="off" value = "">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="k6">Penyajian penulisan Laporan Tugas Akhir</label>
+                                <div class="inputWithIcon">
+                                  <input type="text" class="form-control" id="berkas" name="k6" placeholder="Masukan Nilai" autocomplete="off" value = "">
+                                </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-primary">perbarui</button>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- end modal detail -->

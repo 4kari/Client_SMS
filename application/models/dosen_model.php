@@ -58,6 +58,8 @@ class dosen_model extends CI_Model
     }
     public function getPosisi($nip,$id){
         $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/skripsi/', array('id'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $validasi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/skripsi/', array('id'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
+
         if($skripsi){
             $skripsi=$skripsi['data'][0];
             $validasi=null;
@@ -139,5 +141,23 @@ class dosen_model extends CI_Model
         }else{
             return $validasi;
         }
+    }
+    public function getPenilaian($nip,$id){
+        $data=[
+            'penilai' => $nip,
+            'id' => $id
+        ];
+        $penilaian = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Penilaian/', $data , array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $penilaian = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Penilaian/', $data , array(CURLOPT_BUFFERSIZE => 10)),true);
+        if($penilaian){
+            return $penilaian['data'];
+        }else{
+            return $penilaian;
+        }
+    }
+    public function getSasaran($tipe){
+        $sasaran = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/sasaran/', array('tipe'=>$tipe) , array(CURLOPT_BUFFERSIZE => 10)),true);
+        // $sasaran = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/sasaran/', array('tipe'=>$tipe) , array(CURLOPT_BUFFERSIZE => 10)),true);
+        return $sasaran['data'];
     }
 }

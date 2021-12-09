@@ -123,8 +123,8 @@ class Dosen extends CI_Controller
 		$data['posting'] = $this->dosenM->getDiskusi($id_post);
 		if($data['posting']){
 			$data['komentar'] = $this->dosenM->getKomentar($data['posting']['id']);
-			$data['posisi'] = $this->dosenM->getPosisi($this->session->userdata['username'],$data['posting']['id_skripsi']);
-			$data['validasi'] = $this->dosenM->getValAcara($data['posting']['id_skripsi'],2);
+			$data['penilaian'] = $this->dosenM->getPenilaian($this->session->userdata['username'],$data['posting']['id_skripsi']);
+			$data['sasaran'] = $this->dosenM->getSasaran(3);
 		}
 		
 		$this->load->view('template/header',$data);
@@ -153,6 +153,11 @@ class Dosen extends CI_Controller
 		$data['nip']=$this->session->userdata['username'];
 		$this->dosenM->validasi_Acara($data);
 		redirect('dosen/data_skripsi');
+	}
+	public function menilai(){
+		$data=$this->input->post();
+		var_dump($data);
+		//////////////////////////////asdasdasd////////////////////////////////////////////////
 	}
 
 }
