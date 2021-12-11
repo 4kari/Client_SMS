@@ -109,48 +109,19 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
 
-                        <form action="<?= base_url('dosen/menilai/')?>" method="POST">
-                        <input type="hidden" name="id" value="<?=$posting['id_skripsi']?>">
+                        <form action="<?= base_url('dosen/menilai/').$posting['id_skripsi']?>" method="POST">
                           <div class="modal-body">
-                            <div class="form-group">
-                                <label for="k1">Penguasaan materi dan obyektifitas dalam menanggapi pertanyaan</label>
+                            <?php foreach($sasaran as $sas){ ?>
+                              <div class="form-group">
+                                <label for="<?=$sas['id']?>"><?=$sas['keterangan']?></label>
                                 <div class="inputWithIcon">
-                                  <input type="text" class="form-control" id="berkas" name="k1" placeholder="Masukan Nilai" autocomplete="off" value = "">
+                                  <input type="number" min="0" max="100" class="form-control" id="berkas" name="<?=$sas['id']?>" placeholder="Masukan Nilai" autocomplete="off" value = "">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="k2">Kemampuan menjelaskan dan mempertahankan ide</label>
-                                <div class="inputWithIcon">
-                                  <input type="text" class="form-control" id="berkas" name="k2" placeholder="Masukan Nilai" autocomplete="off" value = "">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="k3">Hasil yang dicapai</label>
-                                <div class="inputWithIcon">
-                                  <input type="text" class="form-control" id="berkas" name="k3" placeholder="Masukan Nilai" autocomplete="off" value = "">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="k4">Persiapan sidang tugas akhir</label>
-                                <div class="inputWithIcon">
-                                  <input type="text" class="form-control" id="berkas" name="k4" placeholder="Masukan Nilai" autocomplete="off" value = "">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="k5">Sikap dan penampilan sidang</label>
-                                <div class="inputWithIcon">
-                                  <input type="text" class="form-control" id="berkas" name="k5" placeholder="Masukan Nilai" autocomplete="off" value = "">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="k6">Penyajian penulisan Laporan Tugas Akhir</label>
-                                <div class="inputWithIcon">
-                                  <input type="text" class="form-control" id="berkas" name="k6" placeholder="Masukan Nilai" autocomplete="off" value = "">
-                                </div>
-                            </div>
+                            <?php }?>
                           </div>
                           <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button class="btn-secondary" data-dismiss="modal">Close</button>
                               <button type="submit" class="btn btn-primary">perbarui</button>
                           </div>
                         </form>

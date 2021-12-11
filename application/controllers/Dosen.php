@@ -154,10 +154,11 @@ class Dosen extends CI_Controller
 		$this->dosenM->validasi_Acara($data);
 		redirect('dosen/data_skripsi');
 	}
-	public function menilai(){
+	public function menilai($id){
 		$data=$this->input->post();
-		var_dump($data);
-		//////////////////////////////asdasdasd////////////////////////////////////////////////
+		$this->dosenM->setNilai($data,$id,$this->session->userdata['username']);
+		die();
+		redirect("dosen/data_skripsi");
 	}
 
 }

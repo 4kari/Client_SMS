@@ -145,7 +145,7 @@ class dosen_model extends CI_Model
     public function getPenilaian($nip,$id){
         $data=[
             'penilai' => $nip,
-            'id' => $id
+            'id_skripsi' => $id
         ];
         $penilaian = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Penilaian/', $data , array(CURLOPT_BUFFERSIZE => 10)),true);
         // $penilaian = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Penilaian/', $data , array(CURLOPT_BUFFERSIZE => 10)),true);
@@ -159,5 +159,18 @@ class dosen_model extends CI_Model
         $sasaran = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/sasaran/', array('tipe'=>$tipe) , array(CURLOPT_BUFFERSIZE => 10)),true);
         // $sasaran = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/sasaran/', array('tipe'=>$tipe) , array(CURLOPT_BUFFERSIZE => 10)),true);
         return $sasaran['data'];
+    }
+    public function setNilai($data,$id,$nip){
+        foreach(array_keys($data) as $d){
+            $newdata=[
+                'id_skripsi'=>$id,
+                'penilai'=>$nip,
+                'kode_penilaian'=>$d,
+                'nilai'=>$data[$d]
+            ];
+            // request post
+            json_decode($this->curl->simple_post('http://localhost/microservice/skripsi/api/Penilaian/', $newdata , array(CURLOPT_BUFFERSIZE => 10)),true);
+            // json_decode($this->curl->simple_post('http://10.5.12.21/skripsi/api/Penilaian/', $newdata , array(CURLOPT_BUFFERSIZE => 10)),true);
+        }
     }
 }
