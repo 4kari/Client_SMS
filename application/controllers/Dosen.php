@@ -89,8 +89,9 @@ class Dosen extends CI_Controller
 		$data['posting'] = $this->dosenM->getDiskusi($id_post);
 		if($data['posting']){
 			$data['komentar'] = $this->dosenM->getKomentar($data['posting']['id']);
+			$data['nilai'] = $this->dosenM->getNilai($data['posting']['id_skripsi']);
+			$data['sasaran'] = $this->dosenM->getSasaran(1);
 		}
-		
 		$this->load->view('template/header',$data);
 		$this->load->view('dosen/template/gila');
 		$this->load->view('dosen/template/sidebar');
@@ -123,7 +124,7 @@ class Dosen extends CI_Controller
 		$data['posting'] = $this->dosenM->getDiskusi($id_post);
 		if($data['posting']){
 			$data['komentar'] = $this->dosenM->getKomentar($data['posting']['id']);
-			$data['penilaian'] = $this->dosenM->getPenilaian($this->session->userdata['username'],$data['posting']['id_skripsi']);
+			$data['nilai'] = $this->dosenM->getNilai($data['posting']['id_skripsi']);
 			$data['sasaran'] = $this->dosenM->getSasaran(3);
 		}
 		

@@ -8,8 +8,9 @@
           <div class="card shadow mb-4 h-75">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Sidang Skripsi
-              <span class="float-right text-white mr-4">
-                    <a href="" data-toggle="modal" data-target="#nilai" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>Nilai</a>
+                <span class="float-right text-white mr-4">
+                  <?php if(!$nilai){ ?><a href="" data-toggle="modal" data-target="#nilai" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>Nilai</a> <?php }else{ ?>
+                    <a class="m-0 font-weight-bold text-primary">Nilai : <?php echo $nilai."</a>";}?>
                 </span>
               </h6>
             </div>
@@ -100,7 +101,7 @@
 
       <!-- </div> -->
       <!-- End of Main Content -->
-            <!-- modal perbaiki berkas -->
+            <!-- modal penilaian -->
             <div class="modal fade displaycontent" id="nilai">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">

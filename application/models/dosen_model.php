@@ -142,11 +142,8 @@ class dosen_model extends CI_Model
             return $validasi;
         }
     }
-    public function getPenilaian($nip,$id){
-        $data=[
-            'penilai' => $nip,
-            'id_skripsi' => $id
-        ];
+    public function getNilai($id){
+        $data=['id_skripsi' => $id];
         $penilaian = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Penilaian/', $data , array(CURLOPT_BUFFERSIZE => 10)),true);
         // $penilaian = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Penilaian/', $data , array(CURLOPT_BUFFERSIZE => 10)),true);
         if($penilaian){
