@@ -157,7 +157,6 @@ class Dosen extends CI_Controller
 	public function menilai($id){
 		$data=$this->input->post();
 		$this->dosenM->setNilai($data,$id,$this->session->userdata['username']);
-		die();
 		redirect("dosen/data_skripsi");
 	}
 
