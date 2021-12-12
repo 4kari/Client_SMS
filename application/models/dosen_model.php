@@ -23,15 +23,23 @@ class dosen_model extends CI_Model
         if ($posting){
             if($tipe){
                 $hasil=[];
-                foreach($posting['data'] as $p){
-                    if($p['tipe']==$tipe){
-                        array_push($hasil,$p);
+                if($tipe==1){
+                    foreach($posting['data'] as $p){
+                        if($p['tipe']==$tipe && ($p['data_skripsi']['sebagai']=='pembimbing_1' || $p['data_skripsi']['sebagai']=='pembimbing_2')){
+                            array_push($hasil,$p);
+                        }
+                    }
+                }else{
+                    foreach($posting['data'] as $p){
+                        if($p['tipe']==$tipe){
+                            array_push($hasil,$p);
+                        }
                     }
                 }
             }else{
                 $hasil=[[],[],[]];
                 foreach($posting['data'] as $p){
-                    if($p['tipe']==1){
+                    if($p['tipe']==1 && ($p['data_skripsi']['sebagai']=='pembimbing_1' || $p['data_skripsi']['sebagai']=='pembimbing_2')){
                         array_push($hasil[0],$p);
                     }
                     if($p['tipe']==2){
