@@ -26,11 +26,14 @@
                 echo "<div class='status'><h4> $ket </h4></div>";
             }
         }else{
+            for ($i=0;$i<count($status);$i++){
             echo "<li class='li'>";
                 echo "<div class='timestamp'>";
                     echo "<span class='date'>Belum<span>";
                 echo "</div>";
+                $ket = $status[$i]['status'];
                 echo "<div class='status'><h4> $ket </h4></div>";
+            }
         }
         ?>
         </li>
