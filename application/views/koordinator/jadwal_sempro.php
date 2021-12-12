@@ -89,7 +89,7 @@
                                       if($sp['data_skripsi']['judul']==null){
                                         echo "<td>belum ada</td>";
                                       }else{
-                                        echo "<td>$sp[data_skripsi][judul]</td>";
+                                        echo "<td>".$sp['data_skripsi']['judul']."</td>";
                                       }
                                     echo "</tr>";
 

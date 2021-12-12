@@ -53,7 +53,7 @@
 							<td>none</td>
 							<td><?= $p['data_skripsi']['nim']; ?></td>
 							<?php if($p['data_skripsi']['judul']){
-								echo "<td>".$skripsi['judul']."</td>";
+								echo "<td>".$p['data_skripsi']['judul']."</td>";
 							}else{
 								echo "<td>belum ada</td>";
 							}
@@ -109,7 +109,7 @@
 							<td>none</td>
 							<td><?= $p['data_skripsi']['nim']; ?></td>
 							<?php if($p['data_skripsi']['judul']){
-								echo "<td>".$skripsi['judul']."</td>";
+								echo "<td>".$p['data_skripsi']['judul']."</td>";
 							}else{
 								echo "<td>belum ada</td>";
 							}
@@ -159,7 +159,7 @@
 							<td>none</td>
 							<td><?= $p['data_skripsi']['nim']; ?></td>
 							<?php if($p['data_skripsi']['judul']){
-								echo "<td>".$skripsi['judul']."</td>";
+								echo "<td>".$p['data_skripsi']['judul']."</td>";
 							}else{
 								echo "<td>belum ada</td>";
 							}
