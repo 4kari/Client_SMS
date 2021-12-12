@@ -60,7 +60,7 @@
 							?> 
 							<td>
 								<a href="<?= base_url($aktor); ?>/detail_bimbingan/<?= $p['id']; ?>" class="btn btn-warning btn-sm"><i class="fa fa-fw fa-eye"></i> Lihat Detail</a>
-								<?php if(!$index!==null && !$validasi[$index][$p['data_skripsi']['sebagai']] && $validasi[$index]['tipe']=="2"){?>
+								<?php if($index!==null && !$validasi[$index][$p['data_skripsi']['sebagai']] && $validasi[$index]['tipe']=="2"){?>
 								<a href="<?= base_url($aktor); ?>/validasi/?id=<?= $id; ?>&sebagai=<?= $p['data_skripsi']['sebagai']?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-check"></i> validasi sempro</a>
 								<?php } ?>
 								<?php if($index!==null && !$validasi[$index][$p['data_skripsi']['sebagai']] && $validasi[$index]['tipe']=="3"){?>
