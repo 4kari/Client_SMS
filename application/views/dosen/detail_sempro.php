@@ -62,13 +62,12 @@
                         </div>
                     </div>
 
-                    <!--Comment Area-->
-                    <div class="comment-area pb-5 hide" id="comment-area">
-                      <form action="<?= base_url('Mahasiswa/komentar/')?>" class="form-control">
-
-                        <textarea name="comment" id="" placeholder="comment here ... "></textarea>
-                        <input type="checkbox" id="catatan" name="catatan" value="1">
-                        <!-- <label for="catatan" class="d-flex flex-row-reverse">Catatan &nbsp; </label> untuk dosen -->
+                   <!--Comment Area-->
+                   <div class="comment-area pb-5 hide" id="comment-area" >
+                      <form action="<?= base_url($aktor)?>/komentar/" class="form-control" method="post">
+                        <input name="id" type="hidden" value="<?=$posting['id']?>"></input>
+                        <input name="page" type="hidden" value="<?=$aktor?>/detail_sempro/<?=$posting['id']?>"></input>
+                        <textarea name="pesan" id="" placeholder="comment here ... "></textarea>
                         <input type="submit" value="submit">
                       </form>
                     </div>
