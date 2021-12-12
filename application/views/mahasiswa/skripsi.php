@@ -32,7 +32,7 @@
                             
                             echo "<td>$sk[ktopik]</td>";
 
-                            if($sk['judul']==null){
+                            if($sk['nilai']==null){
                               echo "<td>belum ada</td>";
                             }else{
                               echo "<td> $sk[nilai] </td>";
@@ -41,6 +41,7 @@
                           <td>
                             <a href="" data-toggle="modal" data-target="#detail<?=$sk['id'];?>" class="btn btn-warning btn-sm"><i class="fa fa-fw fa-eye"></i>lihat</a>
                             <a href="" data-toggle="modal" data-target="#berkas<?=$sk['id'];?>" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-edit"></i>berkas</a>
+                            <a href="" data-toggle="modal" data-target="#judul<?=$sk['id'];?>" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-edit"></i>judul</a>
                           </td>
                         </tr>
                       <?php endforeach;?>
@@ -165,6 +166,36 @@
                     </div>
                 </div>
             </div>
-            <!-- end modal detail -->
+            <!-- end modal perbaiki berkas -->
+
+            <!-- modal perbaiki judul -->
+            <div class="modal fade displaycontent" id="judul<?= $sk['id'] ?>">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">perbaiki judul skripsi Skripsi</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+
+                        <form action="<?= base_url('Mahasiswa/perbaikiJudul/') . $sk['id']; ?>" method="POST">
+                          <div class="modal-body">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label for="judul">Masukkan judul terbaru</label>
+                                    <div class="inputWithIcon">
+                                      <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukan judul" autocomplete="off" value = "<?=$sk['judul']?>">
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-primary">perbarui</button>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- end modal perbaiki judul -->
     <?php endforeach; ?>
     

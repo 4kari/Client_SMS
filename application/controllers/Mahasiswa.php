@@ -80,6 +80,16 @@ class Mahasiswa extends CI_Controller
 		redirect("mahasiswa/skripsi/");
 	}
 
+	public function perbaikiJudul($id){
+		$judul = $this->input->post('judul');
+		$data = [
+			'id'=>$id,
+			'judul'=>$judul
+		];
+		$this->mhsM->updateJudul($data);
+		redirect("mahasiswa/skripsi/");
+	}
+
 	public function bimbingan(){
 		$data['judul'] = 'Bimbingan Dosen';
 		$data['aktor']="Mahasiswa";
