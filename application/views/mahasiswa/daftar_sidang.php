@@ -15,7 +15,7 @@
               }
               else{ 
                 if (!$validasi){
-                  if($skripsi['status']==1){?>
+                  if($skripsi['status']==3){?>
                 <section class="hero-section spad">
                   <div class="hero-text text-center">
                       <h2>Mendaftar Sidang Skripsi</h2>
