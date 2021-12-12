@@ -3,13 +3,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class user_model extends CI_Model
 {
+    // protected $ipSkripsi='http://10.5.12.21/skripsi/api/';
+    // protected $ipPenjadwalan='http://10.5.12.47/penjadwalan/api/';
+    // protected $ipDiskusi='http://10.5.12.56/diskusi/api/';
+    // protected $ipUser='http://10.5.12.26/user/api/';
+
+    protected $ipSkripsi='http://localhost/microservice/skripsi/api/';
+    protected $ipPenjadwalan='http://localhost/microservice/penjadwalan/api/';
+    protected $ipDiskusi='http://localhost/microservice/diskusi/api/';
+    protected $ipUser='http://localhost/microservice/user/api/';
+    
     public function login($username, $password){
         $data = [
             'username' => $username,
             'password' => $password
         ];
-        $user = json_decode($this->curl->simple_post('http://localhost/microservice/user/api/Login/',$data, array(CURLOPT_BUFFERSIZE => 10)),true);
-        // $user = json_decode($this->curl->simple_post('http://10.5.12.26/user/api/Login/',$data, array(CURLOPT_BUFFERSIZE => 10)),true);
+        $user = json_decode($this->curl->simple_post($this->ipUser.'Login/',$data, array(CURLOPT_BUFFERSIZE => 10)),true);
         if ($user['status']){
             $this->session->set_userdata($user['data']);
             $this->session->set_flashdata('pesan', 'Login sukses!');
@@ -19,28 +28,24 @@ class user_model extends CI_Model
     }
     public function getUsers()
     {
-        // $user = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/User/'),true);
-        $user = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/User/'),true);
+        $user = json_decode($this->curl->simple_get($this->ipUser.'User/'),true);
         return $user['data'];
     }
     public function getLevel(){
-        // $level = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Level/'),true);
-        $level = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/Level/'),true);
+        $level = json_decode($this->curl->simple_get($this->ipUser.'Level/'),true);
         return $level['data'];
     }
     //prodi
     public function getProdi()
     {
-        // $prodi = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Prodi/'),true);
-        $prodi = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/Prodi/'),true);
+        $prodi = json_decode($this->curl->simple_get($this->ipUser.'Prodi/'),true);
         return $prodi['data'];
     }
 
     //dosen
     public function getDosen()
     {
-        // $dosen = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Dosen/'),true);
-        $dosen = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/Dosen/'),true);
+        $dosen = json_decode($this->curl->simple_get($this->ipUser.'Dosen/'),true);
         return $dosen['data'];
     }
     public function addDosen()
@@ -52,16 +57,14 @@ class user_model extends CI_Model
                 'nip' => $nip,
                 'nama' => $nama
             ];
-            // json_decode($this->curl->simple_post('http://10.5.12.26/user/api/Dosen/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
-            json_decode($this->curl->simple_post('http://localhost/microservice/user/api/Dosen/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+            json_decode($this->curl->simple_post($this->ipUser.'Dosen/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
         }
     }
 
     //mahasiswa
     public function getMahasiswa()
     {
-        // $mhs = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Mahasiswa/'),true);
-        $mhs = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/Mahasiswa/'),true);
+        $mhs = json_decode($this->curl->simple_get($this->ipUser.'Mahasiswa/'),true);
         if($mhs){return $mhs['data'];}
         else{return null;}
     }
@@ -75,8 +78,7 @@ class user_model extends CI_Model
                 'nim'=>$nim,
                 'nama'=>$nama
             ];
-            // json_decode($this->curl->simple_post('http://10.5.12.26/user/api/Mahasiswa/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
-            json_decode($this->curl->simple_post('http://localhost/microservice/user/api/Mahasiswa/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+            json_decode($this->curl->simple_post($this->ipUser.'Mahasiswa/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
             echo "mahasiswa ditambahkan";
         }else{
             echo "data kosong";
