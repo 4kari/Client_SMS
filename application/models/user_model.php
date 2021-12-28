@@ -3,15 +3,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class user_model extends CI_Model
 {
-    // protected $ipSkripsi='http://10.5.12.21/skripsi/api/';
-    // protected $ipPenjadwalan='http://10.5.12.47/penjadwalan/api/';
-    // protected $ipDiskusi='http://10.5.12.56/diskusi/api/';
-    // protected $ipUser='http://10.5.12.16/user/api/';
+    protected $ipSkripsi='http://10.5.12.24/skripsi/api/';
+    protected $ipPenjadwalan='http://10.5.12.82/penjadwalan/api/';
+    protected $ipDiskusi='http://10.5.12.56/diskusi/api/';
+    protected $ipUser='http://10.5.12.18/user/api/';
 
-    protected $ipSkripsi='http://localhost/microservice/skripsi/api/';
-    protected $ipPenjadwalan='http://localhost/microservice/penjadwalan/api/';
-    protected $ipDiskusi='http://localhost/microservice/diskusi/api/';
-    protected $ipUser='http://localhost/microservice/user/api/';
+    // protected $ipSkripsi='http://localhost/microservice/skripsi/api/';
+    // protected $ipPenjadwalan='http://localhost/microservice/penjadwalan/api/';
+    // protected $ipDiskusi='http://localhost/microservice/diskusi/api/';
+    // protected $ipUser='http://localhost/microservice/user/api/';
     
     public function login($username, $password){
         $data = [
