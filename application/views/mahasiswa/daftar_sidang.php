@@ -10,7 +10,8 @@
               <h6 class="m-0 font-weight-bold text-primary">Pengajuan sidang skripsi</h6>
             </div>
             <div class="card-body">
-              <?php if($posting){
+              <?php if($skripsi){
+              if($posting){
                 echo "<div class='alert alert-danger' role='alert'><a>Sudah Dijadwalkan</a></div>";
               }
               else{ 
@@ -112,7 +113,10 @@
                 <div class="alert alert-danger" role="alert">
                   <a>Menunggu persetujuan dosen</a>
                 </div>
-              <?php } }?>
+              <?php } } }else{
+              echo "<a>Belum ada skripsi</a>";
+                }
+                ?>
             </div>
           </div>
 
