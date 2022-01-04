@@ -80,15 +80,25 @@ class Mahasiswa extends CI_Controller
 		redirect("mahasiswa/skripsi/");
 	}
 
+	public function perbaikiJudul($id){
+		$judul = $this->input->post('judul');
+		$data = [
+			'id'=>$id,
+			'judul'=>$judul
+		];
+		$this->mhsM->updateJudul($data);
+		redirect("mahasiswa/skripsi/");
+	}
+
 	public function bimbingan(){
 		$data['judul'] = 'Bimbingan Dosen';
 		$data['aktor']="Mahasiswa";
 		$data['user'] = $this->session->userdata['nama'];
 		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
-		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
+		if($data['skripsi']){$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];}
 		if($data['skripsi']){
 			if ($data['skripsi']['status']>=1){
-				$data['posting'] = $this->mhsM->getDiskusi($data['skripsi']['id'],0);
+				$data['posting'] = $this->mhsM->getDiskusi($data['skripsi']['id'],1);
 				if($data['posting']){
 					$data['komentar'] = $this->mhsM->getkomentar($data['posting']['id']);
 				}
@@ -108,10 +118,10 @@ class Mahasiswa extends CI_Controller
 		$data['aktor']="Mahasiswa";
 		$data['user'] = $this->session->userdata['nama'];
 		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
-		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
+		if($data['skripsi']){$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];}
 		if($data['skripsi']){
 			if ($data['skripsi']['status']>=1){
-				$data['posting'] = $this->mhsM->getDiskusi($data['skripsi']['id'],1);
+				$data['posting'] = $this->mhsM->getDiskusi($data['skripsi']['id'],2);
 				if($data['posting']){
 					$data['komentar'] = $this->mhsM->getkomentar($data['posting']['id']);
 				}
@@ -131,10 +141,10 @@ class Mahasiswa extends CI_Controller
 		$data['aktor']="Mahasiswa";
 		$data['user'] = $this->session->userdata['nama'];
 		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
-		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
+		if($data['skripsi']){$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];}
 		if($data['skripsi']){
 			if ($data['skripsi']['status']>=1){
-				$data['posting'] = $this->mhsM->getDiskusi($data['skripsi']['id'],2);
+				$data['posting'] = $this->mhsM->getDiskusi($data['skripsi']['id'],3);
 				if($data['posting']){
 					$data['komentar'] = $this->mhsM->getkomentar($data['posting']['id']);
 				}
@@ -159,8 +169,11 @@ class Mahasiswa extends CI_Controller
 		$data['aktor']="Mahasiswa";
 		$data['user'] = $this->session->userdata('nama');
 		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
-		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
-		$data['validasi']=$this->mhsM->getValidasi($data['skripsi']['id']);
+		if($data['skripsi']){
+			$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
+			$data['validasi']=$this->mhsM->getValidasi($data['skripsi']['id'],2);
+			$data['posting'] = $this->mhsM->getDiskusi($data['skripsi']['id'],2);
+		}
 		
 		$this->load->view('template/header',$data);
 		$this->load->view('mahasiswa/template/sidebar');
@@ -173,10 +186,14 @@ class Mahasiswa extends CI_Controller
 		$data['aktor']="Mahasiswa";
 		$data['user'] = $this->session->userdata('nama');
 		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
-		$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
-		$data['validasi']=$this->mhsM->getValidasi($data['skripsi']['id']);
-		// $data['jadwal']= req jadwal;
-
+		if($data['skripsi']){
+			$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
+			$data['validasi']=$this->mhsM->getValidasi($data['skripsi']['id'],3);
+			$data['posting'] = $this->mhsM->getDiskusi($data['skripsi']['id'],3);
+		}else{
+			$data['posting']=null;
+			$data['validasi']=null;
+		}
 		$this->load->view('template/header',$data);
 		$this->load->view('mahasiswa/template/sidebar');
 		$this->load->view('template/topbar');

@@ -3,9 +3,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class mahasiswa_model extends CI_Model
 {
+    protected $ipSkripsi='http://10.5.12.24/skripsi/api/';
+    protected $ipPenjadwalan='http://10.5.12.82/penjadwalan/api/';
+    protected $ipDiskusi='http://10.5.12.56/diskusi/api/';
+    protected $ipUser='http://10.5.12.18/user/api/';
+
+    // protected $ipSkripsi='http://localhost/microservice/skripsi/api/';
+    // protected $ipPenjadwalan='http://localhost/microservice/penjadwalan/api/';
+    // protected $ipDiskusi='http://localhost/microservice/diskusi/api/';
+    // protected $ipUser='http://localhost/microservice/user/api/';
+    
     public function data_diri($username){
-        // $data = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/Mahasiswa/',array('nim'=>$username), array(CURLOPT_BUFFERSIZE => 10)),true);
-        $data = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/Mahasiswa/',array('nim'=>$username), array(CURLOPT_BUFFERSIZE => 10)),true);
+        $data = json_decode($this->curl->simple_get($this->ipUser.'Mahasiswa/',array('nim'=>$username), array(CURLOPT_BUFFERSIZE => 10)),true);
         return $data['data'];
     }
     public function getTimeline(){
@@ -22,18 +31,15 @@ class mahasiswa_model extends CI_Model
         return $data;
     }
     public function getStatus(){
-        // $data = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/status/', array(CURLOPT_BUFFERSIZE => 10)),true);
-        $data = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/status/', array(CURLOPT_BUFFERSIZE => 10)),true);
+        $data = json_decode($this->curl->simple_get($this->ipSkripsi.'status/', array(CURLOPT_BUFFERSIZE => 10)),true);
         return $data['data'];
     }
     public function getTopik(){
-        // $data = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/topik/', array(CURLOPT_BUFFERSIZE => 10)),true);
-        $data = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/topik/', array(CURLOPT_BUFFERSIZE => 10)),true);
+        $data = json_decode($this->curl->simple_get($this->ipSkripsi.'topik/', array(CURLOPT_BUFFERSIZE => 10)),true);
         return $data['data'];
     }
     public function getDosen(){
-        // $data = json_decode($this->curl->simple_get('http://10.5.12.26/user/api/dosen/', array(CURLOPT_BUFFERSIZE => 10)),true);
-        $data = json_decode($this->curl->simple_get('http://localhost/microservice/user/api/dosen/', array(CURLOPT_BUFFERSIZE => 10)),true);
+        $data = json_decode($this->curl->simple_get($this->ipUser.'dosen/', array(CURLOPT_BUFFERSIZE => 10)),true);
         return $data['data'];
     }
     public function addTopik($topik, $dosen1, $dosen2){
@@ -47,15 +53,13 @@ class mahasiswa_model extends CI_Model
         ];
         $skripsi = $this->getSkripsi($username);
         if (!$skripsi){
-            $post = json_decode($this->curl->simple_post('http://localhost/microservice/skripsi/api/skripsi/',$data, array(CURLOPT_BUFFERSIZE => 10)),true);
-            // $post = json_decode($this->curl->simple_post('http://10.5.12.21/skripsi/api/skripsi/',$data, array(CURLOPT_BUFFERSIZE => 10)),true);
+            $post = json_decode($this->curl->simple_post($this->ipSkripsi.'skripsi/',$data, array(CURLOPT_BUFFERSIZE => 10)),true);
         }else{
             //gagal
         }
     }
     public function getSkripsi($nim){
-        $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Skripsi/',array('nim'=>$nim), array(CURLOPT_BUFFERSIZE => 10)),true);
-        // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/skripsi/',array('nim'=>$nim), array(CURLOPT_BUFFERSIZE => 10)),true);
+        $skripsi = json_decode($this->curl->simple_get($this->ipSkripsi.'Skripsi/',array('nim'=>$nim), array(CURLOPT_BUFFERSIZE => 10)),true);
         if ($skripsi){
             return($skripsi['data']);
         }else{
@@ -63,26 +67,29 @@ class mahasiswa_model extends CI_Model
         }
     }
     public function updateBerkas($data){
-        $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Skripsi/',array('id'=>$data['id']), array(CURLOPT_BUFFERSIZE => 10)),true)['data'][0];
-        // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/skripsi/',array('id'=>$data['id']), array(CURLOPT_BUFFERSIZE => 10)),true)['data'][0];
+        $skripsi = json_decode($this->curl->simple_get($this->ipSkripsi.'Skripsi/',array('id'=>$data['id']), array(CURLOPT_BUFFERSIZE => 10)),true)['data'][0];
         $skripsi['berkas']=$data['berkas'];
-        $skripsi = json_decode($this->curl->simple_put('http://localhost/microservice/skripsi/api/Skripsi/',$skripsi, array(CURLOPT_BUFFERSIZE => 10)),true);
-        // $skripsi = json_decode($this->curl->simple_put('http://10.5.12.21/skripsi/api/skripsi/',$skripsi, array(CURLOPT_BUFFERSIZE => 10)),true);
+        $skripsi = json_decode($this->curl->simple_put($this->ipSkripsi.'Skripsi/',$skripsi, array(CURLOPT_BUFFERSIZE => 10)),true);
     }
-    public function getDiskusi($id,$code){
-        $diskusi = json_decode($this->curl->simple_get('http://localhost/microservice/diskusi/api/Posting/',array('id_skripsi'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
-        // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.56/diskusi/api/Posting/',array('id_skripsi'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
+    public function updateJudul($data){
+        $skripsi = json_decode($this->curl->simple_get($this->ipSkripsi.'Skripsi/',array('id'=>$data['id']), array(CURLOPT_BUFFERSIZE => 10)),true)['data'][0];
+        $skripsi['judul']=$data['judul'];
+        $skripsi = json_decode($this->curl->simple_put($this->ipSkripsi.'Skripsi/',$skripsi, array(CURLOPT_BUFFERSIZE => 10)),true);
+    }
+    public function getDiskusi($id,$tipe){
+        $diskusi = json_decode($this->curl->simple_get($this->ipDiskusi.'Posting/',array('id_skripsi'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
         if ($diskusi){
-            if (count($diskusi['data'][0])>$code){
-                return($diskusi['data'][0][$code]);
+            foreach($diskusi['data'] as $d){
+                if ($d['tipe']==$tipe){
+                    return $d;
+                }
             }
         }else{
             return NULL;
         }
     }
     public function getKomentar($id){
-        $komentar = json_decode($this->curl->simple_get('http://localhost/microservice/diskusi/api/Komentar/',array('id_post'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
-        // $komentar = json_decode($this->curl->simple_get('http://10.5.12.56/diskusi/api/Komentar/',array('id_post'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
+        $komentar = json_decode($this->curl->simple_get($this->ipDiskusi.'Komentar/',array('id_post'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
         if ($komentar){
             return($komentar['data']);
         }else{
@@ -96,20 +103,19 @@ class mahasiswa_model extends CI_Model
             'pengirim' => $this->session->userdata['username'],
             'waktu' => time()
 		];
-        json_decode($this->curl->simple_post('http://localhost/microservice/diskusi/api/komentar/',$data, array(CURLOPT_BUFFERSIZE => 10)),true);
-        // json_decode($this->curl->simple_post('http://10.5.12.56/diskusi/api/komentar/',$data, array(CURLOPT_BUFFERSIZE => 10)),true);
+        json_decode($this->curl->simple_post($this->ipDiskusi.'komentar/',$data, array(CURLOPT_BUFFERSIZE => 10)),true);
     }
-    public function getValidasi($id){
-        $validasi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Validasi/',array('id_skripsi'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
-        // $validasi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Validasi/',array('id_skripsi'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
+    public function getValidasi($id,$tipe){
+        $validasi = json_decode($this->curl->simple_get($this->ipSkripsi.'Validasi/',array('id_skripsi'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
         if ($validasi){
-            return($validasi['data']);
+            foreach($validasi['data'] as $v){
+                if($v['tipe']==$tipe){return $v;}
+            }
         }else{
             return NULL;
         }
     }
     public function ajukanSidang($id,$tipe){
-        $validasi = json_decode($this->curl->simple_post('http://localhost/microservice/skripsi/api/Validasi/',array('id_skripsi'=>$id, 'tipe'=>$tipe), array(CURLOPT_BUFFERSIZE => 10)),true);
-        // $validasi = json_decode($this->curl->simple_post('http://10.5.12.21/skripsi/api/Validasi/',array('id_skripsi'=>$id, 'tipe'=>$tipe), array(CURLOPT_BUFFERSIZE => 10)),true);
+        $validasi = json_decode($this->curl->simple_post($this->ipSkripsi.'Validasi/',array('id_skripsi'=>$id, 'tipe'=>$tipe), array(CURLOPT_BUFFERSIZE => 10)),true);
     }
 }

@@ -8,10 +8,6 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Kelola <?=$judul;?>
-                <span class="float-right text-white mr-4">
-                  <a href="" data-toggle="modal" data-target="#TambahMhs" class="btn btn-success btn-sm"><i class="fa fa-fw fa-plus"></i>tambah</a>
-                  <a href="" data-toggle="modal" data-target="#ImportMhs" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-plus"></i>import</a>
-                </span>
               </h6>
             </div>
             <div class="card-body">
@@ -49,7 +45,7 @@
 							<td>none</td>
 							<td><?= $p['data_skripsi']['nim']; ?></td>
 							<?php if($p['data_skripsi']['judul']){
-								echo "<td>".$skripsi['judul']."</td>";
+								echo "<td>".$p['data_skripsi']['judul']."</td>";
 							}else{
 								echo "<td>belum ada</td>";
 							}

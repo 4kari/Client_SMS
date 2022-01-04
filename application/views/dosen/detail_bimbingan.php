@@ -7,7 +7,12 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4 h-75">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Bimbingan Skripsi</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Bimbingan Skripsi
+                <span class="float-right text-white mr-4">
+                  <?php if(!$nilai){ ?><a href="" data-toggle="modal" data-target="#nilai" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>Nilai</a> <?php } else{ ?>
+                    <a class="m-0 font-weight-bold text-primary">Nilai : <?php echo $nilai."</a>";}?>
+                </span>
+              </h6>
             </div>
             <div class="card-body">
               <div class="row mb-5">
@@ -92,3 +97,32 @@
 
       </div>
       <!-- End of Main Content -->
+      <!-- modal penilaian -->
+      <div class="modal fade displaycontent" id="nilai">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Penilaian Skripsi</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+
+                        <form action="<?= base_url('dosen/menilai/').$posting['id_skripsi']?>" method="POST">
+                          <div class="modal-body">
+                            <?php foreach($sasaran as $sas){ ?>
+                              <div class="form-group">
+                                <label for="<?=$sas['id']?>"><?=$sas['keterangan']?></label>
+                                <div class="inputWithIcon">
+                                  <input type="number" min="0" max="100" class="form-control" id="berkas" name="<?=$sas['id']?>" placeholder="Masukan Nilai" autocomplete="off" value = "">
+                                </div>
+                            </div>
+                            <?php }?>
+                          </div>
+                          <div class="modal-footer">
+                              <button class="btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-primary">perbarui</button>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- end modal detail -->

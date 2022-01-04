@@ -3,7 +3,7 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800"><?=$judul;?></h1>
-          <p class="mb-4">halaman ini digunakan umtuk melakukan proses bimbingan skripsi</p>
+          <p class="mb-4">halaman ini digunakan umtuk melakukan proses sidang skripsi</p>
           <!-- DataTales Example -->
           <div class="card shadow mb-4 h-75">
             <div class="card-header py-3">
@@ -56,11 +56,10 @@
 
                     <!--Comment Area-->
                     <div class="comment-area pb-5 hide" id="comment-area">
-                      <form action="<?= base_url('Mahasiswa/komentar/')?>" class="form-control">
-
-                        <textarea name="comment" id="" placeholder="comment here ... "></textarea>
-                        <input type="checkbox" id="catatan" name="catatan" value="1">
-                        <!-- <label for="catatan" class="d-flex flex-row-reverse">Catatan &nbsp; </label> untuk dosen -->
+                    <form action="<?= base_url($aktor)?>/komentar/" class="form-control" method="post">
+                        <input name="id" type="hidden" value="<?=$posting['id']?>"></input>
+                        <input name="page" type="hidden" value="<?=$aktor?>/sidang/"></input>
+                        <textarea name="pesan" id="" placeholder="comment here ... "></textarea>
                         <input type="submit" value="submit">
                       </form>
                     </div>

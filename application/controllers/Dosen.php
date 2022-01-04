@@ -86,11 +86,12 @@ class Dosen extends CI_Controller
 		$data['judul'] = 'Bimbingan';
 		$data['aktor']="Dosen";
 		$data['user'] = $this->session->userdata['nama'];
-		$data['posting'] = $this->dosenM->getBimbingan($id_post);
+		$data['posting'] = $this->dosenM->getDiskusi($id_post);
 		if($data['posting']){
 			$data['komentar'] = $this->dosenM->getKomentar($data['posting']['id']);
+			$data['nilai'] = $this->dosenM->getNilai($data['posting']['id_skripsi']);
+			$data['sasaran'] = $this->dosenM->getSasaran(1);
 		}
-		
 		$this->load->view('template/header',$data);
 		$this->load->view('dosen/template/gila');
 		$this->load->view('dosen/template/sidebar');
@@ -102,9 +103,11 @@ class Dosen extends CI_Controller
 		$data['judul'] = 'Sempro';
 		$data['aktor']="Dosen";
 		$data['user'] = $this->session->userdata['nama'];
-		$data['posting'] = $this->dosenM->getBimbingan($id_post);
+		$data['posting'] = $this->dosenM->getDiskusi($id_post);
 		if($data['posting']){
 			$data['komentar'] = $this->dosenM->getKomentar($data['posting']['id']);
+			$data['posisi'] = $this->dosenM->getPosisi($this->session->userdata['username'],$data['posting']['id_skripsi']);
+			$data['validasi'] = $this->dosenM->getValAcara($data['posting']['id_skripsi'],1);
 		}
 
 		$this->load->view('template/header',$data);
@@ -118,9 +121,11 @@ class Dosen extends CI_Controller
 		$data['judul'] = 'Sidang';
 		$data['aktor']="Dosen";
 		$data['user'] = $this->session->userdata['nama'];
-		$data['posting'] = $this->dosenM->getBimbingan($id_post);
+		$data['posting'] = $this->dosenM->getDiskusi($id_post);
 		if($data['posting']){
 			$data['komentar'] = $this->dosenM->getKomentar($data['posting']['id']);
+			$data['nilai'] = $this->dosenM->getNilai($data['posting']['id_skripsi']);
+			$data['sasaran'] = $this->dosenM->getSasaran(3);
 		}
 		
 		$this->load->view('template/header',$data);
@@ -143,6 +148,17 @@ class Dosen extends CI_Controller
 		];
 		$this->dosenM->validasi($data);
 		redirect('dosen/data_skripsi');
+	}
+	public function valAcara(){
+		$data = $this->input->get();
+		$data['nip']=$this->session->userdata['username'];
+		$this->dosenM->validasi_Acara($data);
+		redirect('dosen/data_skripsi');
+	}
+	public function menilai($id){
+		$data=$this->input->post();
+		$this->dosenM->setNilai($data,$id,$this->session->userdata['username']);
+		redirect("dosen/data_skripsi");
 	}
 
 }
