@@ -103,11 +103,6 @@
                                       echo "<td>".$sp['data_skripsi']['nim']."</td>";
                                     echo "</tr>";
 
-									                  echo "<tr>";
-                                      echo "<td>Nama</td>";
-                                      echo "<td>".$sp['data_skripsi']['nama']."</td>";
-                                    echo "</tr>";
-
                                     echo "<tr>";
                                       echo "<td>Pembimbing 1</td>";
                                       if($sp['data_skripsi']['pembimbing_1']==null){
@@ -200,28 +195,47 @@
                         <form action="<?= base_url('Koordinator/editJadwal/') . $sp['id']; ?>" method="POST">
                         <input hidden name="page" value="Koordinator/jadwal_sempro">
                           <div class="modal-body">
+                            <!-- patokan untuk js -->
+                            <span style="display : none">
+                              <select type="hidden" class="input--style-6" name="penguji" id="penguji" onchange="">
+                              <option value=""></option>
+                                <?php foreach ($dosen as $d) : 
+                                  if($d['nip']!=$sp['data_skripsi']['pembimbing_1'] || $d['nip']!=$sp['data_skripsi']['pembimbing_2']){
+                                    if($d['beban']<12){ ?>
+                                  <option value="<?= $d['nip']; ?>"><?= $d['nama']; ?></option>
+                                <?php } } endforeach; ?>
+                              </select>
+                            </span>
+                            <!-- end of patokan -->
+
                             <div class="form-group">
                               <label for="penguji1">Pilih Dosen Penguji 1</label>
-                              <select id="penguji1" name="penguji1" class="form-control" aria-label="Default select example">
-                                <?php foreach($dosen as $d){?>
+                              <select id="penguji1" name="penguji1" onchange="pengujiX()" class="form-control" aria-label="Default select example ">
+                                <?php foreach($dosen as $d){
+                                  if($d['nip']==$sp['data_skripsi']['pembimbing_1'] || $d['nip']==$sp['data_skripsi']['pembimbing_2']){}else{
+                                  if($d['beban']<12){ ?>
                                 <option  value="<?=$d['nip']?>" <?php if($d['nip']==$sp['data_skripsi']['penguji_1']){echo "selected";}?>><?=$d['nama']?></option>
-                                <?php }?>
+                                  <?php }}}?>
                               </select>
                             </div>
                             <div class="form-group">
                               <label for="penguji2">Pilih Dosen Penguji 2</label>
-                              <select id="penguji2" name="penguji2" class="form-control" aria-label="Default select example">
-                                <?php foreach($dosen as $d){?>
+                              <select id="penguji2" name="penguji2" onchange="pengujiX()" class="form-control" aria-label="Default select example">
+                                <?php foreach($dosen as $d){
+                                  if($d['nip']==$sp['data_skripsi']['pembimbing_1'] || $d['nip']==$sp['data_skripsi']['pembimbing_2']){}else{
+                                  if($d['beban']<12){ ?>
                                 <option  value="<?=$d['nip']?>" <?php if($d['nip']==$sp['data_skripsi']['penguji_2']){echo "selected";}?>><?=$d['nama']?></option>
-                                <?php }?>
+                                <?php }}}?>
                               </select>
                                           </div>
                             <div class="form-group">
                               <label for="penguji3">Pilih Dosen Penguji 3</label>
-                              <select id="penguji3" name="penguji3" class="form-control" aria-label="Default select example">
-                                <?php foreach($dosen as $d){?>
+                              <select id="penguji3" name="penguji3" onchange="pengujiX()" class="form-control" aria-label="Default select example">
+                                <?php foreach($dosen as $d){
+                                  if($d['nip']==$sp['data_skripsi']['pembimbing_1'] || $d['nip']==$sp['data_skripsi']['pembimbing_2']){}else{
+                                  if($d['beban']<12){ ?>
                                 <option  value="<?=$d['nip']?>" <?php if($d['nip']==$sp['data_skripsi']['penguji_3']){echo "selected";}?>><?=$d['nama']?></option>
-                                <?php }?>
+                                <?php }}}?>
                               </select>
                                           </div>
                             <div class="form-group">

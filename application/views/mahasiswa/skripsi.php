@@ -84,15 +84,6 @@
                                       echo "<td>topik</td>";
                                       echo "<td>$sk[ktopik]</td>";
                                     echo "</tr>";
-                                    
-                                    echo "<tr>";
-                                      echo "<td>nilai</td>";
-                                      if($sk['nilai']==null){
-                                        echo "<td>belum ada</td>";
-                                      }else{
-                                        echo "<td>$sk[nilai]</td>";
-                                      }
-                                    echo "</tr>";
 
                                     echo "<tr>";
                                       echo "<td>pembimbing_1</td>";
@@ -120,6 +111,15 @@
                                         echo "<td>$sk[kstatus]</td>";
                                       }
                                     echo "</tr>";
+
+                                  echo "<tr>";
+                                    echo "<td>berkas</td>";
+                                    if($sk['berkas']==null){
+                                      echo "<td>belum ada</td>";
+                                    }else{
+                                      echo "<td>$sk[berkas]</td>";
+                                    }
+                                  echo "</tr>";
 
                                     echo "<tr>";
                                       echo "<td>nilai</td>";

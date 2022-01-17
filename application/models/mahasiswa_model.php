@@ -118,4 +118,24 @@ class mahasiswa_model extends CI_Model
     public function ajukanSidang($id,$tipe){
         $validasi = json_decode($this->curl->simple_post($this->ipSkripsi.'Validasi/',array('id_skripsi'=>$id, 'tipe'=>$tipe), array(CURLOPT_BUFFERSIZE => 10)),true);
     }
+    public function getJadwal($id){
+        // sementara
+        $jadwal = json_decode($this->curl->simple_get($this->ipPenjadwalan.'jadwal/', array(CURLOPT_BUFFERSIZE => 10)),true);
+        if($jadwal){
+            foreach($jadwal['data'] as $j){
+                if($j['id_skripsi']==$id){
+                    return $j;
+                }
+            }
+        }else{
+            return NULL;
+        }
+
+        // $jadwal = json_decode($this->curl->simple_get($this->ipSkripsi.'jadwal/',array('id'=>$id), array(CURLOPT_BUFFERSIZE => 10)),true);
+        // if($jadwal){
+        //     return $jadwal['data'];
+        // }else{
+        //     return NULL;
+        // }
+    }
 }

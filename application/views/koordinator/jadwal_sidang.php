@@ -103,11 +103,6 @@
                                       echo "<td>".$sp['data_skripsi']['nim']."</td>";
                                     echo "</tr>";
 
-									                  echo "<tr>";
-                                      echo "<td>Nama</td>";
-                                      echo "<td>".$sp['data_skripsi']['nama']."</td>";
-                                    echo "</tr>";
-
                                     echo "<tr>";
                                       echo "<td>Pembimbing 1</td>";
                                       if($sp['data_skripsi']['pembimbing_1']==null){

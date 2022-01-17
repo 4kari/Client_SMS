@@ -11,9 +11,44 @@
             </div>
             <div class="card-body">
               <?php if($skripsi){
-              if($posting){
-                echo "<div class='alert alert-danger' role='alert'><a>Sudah Dijadwalkan</a></div>";
-              }
+              if($jadwal){?>
+                <!-- echo "<div class='alert alert-danger' role='alert'><a>Sudah Dijadwalkan</a></div>"; -->
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>judul</th>
+                      <th>tanggal</th>
+                      <th>waktu</th>
+                      <th>ruangan</th>
+                      <th>periode</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>judul</th>
+                      <th>tanggal</th>
+                      <th>waktu</th>
+                      <th>ruangan</th>
+                      <th>periode</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <tr>
+                      <?php if($skripsi['judul']){
+                        echo "<td>".$skripsi['judul']."</td>";
+                      }else{
+                        echo "<td>belum ada</td>";
+                      }
+                      ?>
+                      <td><?= $jadwal['tanggal'] ?></td>
+                      <td><?= $jadwal['waktu'] ?></td>
+                      <td><?= $jadwal['ruangan'] ?></td>
+                      <td><?= $jadwal['periode'] ?></td>
+                      </tr>
+                  </tbody>
+                </table>
+
+              <?php }
               else{ 
                 if (!$validasi){
                   if($skripsi['status']==1){?>
