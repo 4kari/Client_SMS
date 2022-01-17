@@ -10,7 +10,7 @@
               <h6 class="m-0 font-weight-bold text-primary">Kelola <?=$judul;?>
                 <span class="float-right text-white mr-4">
                   <a data-toggle="modal" data-target="#TambahDosen" class="btn btn-success btn-sm"><i class="fa fa-fw fa-plus"></i>tambah</a>
-                  <a data-toggle="modal" data-target="#ImportDosen" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-plus"></i>import</a>
+                  <!-- <a data-toggle="modal" data-target="#ImportDosen" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-plus"></i>import</a> -->
                 </span>
               </h6>
             </div>

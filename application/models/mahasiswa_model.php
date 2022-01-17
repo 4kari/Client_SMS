@@ -20,7 +20,7 @@ class mahasiswa_model extends CI_Model
     public function getTimeline(){
         $status = $this->getStatus();
         $data=[];
-        $index=[0,1,2,3,5];
+        $index=[0,1,2,5];
         for ($i=0;$i<count($status);$i++){
             for ($j=0;$j<count($index);$j++){
                 if ($status[$i]['id']==$index[$j]){

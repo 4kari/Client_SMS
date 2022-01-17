@@ -43,6 +43,7 @@ class Mahasiswa extends CI_Controller
 		$data['dosen'] = $this->mhsM->getDosen(); // belum dibuat
 		$data['topik'] = $this->mhsM->getTopik(); // belum dibuat
 		$data['user'] = $this->session->userdata('nama');
+		$data['skripsi'] = $this->mhsM->getSkripsi($this->session->userdata['username']);
 
 		$this->load->view('template/header',$data);
 		$this->load->view('mahasiswa/template/sidebar');

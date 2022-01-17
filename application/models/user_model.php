@@ -84,4 +84,7 @@ class user_model extends CI_Model
             echo "data kosong";
         }
     }
+    public function UpUser($data){
+        json_decode($this->curl->simple_put($this->ipUser.'user/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+    }
 }

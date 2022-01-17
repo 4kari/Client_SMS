@@ -10,7 +10,7 @@
               <h6 class="m-0 font-weight-bold text-primary">Kelola <?=$judul;?>
                 <span class="float-right text-white mr-4">
                   <a href="" data-toggle="modal" data-target="#TambahMhs" class="btn btn-success btn-sm"><i class="fa fa-fw fa-plus"></i>tambah</a>
-                  <a href="" data-toggle="modal" data-target="#ImportMhs" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-plus"></i>import</a>
+                  <!-- <a href="" data-toggle="modal" data-target="#ImportMhs" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-plus"></i>import</a> -->
                 </span>
               </h6>
             </div>
@@ -66,7 +66,7 @@
 			<form action="<?= base_url('Admin/tambahmahasiswa'); ?>" method="POST" class="needs-validation" novalidate>
 				<div class="modal-body">
 					<div class="form-group">
-						<input type="text" class="form-control" name="nim" id="nim" placeholder="NIM Mahasiswa" required>
+						<input type="number" minlength="7" class="form-control" name="nim" id="nim" placeholder="NIM Mahasiswa" required>
 						<div class="invalid-feedback">
 							Masukan NIM Mahasiswa
 						</div>

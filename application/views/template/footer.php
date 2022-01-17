@@ -59,6 +59,9 @@
   <script type="text/javascript" src="<?= base_url('assets/'); ?>js/timeline.js"></script>
   <script type="text/javascript" src="<?= base_url('assets/'); ?>js/forum.js"></script>
 
+  <!-- untuk pemilihan dosen -->
+  <script type="text/javascript" src="<?= base_url('assets/'); ?>js/mhs.js"></script>
+
 
 
 </body>

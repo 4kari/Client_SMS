@@ -63,6 +63,17 @@ class Admin extends CI_Controller
 		$this->userM->addMahasiswa();
 		redirect('Admin/mahasiswa');
 	}
+
+	public function UpdateUser()
+	{
+		$data = array(
+			'username' => $this->input->post('username'),
+			'level' => $this->input->post('level')
+		);
+		$this->userM->UpUser($data);
+		redirect('admin/index');
+	}
+
 /*
 
 

@@ -59,10 +59,10 @@
 				</button>
 			</div>
 
-			<form action="<?= base_url('Admin/tambahdosen'); ?>" method="POST" class="needs-validation" novalidate>
+			<form action="<?= base_url('Admin/UpdateUser'); ?>" method="POST" class="needs-validation" novalidate>
 				<div class="modal-body">
 					<div class="form-group">
-						<input type="text" class="form-control" name="nip" id="nip" placeholder="NIP Dosen" required>
+						<input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
 						<div class="invalid-feedback">
               <?=$users['username'];?>
 						</div>

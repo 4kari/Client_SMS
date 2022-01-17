@@ -21,7 +21,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <?php foreach ($skripsi as $sk) :?>
+                      <?php if($skripsi){foreach ($skripsi as $sk) :?>
                         <tr>
                           <?php
                             if($sk['judul']==null){
@@ -44,7 +44,7 @@
                             <a href="" data-toggle="modal" data-target="#judul<?=$sk['id'];?>" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-edit"></i>judul</a>
                           </td>
                         </tr>
-                      <?php endforeach;?>
+                      <?php endforeach;}?>
                     </tbody>
                   </table>
                 </div>
@@ -58,7 +58,7 @@
       <!-- End of Main Content -->
 
       <!-- Modal -->
-      <?php foreach ($skripsi as $sk) : ?>
+      <?php if($skripsi){foreach ($skripsi as $sk) : ?>
             <!-- modal detail -->
             <div class="modal fade displaycontent" id="detail<?= $sk['id'] ?>">
                 <div class="modal-dialog" role="document">
@@ -197,5 +197,5 @@
                 </div>
             </div>
             <!-- end modal perbaiki judul -->
-    <?php endforeach; ?>
+    <?php endforeach; }?>
     
