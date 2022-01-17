@@ -21,6 +21,7 @@
                     <tr>
 						<th>No</th>
 						<th>Topik</th>
+            <th>Nim</th>
 						<th>Pembimbing 1</th>
 						<th>Pembimbing 2</th>
                         <th>Action</th>
@@ -42,9 +43,10 @@
 					foreach ($topik as $t) : ?>
 						<tr>
 							<td scope="row"><?= ++$number; ?></td>
-							<td><?= $t['topik']; ?></td>
-              <td><?= $t['pembimbing_1']; ?></td>
-              <td><?= $t['pembimbing_2']; ?></td>
+							<td><?= $t['ktopik']; ?></td>
+              <td><?= $t['nim']; ?></td>
+              <td><?= $t['npembimbing_1']; ?></td>
+              <td><?= $t['npembimbing_2']; ?></td>
 							<td>
               <a href="" data-toggle="modal" data-target="#topikEdit<?= $t['id'] ?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>Ubah</a>
               <a href="<?= base_url($aktor) . '/validasi_topik/' . $t['id'] ?>"class="btn btn-success btn-sm"><i class="fa fa-fw fa-check"></i>Validasi</a>
@@ -86,16 +88,45 @@
                             <input type="text" class="form-control" id="topik" name="topik" value="<?= $t['topik']; ?>" required>
                             <?= form_error('topik', '<div class="alert-danger" role="alert">', '</div>'); ?>
                         </div>
-                        <div class="form-group">
-                            <label for="topik">dosen pembimbing 1</label>
-                            <input type="text" class="form-control" id="pembimbing_1" name="pembimbing_1" value="<?= $t['pembimbing_1']; ?>" required>
-                            <?= form_error('pembimbing_1', '<div class="alert-danger" role="alert">', '</div>'); ?>
-                        </div>
-                        <div class="form-group">
-                            <label for="topik">Dosen pembimbing 2</label>
-                            <input type="text" class="form-control" id="pembimbing_2" name="pembimbing_2" value="<?= $t['pembimbing_2']; ?>" required>
-                            <?= form_error('pembimbing_2', '<div class="alert-danger" role="alert">', '</div>'); ?>
-                        </div>
+
+                        <!-- patokan untuk js -->
+                      <span style="display : none">
+                        <select type="hidden" class="input--style-6" name="dosbing" id="dosbing" onchange="">
+                        <option value=""></option>
+                          <?php foreach ($dosen as $d) : 
+                            if($d['beban']<12){ ?>
+                            <option value="<?= $d['nip']; ?>"><?= $d['nama']; ?></option>
+                          <?php } endforeach; ?>
+                        </select>
+                      </span>
+                      <!-- end of patokan -->
+
+                      <!-- Dosbing 1 input-->
+                      <div class="form-floating mb-3">
+                      <label for="dosbing1">Dosen Pembimbing 1</label>
+                      <select name="dosbing1" id="dosbing1" class="form-control" onchange="dosbingX()">
+                          <?php foreach ($dosen as $d) {
+                              if($d['beban']<12){
+                                echo "<option value='$d[nip]'>$d[nama]</option>";
+                              }
+                          }
+                          ?>
+                        </select>
+                      </div>
+                      <!-- Dosbing 2 input-->
+                      <div class="form-floating mb-3">
+                      <label for="dosbing2">Dosen Pembimbing 2</label>
+                      <select name="dosbing2" id="dosbing2" class="form-control" onchange="dosbingX()">
+                          <?php foreach ($dosen as $d) {
+                            if($d['beban']<12){
+                              echo "<option value='$d[nip]'>$d[nama]</option>";
+                            }
+                          }
+                          ?>
+                        </select>
+                      </div>
+                      <!-- Submit Button-->
+                      <button class="btn btn-primary btn-xl" type="submit">Ajukan</button>
                         
                     </div>
                     <div class="modal-footer">

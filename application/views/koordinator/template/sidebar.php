@@ -55,6 +55,20 @@
           <span>Kelola Jadwal Sidang</span></a>
       </li>
 
+      <!-- Nav Item - Tables -->
+      <li class="nav-item <?php if($judul=='Lihat Sempro'){echo 'active';}?>">
+        <a class="nav-link" href="<?= base_url($aktor.'/lihat_sempro'); ?>">
+          <i class="fas fa-fw fa-eye"></i>
+          <span>Lihat Jadwal Sempro</span></a>
+      </li>
+
+      <!-- Nav Item - Tables -->
+      <li class="nav-item <?php if($judul=='Lihat Sidang'){echo 'active';}?>">
+        <a class="nav-link" href="<?= base_url($aktor.'/lihat_sidang'); ?>">
+          <i class="fas fa-fw fa-eye"></i>
+          <span>Lihat Jadwal Sidang</span></a>
+      </li>
+
       <!-- Heading -->
       <div class="sidebar-heading">
         Skripsi
@@ -65,6 +79,18 @@
       <a class="nav-link" href="<?= base_url($aktor.'/skripsi'); ?>">
           <i class="fas fa-fw fa-book-open"></i>
           <span>Kelola Skripsi</span></a>
+      </li>
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Data
+      </div>
+
+      <!-- Nav Item - Tables -->
+      <li class='nav-item <?php if($judul=="Dosen"){echo "active";}?>'>
+      <a class="nav-link" href="<?= base_url($aktor.'/dosen'); ?>">
+          <i class="fas fa-fw fa-book-open"></i>
+          <span>Dosen</span></a>
       </li>
 
       <!-- Sidebar Toggler (Sidebar) -->

@@ -16,7 +16,7 @@ class Koordinator extends CI_Controller
 
 	public function index()
 	{
-		$data['judul'] = 'Data pengajuan topik';
+		$data['judul'] = 'Kelola Topik';
 		$data['user'] = $this->session->userdata('username');
 		$data['aktor']="Koordinator";
 		$data['dosen']= $this->koorM->getDosen();
@@ -116,5 +116,42 @@ class Koordinator extends CI_Controller
 		$page=$this->input->get('page');
 		$this->koorM->startAcara($data);
 		redirect($page);
+	}
+	public function dosen(){
+		$data['judul'] = 'Dosen';
+		$data['user'] = $this->session->userdata('username');
+		$data['aktor']="Koordinator";
+		$data['dosen']= $this->koorM->getDosen();
+
+		$this->load->view('template/header',$data);
+		$this->load->view('koordinator/template/sidebar');
+		$this->load->view('template/topbar');
+		$this->load->view('koordinator/dosen');
+		$this->load->view('template/footer');
+	}
+	public function lihat_sempro(){
+		$data['judul'] = 'Lihat Sempro';
+		$data['user'] = $this->session->userdata('username');
+		$data['aktor']="Koordinator";
+		$data['Jsempro']= $this->koorM->getJSempro();
+
+		$this->load->view('template/header',$data);
+		$this->load->view('koordinator/template/sidebar');
+		$this->load->view('template/topbar');
+		$this->load->view('koordinator/sempro');
+		$this->load->view('template/footer');
+	}
+	
+	public function lihat_sidang(){
+		$data['judul'] = 'Lihat Sidang';
+		$data['user'] = $this->session->userdata('username');
+		$data['aktor']="Koordinator";
+		$data['Jsidang']= $this->koorM->getJSidang();
+
+		$this->load->view('template/header',$data);
+		$this->load->view('koordinator/template/sidebar');
+		$this->load->view('template/topbar');
+		$this->load->view('koordinator/sidang');
+		$this->load->view('template/footer');
 	}
 }

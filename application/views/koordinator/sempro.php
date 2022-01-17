@@ -3,7 +3,7 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800"><?=$judul;?></h1>
-          <p class="mb-4">halaman ini digunakan untuk melihat beban dosen</p>
+          <p class="mb-4">halaman ini digunakan untuk melihat data sempro</p>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -20,27 +20,37 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>NIP</th>
-                      <th>Nama</th>
-                      <th>Beban</th>
+                      <th>judul</th>
+                      <th>tanggal</th>
+                      <th>waktu</th>
+                      <th>ruangan</th>
+                      <th>periode</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>NIP</th>
-                      <th>NAMA</th>
-                      <th>Beban</th>
+                      <th>judul</th>
+                      <th>tanggal</th>
+                      <th>waktu</th>
+                      <th>ruangan</th>
+                      <th>periode</th>
                     </tr>
                   </tfoot>
                   <tbody>
-                    <?php foreach ($dosen as $dosen) : ?>
-                      <tr>
-                        <td><?= $dosen['nip']; ?></td>
-                        <td><?= $dosen['nama']; ?></td>
-                        <td><?= $dosen['beban']; ?>
-                        </td>
+                  <?php if($Jsempro){ foreach ($Jsempro as $s): ?>
+                    <tr>
+                      <?php if($s['data_skripsi']['judul']){
+                        echo "<td>".$s['data_skripsi']['judul']."</td>";
+                      }else{
+                        echo "<td>belum ada</td>";
+                      }
+                      ?>
+                      <td><?= $s['tanggal'] ?></td>
+                      <td><?= $s['kwaktu'] ?></td>
+                      <td><?= $s['kruangan'] ?></td>
+                      <td><?= $s['kperiode'] ?></td>
                       </tr>
-                    <?php endforeach;?>
+                    <?php endforeach;}?>
                   </tbody>
                 </table>
               </div>

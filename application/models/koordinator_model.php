@@ -79,12 +79,20 @@ class koordinator_model extends CI_Model
         json_decode($this->curl->simple_put($this->ipSkripsi.'Skripsi/',$data,array(CURLOPT_BUFFERSIZE => 10),),true);
     }
     public function valTopik($id){
-        $skripsi = json_decode($this->curl->simple_get($this->ipSkripsi.'Skripsi/',array("id" => $id),array(CURLOPT_BUFFERSIZE => 10)),true);
-        $skripsi['data'][0]['status']="1";
-        json_decode($this->curl->simple_put($this->ipSkripsi.'Skripsi/',$skripsi['data'][0],array(CURLOPT_BUFFERSIZE => 10)),true);
+        $skripsi = json_decode($this->curl->simple_get($this->ipSkripsi.'Skripsi/',array("id" => $id),array(CURLOPT_BUFFERSIZE => 10)),true)['data'][0];
+        $skripsi['status']="1";
+        json_decode($this->curl->simple_put($this->ipSkripsi.'Skripsi/',$skripsi,array(CURLOPT_BUFFERSIZE => 10)),true);
+
+        $dp1=json_decode($this->curl->simple_get($this->ipUser.'Dosen/',array('nip'=> substr($skripsi['pembimbing_1'],1)),array(CURLOPT_BUFFERSIZE => 10)),true)['data'];
+        $dp1['nipbaru']=$dp1['nip'];$dp1['beban']+=1;
+        json_decode($this->curl->simple_put($this->ipUser.'Dosen/',$dp1,array(CURLOPT_BUFFERSIZE => 10)),true);
+
+        $dp2=json_decode($this->curl->simple_get($this->ipUser.'Dosen/',array("nip" => substr($skripsi['pembimbing_2'],1)),array(CURLOPT_BUFFERSIZE => 10)),true)['data'];
+        $dp2['nipbaru']=$dp2['nip'];$dp2['beban']+=1;
+        json_decode($this->curl->simple_put($this->ipUser.'Dosen/',$dp2,array(CURLOPT_BUFFERSIZE => 10)),true);
 
         $data=[
-            'id_skripsi' => $skripsi['data'][0]['id'],
+            'id_skripsi' => $skripsi['id'],
             'tipe' => 1,
             'file' => "",
             'tanggal_dibuat' => time()
