@@ -195,6 +195,7 @@
                         <form action="<?= base_url('Koordinator/editJadwal/') . $sp['id']; ?>" method="POST">
                         <input hidden name="page" value="Koordinator/jadwal_sempro">
                           <div class="modal-body">
+                            
                             <!-- patokan untuk js -->
                             <span style="display : none">
                               <select type="hidden" class="input--style-6" name="penguji" id="penguji" onchange="">
@@ -238,6 +239,9 @@
                                 <?php }}}?>
                               </select>
                                           </div>
+                            <div class="form-group">
+                              <input type="date" id="tanggal" name="tanggal" class="form-control">
+                            </div>
                             <div class="form-group">
                               <label for="ruangan">Pilih Ruangan</label><br>
                               <select id="ruangan" name="ruangan" class="form-control" aria-label="Default select example">

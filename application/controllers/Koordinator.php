@@ -102,6 +102,7 @@ class Koordinator extends CI_Controller
 			'penguji_1' => $this->input->post('penguji1'),
 			'penguji_2' => $this->input->post('penguji2'),
 			'penguji_3' => $this->input->post('penguji3'),
+			'tanggal' => $this->input->post('tanggal'),
 			'ruangan' => $this->input->post('ruangan'),
 			'periode' => $this->input->post('periode'),
 			'waktu' => $this->input->post('waktu')

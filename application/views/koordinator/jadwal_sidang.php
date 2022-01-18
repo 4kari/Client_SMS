@@ -196,6 +196,9 @@
                         <input hidden name="page" value="Koordinator/jadwal_sidang">
                           <div class="modal-body">
                             <div class="form-group">
+                              <input type="date" id="tanggal" name="tanggal" class="form-control">
+                            </div>
+                            <div class="form-group">
                               <label for="ruangan">Pilih Ruangan</label><br>
                               <select id="ruangan" name="ruangan" class="form-control" aria-label="Default select example">
                                 <?php foreach($ruangan as $r){?>
