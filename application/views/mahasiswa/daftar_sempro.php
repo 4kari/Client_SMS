@@ -11,7 +11,7 @@
             </div>
             <div class="card-body">
               <?php if($skripsi){
-              if($jadwal){?>
+              if($jadwal && $jadwal['tipe']==1){?>
                 <!-- echo "<div class='alert alert-danger' role='alert'><a>Sudah Dijadwalkan</a></div>"; -->
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>

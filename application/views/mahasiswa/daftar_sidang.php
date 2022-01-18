@@ -10,7 +10,8 @@
               <h6 class="m-0 font-weight-bold text-primary">Pengajuan sidang skripsi</h6>
             </div>
             <div class="card-body">
-            <?php if($jadwal){?>
+            <?php if($skripsi){
+              if($jadwal && $jadwal['tipe']==2){?>
                 <!-- echo "<div class='alert alert-danger' role='alert'><a>Sudah Dijadwalkan</a></div>"; -->
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
@@ -48,54 +49,13 @@
                 </table>
 
               <?php }
-              else{ 
-        if($skripsi){
+              else{        
           if (!$validasi){
             if($skripsi['status']==2){?>
               <section class="hero-section spad">
                 <div class="hero-text text-center">
                     <h2>Mendaftar Sidang Skripsi</h2>
                 </div>
-                <hr>
-                <div class="hero-info">
-                  <h4>Data Skripsi</h4>
-                  <div class="row">
-                      <div class="col-lg-1">
-                          <ul>
-                              <li></li>
-                          </ul>
-                      </div>
-                      <div class="col-lg-4">
-                          <span>Judul Skripsi</span>
-                      </div>
-                      <div class="col-lg-7">
-                          <?php if($skripsi['judul']){
-                            echo '<span>'.$skripsi['judul'].'</span>';
-                          }else{
-                            echo '<span>tidak ada</span>';
-                          }
-                          ?>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-lg-1">
-                          <ul>
-                              <li></li>
-                          </ul>
-                      </div>
-                      <div class="col-lg-4">
-                          <span>topik</span>
-                      </div>
-                      <div class="col-lg-7">
-                        <?php if($skripsi['topik']){
-                            echo '<span>'.$skripsi['ktopik'].'</span>';
-                          }else{
-                            echo '<span>tidak ada</span>';
-                          }
-                          ?>    
-                      </div>
-                  </div>
-                  <hr>
                   <div class="hero-info">
                     <h4>Data Skripsi</h4>
                     <div class="row">
@@ -187,12 +147,12 @@
                 <div class="alert alert-danger" role="alert">
                   <a>Menunggu persetujuan dosen</a>
                 </div>
-              <?php 
+              <?php }
               }
             } 
             else{
               echo "<a>Belum ada skripsi</a>";
-            } }?>
+             }?>
               
             </div>
           </div>
