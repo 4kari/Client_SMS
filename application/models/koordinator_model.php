@@ -140,6 +140,11 @@ class koordinator_model extends CI_Model
         if($sidang){return $sidang['data'];}
         else{return $sidang;}
     }
+    public function getJadwal(){
+        $jadwal = json_decode($this->curl->simple_get($this->ipPenjadwalan.'Jadwal/', array(CURLOPT_BUFFERSIZE => 10)),true);
+        if($jadwal){return $jadwal['data'];}
+        else{return $jadwal;}
+    }
     public function updateJadwal($data){
         json_decode($this->curl->simple_put($this->ipPenjadwalan.'Kelola_Jadwal/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
     }

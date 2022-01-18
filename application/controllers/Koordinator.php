@@ -133,7 +133,7 @@ class Koordinator extends CI_Controller
 		$data['judul'] = 'Lihat Sempro';
 		$data['user'] = $this->session->userdata('username');
 		$data['aktor']="Koordinator";
-		$data['Jsempro']= $this->koorM->getJSempro();
+		$data['Jsempro']= $this->koorM->getJadwal();
 
 		$this->load->view('template/header',$data);
 		$this->load->view('koordinator/template/sidebar');
@@ -146,7 +146,7 @@ class Koordinator extends CI_Controller
 		$data['judul'] = 'Lihat Sidang';
 		$data['user'] = $this->session->userdata('username');
 		$data['aktor']="Koordinator";
-		$data['Jsidang']= $this->koorM->getJSidang();
+		$data['Jsidang']= $this->koorM->getJadwal();
 
 		$this->load->view('template/header',$data);
 		$this->load->view('koordinator/template/sidebar');

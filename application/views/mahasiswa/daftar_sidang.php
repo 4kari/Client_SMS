@@ -192,7 +192,7 @@
             } 
             else{
               echo "<a>Belum ada skripsi</a>";
-            }?>
+            } }?>
               
             </div>
           </div>

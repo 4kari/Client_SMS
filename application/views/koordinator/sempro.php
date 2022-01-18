@@ -37,7 +37,7 @@
                     </tr>
                   </tfoot>
                   <tbody>
-                  <?php if($Jsempro){ foreach ($Jsempro as $s): ?>
+                  <?php if($Jsempro){ foreach ($Jsempro as $s): if($s['tipe']==1){?>
                     <tr>
                       <?php if($s['data_skripsi']['judul']){
                         echo "<td>".$s['data_skripsi']['judul']."</td>";
@@ -50,7 +50,7 @@
                       <td><?= $s['kruangan'] ?></td>
                       <td><?= $s['kperiode'] ?></td>
                       </tr>
-                    <?php endforeach;}?>
+                    <?php } endforeach;}?>
                   </tbody>
                 </table>
               </div>
