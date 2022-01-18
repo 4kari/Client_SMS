@@ -41,9 +41,9 @@
                       }
                       ?>
                       <td><?= $jadwal['tanggal'] ?></td>
-                      <td><?= $jadwal['waktu'] ?></td>
-                      <td><?= $jadwal['ruangan'] ?></td>
-                      <td><?= $jadwal['periode'] ?></td>
+                      <td><?= $jadwal['kwaktu'] ?></td>
+                      <td><?= $jadwal['kruangan'] ?></td>
+                      <td><?= $jadwal['kperiode'] ?></td>
                       </tr>
                   </tbody>
                 </table>
