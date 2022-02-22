@@ -74,6 +74,11 @@ class Admin extends CI_Controller
 		redirect('admin/index');
 	}
 
+	function hapusDosen($nip)
+	{
+		$this->userM->delDosen($nip);
+		redirect('Admin/dosen');
+	}
 /*
 
 

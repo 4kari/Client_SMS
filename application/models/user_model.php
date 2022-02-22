@@ -60,7 +60,12 @@ class user_model extends CI_Model
             json_decode($this->curl->simple_post($this->ipUser.'Dosen/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
         }
     }
+    function delDosen($nip)
+	{
+        $data=['nip'=>$nip];
+        json_decode($this->curl->simple_delete($this->ipUser.'Dosen/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
 
+	}
     //mahasiswa
     public function getMahasiswa()
     {
@@ -87,4 +92,5 @@ class user_model extends CI_Model
     public function UpUser($data){
         json_decode($this->curl->simple_put($this->ipUser.'user/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
     }
+    
 }
