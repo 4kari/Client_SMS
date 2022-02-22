@@ -209,4 +209,14 @@ class Mahasiswa extends CI_Controller
 		$this->mhsM->ajukanSidang($id,$tipe);
 		redirect("Mahasiswa");
 	}
+
+	//belum pasti sebaiknya harus simpan data dimana
+	public function UbahFoto($nim){
+		$this->mhsM->changeFoto($nim);
+		redirect ('Mahasiswa');
+	}
+	public function ubah_password($username){
+		$this->mhsM->changePass($username,$this->input->post());
+		redirect ('Mahasiswa');
+	}
 }

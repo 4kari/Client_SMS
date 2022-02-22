@@ -138,4 +138,32 @@ class mahasiswa_model extends CI_Model
         //     return NULL;
         // }
     }
+    public function changeFoto($nim){
+        $ekstensi_diperbolehkan	= array('png','jpg');
+		$nama = $_FILES['gambar']['name'];
+		$x = explode('.', $nama);
+		$ekstensi = strtolower(end($x));
+		$ukuran	= $_FILES['gambar']['size'];
+		$file_tmp = $_FILES['gambar']['tmp_name'];	
+
+		if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
+			if($ukuran < 1044070){			
+				move_uploaded_file($file_tmp, 'assets/img/profile/'.$nama);
+				// $query = mysql_query("INSERT INTO upload VALUES(NULL, '$nama')");
+				if($query){
+					// echo 'FILE BERHASIL DI UPLOAD';
+				}else{
+					// echo 'GAGAL MENGUPLOAD GAMBAR';
+				}
+			}else{
+				// echo 'UKURAN FILE TERLALU BESAR';
+			}
+		}else{
+			// echo 'EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN';
+		}
+    }
+    public function changePass($username,$data){
+        $data['username']=$username;
+        $user = json_decode($this->curl->simple_put($this->ipUser.'password/',$data, array(CURLOPT_BUFFERSIZE => 10)),true);
+    }
 }
