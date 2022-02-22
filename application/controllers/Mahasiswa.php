@@ -173,7 +173,7 @@ class Mahasiswa extends CI_Controller
 		if($data['skripsi']){
 			$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
 			$data['validasi']=$this->mhsM->getValidasi($data['skripsi']['id'],2);
-			$data['jadwal']=$this->mhsM->getJadwal($data['skripsi']['id']);
+			$data['jadwal']=$this->mhsM->getJadwal($data['skripsi']['id'],1);
 			$data['posting'] = $this->mhsM->getDiskusi($data['skripsi']['id'],2);
 		}
 		
@@ -191,7 +191,7 @@ class Mahasiswa extends CI_Controller
 		if($data['skripsi']){
 			$data['skripsi']=$data['skripsi'][count($data['skripsi'])-1];
 			$data['validasi']=$this->mhsM->getValidasi($data['skripsi']['id'],3);
-			$data['jadwal']=$this->mhsM->getJadwal($data['skripsi']['id']);
+			$data['jadwal']=$this->mhsM->getJadwal($data['skripsi']['id'],2);
 			$data['posting'] = $this->mhsM->getDiskusi($data['skripsi']['id'],3);
 		}else{
 			$data['posting']=null;
