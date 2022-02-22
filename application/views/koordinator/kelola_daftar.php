@@ -9,8 +9,8 @@
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Kelola <?=$judul;?>
                 <span class="float-right text-white mr-4">
-                  <a href="" data-toggle="modal" data-target="#TambahMhs" class="btn btn-success btn-sm"><i class="fa fa-fw fa-plus"></i>tambah</a>
-                  <a href="" data-toggle="modal" data-target="#ImportMhs" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-plus"></i>import</a>
+                  <!-- <a href="" data-toggle="modal" data-target="#TambahMhs" class="btn btn-success btn-sm"><i class="fa fa-fw fa-plus"></i>tambah</a>
+                  <a href="" data-toggle="modal" data-target="#ImportMhs" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-plus"></i>import</a> -->
                 </span>
               </h6>
             </div>

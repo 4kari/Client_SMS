@@ -240,6 +240,7 @@
                               </select>
                                           </div>
                             <div class="form-group">
+                            <label for="tanggal">Pilih Tanggal</label><br>
                               <input type="date" id="tanggal" name="tanggal" class="form-control">
                             </div>
                             <div class="form-group">
