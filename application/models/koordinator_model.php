@@ -52,7 +52,7 @@ class koordinator_model extends CI_Model
         $mhs = json_decode($this->curl->simple_get($this->ipUser.'Mahasiswa/'),true);
         return $mhs['data'];
     }
-    public function getTopik()
+    public function getAjuTopik()
     {
         $skripsi = json_decode($this->curl->simple_get($this->ipSkripsi.'Skripsi/',array('status'=>0)),true);
         if ($skripsi){
@@ -60,6 +60,10 @@ class koordinator_model extends CI_Model
         }else{
             return NULL;
         }
+    }
+    public function getTopik(){
+        $data = json_decode($this->curl->simple_get($this->ipSkripsi.'topik/', array(CURLOPT_BUFFERSIZE => 10)),true);
+        return $data['data'];
     }
     public function updateTopik(){
         $dp1 = $this->input->post("pembimbing_1");
@@ -83,11 +87,11 @@ class koordinator_model extends CI_Model
         $skripsi['status']="1";
         json_decode($this->curl->simple_put($this->ipSkripsi.'Skripsi/',$skripsi,array(CURLOPT_BUFFERSIZE => 10)),true);
 
-        $dp1=json_decode($this->curl->simple_get($this->ipUser.'Dosen/',array('nip'=> substr($skripsi['pembimbing_1'],1)),array(CURLOPT_BUFFERSIZE => 10)),true)['data'];
+        $dp1=json_decode($this->curl->simple_get($this->ipUser.'Dosen/',array('nip'=> $skripsi['pembimbing_1']),array(CURLOPT_BUFFERSIZE => 10)),true)['data'];
         $dp1['nipbaru']=$dp1['nip'];$dp1['beban']+=1;
         json_decode($this->curl->simple_put($this->ipUser.'Dosen/',$dp1,array(CURLOPT_BUFFERSIZE => 10)),true);
 
-        $dp2=json_decode($this->curl->simple_get($this->ipUser.'Dosen/',array("nip" => substr($skripsi['pembimbing_2'],1)),array(CURLOPT_BUFFERSIZE => 10)),true)['data'];
+        $dp2=json_decode($this->curl->simple_get($this->ipUser.'Dosen/',array("nip" => $skripsi['pembimbing_2']),array(CURLOPT_BUFFERSIZE => 10)),true)['data'];
         $dp2['nipbaru']=$dp2['nip'];$dp2['beban']+=1;
         json_decode($this->curl->simple_put($this->ipUser.'Dosen/',$dp2,array(CURLOPT_BUFFERSIZE => 10)),true);
 

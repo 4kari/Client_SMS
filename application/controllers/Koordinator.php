@@ -20,7 +20,8 @@ class Koordinator extends CI_Controller
 		$data['user'] = $this->session->userdata('username');
 		$data['aktor']="Koordinator";
 		$data['dosen']= $this->koorM->getDosen();
-		$data['topik'] = $this->koorM->getTopik();
+		$data['topik'] = $this->koorM->getAjuTopik();
+		$data['datatopik'] = $this->koorM->getTopik();
 
 		$this->load->view('template/header',$data);
 		$this->load->view('koordinator/template/sidebar');

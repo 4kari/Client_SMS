@@ -85,8 +85,19 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="topik">Topik</label>
-                            <input type="text" class="form-control" id="topik" name="topik" value="<?= $t['topik']; ?>" required>
-                            <?= form_error('topik', '<div class="alert-danger" role="alert">', '</div>'); ?>
+                            <select name="topik" id="topik" class="form-control">
+                              <?php foreach ($datatopik as $top) {
+                                  if($t['topik']==$top['id']){
+                                    echo "<option value='$top[id]' selected>$top[topik]</option>";
+                                  }else{
+                                    echo "<option value='$top[id]'>$top[topik]</option>";
+                                  }
+                              }
+                              ?>
+                            </select>
+
+                            <!-- <input type="text" class="form-control" id="topik" name="topik" value="<?= $t['topik']; ?>" required>
+                            <?= form_error('topik', '<div class="alert-danger" role="alert">', '</div>'); ?> -->
                         </div>
 
                         <!-- patokan untuk js -->
@@ -125,9 +136,6 @@
                           ?>
                         </select>
                       </div>
-                      <!-- Submit Button-->
-                      <button class="btn btn-primary btn-xl" type="submit">Ajukan</button>
-                        
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
