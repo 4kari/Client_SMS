@@ -64,7 +64,6 @@ class user_model extends CI_Model
 	{
         $data=['nip'=>$nip];
         json_decode($this->curl->simple_delete($this->ipUser.'Dosen/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
-
 	}
     //mahasiswa
     public function getMahasiswa()
@@ -89,6 +88,11 @@ class user_model extends CI_Model
             echo "data kosong";
         }
     }
+    function delMahasiswa($nim)
+	{
+        $data=['nim'=>$nim];
+        json_decode($this->curl->simple_delete($this->ipUser.'Dosen/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
+	}
     public function UpUser($data){
         json_decode($this->curl->simple_put($this->ipUser.'user/',$data,array(CURLOPT_BUFFERSIZE => 10)),true);
     }

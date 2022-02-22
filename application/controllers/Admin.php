@@ -79,6 +79,11 @@ class Admin extends CI_Controller
 		$this->userM->delDosen($nip);
 		redirect('Admin/dosen');
 	}
+	function hapusMahasiswa($nim)
+	{
+		$this->userM->delMahasiswa($nim);
+		redirect('Admin/dosen');
+	}
 /*
 
 
