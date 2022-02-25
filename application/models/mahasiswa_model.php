@@ -8,10 +8,10 @@ class mahasiswa_model extends CI_Model
     // protected $ipDiskusi='http://10.5.12.56/diskusi/api/';
     // protected $ipUser='http://10.5.12.18/user/api/';
 
-    protected $ipSkripsi='http://localhost:8080/microservice/skripsi/api/';
-    protected $ipPenjadwalan='http://localhost:8080/microservice/penjadwalan/api/';
-    protected $ipDiskusi='http://localhost:8080/microservice/diskusi/api/';
-    protected $ipUser='http://localhost:8080/microservice/user/api/';
+    protected $ipSkripsi='http://localhost/microservice/skripsi/api/';
+    protected $ipPenjadwalan='http://localhost/microservice/penjadwalan/api/';
+    protected $ipDiskusi='http://localhost/microservice/diskusi/api/';
+    protected $ipUser='http://localhost/microservice/user/api/';
     
     public function data_diri($username){
         $data = json_decode($this->curl->simple_get($this->ipUser.'Mahasiswa/',array('nim'=>$username), array(CURLOPT_BUFFERSIZE => 10)),true);
