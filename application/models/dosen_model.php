@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class dosen_model extends CI_Model implements ip
 {
-    include (APPPATH.'models/ip.php');
     // protected $ipSkripsi='http://10.5.12.24/skripsi/api/';
     // protected $ipPenjadwalan='http://10.5.12.82/penjadwalan/api/';
     // protected $ipDiskusi='http://10.5.12.56/diskusi/api/';
