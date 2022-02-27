@@ -71,7 +71,7 @@
       <!-- </div> -->
       <!-- End of Main Content -->
 
-	  <?php if($sidang){foreach ($sidang as $sp) : ?>
+	  <?php if($sidang){foreach ($sidang as $sp) :?>
             <!-- modal detail -->
             <div class="modal fade displaycontent" id="detail<?= $sp['id'] ?>">
                 <div class="modal-dialog" role="document">
@@ -89,7 +89,7 @@
                                       if($sp['data_skripsi']['judul']==null){
                                         echo "<td>belum ada</td>";
                                       }else{
-                                        echo "<td>$sp[data_skripsi][judul]</td>";
+                                        echo "<td>".$sp['data_skripsi']['judul']."</td>";
                                       }
                                     echo "</tr>";
 

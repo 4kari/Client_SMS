@@ -50,7 +50,7 @@
 								}
 							}?>
 						<tr>
-							<td>none</td>
+							<td><?= $p['data_skripsi']['id']; ?></td>
 							<td><?= $p['data_skripsi']['nim']; ?></td>
 							<?php if($p['data_skripsi']['judul']){
 								echo "<td>".$p['data_skripsi']['judul']."</td>";
@@ -106,7 +106,7 @@
 					<tbody>
 						<?php foreach ($posting[1] as $p) : if($p['tipe']==2){ ?>
 						<tr>
-							<td>none</td>
+							<td><?= $p['data_skripsi']['id']; ?></td>
 							<td><?= $p['data_skripsi']['nim']; ?></td>
 							<?php if($p['data_skripsi']['judul']){
 								echo "<td>".$p['data_skripsi']['judul']."</td>";
@@ -156,7 +156,7 @@
 					<tbody>
 						<?php foreach ($posting[2] as $p) : if($p['tipe']==3){ ?>
 						<tr>
-							<td>none</td>
+							<td><?= $p['data_skripsi']['id']; ?></td>
 							<td><?= $p['data_skripsi']['nim']; ?></td>
 							<?php if($p['data_skripsi']['judul']){
 								echo "<td>".$p['data_skripsi']['judul']."</td>";

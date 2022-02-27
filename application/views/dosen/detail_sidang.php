@@ -1,6 +1,5 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800"><?=$judul;?></h1>
           <p class="mb-4">halaman ini digunakan umtuk melakukan proses sidang skripsi</p>
@@ -9,8 +8,12 @@
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Sidang Skripsi
                 <span class="float-right text-white mr-4">
-                  <?php if(!$nilai){ ?><a href="" data-toggle="modal" data-target="#nilai" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i>Nilai</a> <?php }else{ ?>
-                    <a class="m-0 font-weight-bold text-primary">Nilai : <?php echo $nilai."</a>";}?>
+                  <?php //if(!$nilai){ ?><a href="" data-toggle="modal" data-target="#nilai" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit">
+
+                  </i>Nilai</a>
+                  <?php //}else{ ?>
+                    <a class="m-0 font-weight-bold text-primary">Nilai : <?php echo $nilai."</a>";
+                  //}?>
                 </span>
               </h6>
             </div>

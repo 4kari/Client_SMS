@@ -1,9 +1,8 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800"><?=$judul;?></h1>
-          <p class="mb-4">halaman ini digunakan untuk memudahkan pengelolaan data mahasiswa</p>
+          <p class="mb-4">halaman ini digunakan untuk memudahkan pengelolaan data pendaftar</p>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -39,7 +38,7 @@
 						<?php foreach ($sempro as $s){ ?>
 						<?php if ($s['tipe']==2) {?> 
 						<tr>
-							<td>none</td>
+							<td><?= $s['data_skripsi']['id']; ?></td>
 							<td><?= $s['data_skripsi']['nim']; ?></td>
 							<?php if($s['data_skripsi']['judul']){
 								echo "<td>".$s['data_skripsi']['judul']."</td>";
